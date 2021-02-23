@@ -1,5 +1,5 @@
-import LinkedList from '../lists/linked-list'
 import QueueLinkedList from './queue-linked-list'
+import LinkedList from '../lists/linked-list'
 
 export default class PriorityQueueLinkedList<T> extends QueueLinkedList<T> {
 

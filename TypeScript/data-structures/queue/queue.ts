@@ -1,6 +1,3 @@
-/* FIFO (First In First Out) - O primeiro  elemento a 
-entrar na fila é também o primeiro elemtno a sair*/
-
 export default class Queue<T> {
 
     constructor(
@@ -9,18 +6,15 @@ export default class Queue<T> {
         private queue = {}) {
     }
 
-
     get length() {
         return this.count - this.lowestCount
     }
 
-
     get front(): T {
-        if (!this.isEmpty()) {
+        if (this.length) {
             return this.queue[this.lowestCount]
         }
     }
-
     
     enqueue(el: T) {
         this.queue[this.count] = el
@@ -30,7 +24,7 @@ export default class Queue<T> {
     }
 
     dequeue(): T {
-        if (!this.isEmpty()) {
+        if (this.length) {
 
             const first = this.queue[this.lowestCount]
             delete this.queue[this.lowestCount]
@@ -40,16 +34,14 @@ export default class Queue<T> {
         }
     }
 
-    isEmpty = () => this.length === 0
-
     clear() {
-        while (!this.isEmpty()) {
+        while (this.length) {
             this.dequeue()
         }
     }
 
     toString() {
-        if (this.isEmpty()) {
+        if (!this.length) {
             return ''
         }
 

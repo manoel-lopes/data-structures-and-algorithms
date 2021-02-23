@@ -12,7 +12,7 @@ Menu:
 1 - Insert element in the queue
 2 - Remove element in the queue
 3 - Get the quantity of elements in the queue
-4 - Get the first element in the queue
+4 - Get the element in the front of the queue
 5 - Print queue
 6 - Clear queue
 Option: `)
@@ -28,7 +28,7 @@ Option: `)
 
         queue.dequeue()
 
-        if (!queue.isEmpty()) {
+        if (queue.length) {
             console.log(`\n${queue.toString()}`)
 
         } else {
@@ -41,7 +41,7 @@ Option: `)
 
     } else if (option === 4) {
 
-        if (queue.isEmpty()) {
+        if (!queue.length) {
             console.log('\nThe queue is empty!')
 
         } else {
@@ -50,7 +50,7 @@ Option: `)
 
     } else if (option == 5) {
 
-        if (queue.isEmpty()) {
+        if (!queue.length) {
             console.log('\nThe queue is empty!')
 
         } else {
@@ -61,7 +61,7 @@ Option: `)
 
         queue.clear()
 
-        if (queue.isEmpty()) {
+        if (!queue.length) {
             console.log('\nThe queue is empty!')
         }
 

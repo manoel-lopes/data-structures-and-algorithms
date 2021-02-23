@@ -17,17 +17,15 @@ export default class QueueLinkedList<T>  {
 
     dequeue = () => this.queue.removeAt(0)
 
-    isEmpty = () => this.queue.isEmpty()
-
     clear() {
-        while (!this.isEmpty()) {
+        while (this.length) {
             this.dequeue()
         }
     }
 
     toString() {
 
-        if (this.isEmpty()) {
+        if (!this.length) {
             return ''
         }
 

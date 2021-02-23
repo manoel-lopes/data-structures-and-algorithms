@@ -1,6 +1,6 @@
 import { questionInt } from 'readline-sync'
-import Stack from './data-structures/stack/stack'
-// import Stack from './data-structures/stack/stack-linked-list'
+// import Stack from './data-structures/stack/stack'
+import Stack from './data-structures/stack/stack-linked-list'
 
 let option: number, el: unknown
 const stack = new Stack()
