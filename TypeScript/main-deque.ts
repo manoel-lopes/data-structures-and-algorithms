@@ -7,17 +7,17 @@ const deque = new Deque()
 
 do {
     option = questionInt(`
-Menu de opcoes:
-1 - Inserir elemento no inicio da deque
-2 - Inserir elemento no final da deque
-3 - Remover elemento no inico da deque
-4 - Remover elemento no final da deque
-5 - Obter quantidade de elementos na deque
-6 - Obter primeiro elemento da deque
-7 - Obter ultimo elemento da deque
-8 - Imprimir deque
-9 - Limpar deque
-Opcao: `)
+Menu:
+1 - Insert element at the front of the deque
+2 - Insert element at the back of the deque
+3 - Remove element at the front of the deque
+4 - Remove element at the back of the deque
+5 - Get the quantity of elements in the deque
+6 - Get the element at the front of the deque
+7 - Get the element at the back of the deque
+8 - Print deque
+9 - Clear deque
+Option: `)
 
     if (option === 1) {
 
@@ -38,66 +38,65 @@ Opcao: `)
 
         deque.shift()
 
-        if (!deque.isEmpty()) {
+        if (deque.length) {
             console.log(`\n${deque.toString()}`)
-
+            
         } else {
-            console.log('\nFalha em remover o elemento!')
+            console.log('\nThe deque is empty!')
         }
-
+        
     } else if (option === 4) {
-
+        
         deque.pop()
-
-        if (!deque.isEmpty()) {
+        
+        if (deque.length) {
             console.log(`\n${deque.toString()}`)
-
+            
         } else {
-            console.log('\nA deque esta vazia!')
-
+            console.log('\nThe deque is empty!')
         }
-
+        
     } else if (option === 5) {
-
-        console.log(`\nQuantidade de elementos na deque: ${deque.length}`)
-
+        
+        console.log(`\nQuantity of elements in the deque: ${deque.length}`)
+        
     } else if (option === 6) {
-
-        if (deque.isEmpty()) {
-            console.log('\nA deque esta vazia!')
-
+        
+        if (!deque.length) {
+            console.log('\nThe deque is empty!')
+            
         } else {
-            console.log(`\nPrimeiro elemento na deque: ${deque.front}`)
+            console.log(`\nElement at the front of the deque: ${deque.front}`)
         }
-
+        
     } else if (option === 7) {
-
-        if (deque.isEmpty()) {
-            console.log('\nA deque esta vazia!')
-
+        
+        if (!deque.length) {
+            console.log('\nThe deque is empty!')
+            
         } else {
-            console.log(`\nUltimo elemento na deque: ${deque.back}`)
+            console.log(`\nElement at the back of the: ${deque.back}`)
         }
-
+        
     } else if (option === 8) {
-
-        if (deque.isEmpty()) {
-            console.log('\nA deque esta vazia!')
-
+        
+        if (!deque.length) {
+            console.log('\nThe deque is empty!')
+            
         } else {
-            console.log('\n' + deque.toString())
+            console.log(`\n${deque.toString()}`)
         }
-
+        
     } else if (option === 9) {
-
+        
         deque.clear()
-
-        if (deque.isEmpty()) {
-            console.log('\nA deque esta vazia!')
+        
+        if (!deque.length) {
+            console.log('\nThe deque is empty!')
         }
-
+        
     } else {
-        console.log("\nOpcao Invalida!")
+        console.log("\nInvalid Option!")
     }
 
 } while (1)

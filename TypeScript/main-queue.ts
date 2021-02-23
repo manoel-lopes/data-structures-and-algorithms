@@ -1,7 +1,7 @@
 import { questionInt } from 'readline-sync'
-import Queue from './data-structures/queue/queue'
+// import Queue from './data-structures/queue/queue'
 // import Queue from './data-structures/queue/queue-linked-list'
-// import Queue from './data-structures/queue/priority-queue-linked-list'
+import Queue from './data-structures/queue/priority-queue-linked-list'
 
 let option: number, el: number
 const queue = new Queue()
@@ -12,7 +12,7 @@ Menu:
 1 - Insert element in the queue
 2 - Remove element in the queue
 3 - Get the quantity of elements in the queue
-4 - Get the element in the front of the queue
+4 - Get the element at the front of the queue
 5 - Print queue
 6 - Clear queue
 Option: `)
@@ -45,7 +45,7 @@ Option: `)
             console.log('\nThe queue is empty!')
 
         } else {
-            console.log(`\nFirst element in the queue: ${queue.front}`)
+            console.log(`\nElement at the front of the queue: ${queue.front}`)
         }
 
     } else if (option == 5) {

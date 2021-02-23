@@ -11,13 +11,13 @@ export default class Deque<T> {
     }
 
     get front() {
-        if (!this.isEmpty()) {
+        if (this.length) {
             return this.deque[this.lowestCount]
         }
     }
 
     get back() {
-        if (!this.isEmpty()) {
+        if (this.length) {
             return this.deque[this.count - 1]
         }
     }
@@ -30,7 +30,7 @@ export default class Deque<T> {
     }
 
     pop(): T {
-        if (!this.isEmpty()) {
+        if (this.length) {
 
             this.count--
             const top = this.deque[this.count]
@@ -41,7 +41,7 @@ export default class Deque<T> {
     }
 
     unshift(el: T) {
-        if (this.isEmpty()) {
+        if (!this.length) {
             this.push(el)
 
         } else if (this.lowestCount > 0) {
@@ -61,7 +61,7 @@ export default class Deque<T> {
     }
 
     shift(): T {
-        if (!this.isEmpty()) {
+        if (this.length) {
 
             const first = this.deque[this.lowestCount]
             delete this.deque[this.lowestCount]
@@ -72,13 +72,13 @@ export default class Deque<T> {
     }
 
     clear() {
-        while (!this.isEmpty()) {
+        while (this.length) {
             this.pop()
         }
     }
 
     toString() {
-        if (this.isEmpty()) {
+        if (!this.length) {
             return ''
         }
 

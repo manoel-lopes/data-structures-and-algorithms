@@ -11,7 +11,7 @@ Menu:
 1 - Insert element in the stack
 2 - Remove element in the stack
 3 - Get the quantity of elements in the stack
-4 - Get element in the top of the stack
+4 - Get element at the top of the stack
 5 - Print stack
 6 - Clear stack
 Option: `)
@@ -44,7 +44,7 @@ Option: `)
         if (!stack.length) {
             console.log('\nThe stack is empty!')
         } else {
-            console.log(`\nElement in the top the stack: ${stack.top}`)
+            console.log(`\nElement at the top of the stack: ${stack.top}`)
         }
 
 
