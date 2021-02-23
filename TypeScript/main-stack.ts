@@ -1,61 +1,57 @@
 import { questionInt } from 'readline-sync'
-// import Stack from '../data-structures/stack/stack'
-// import Stack from '../data-structures/stack/stack-array'
-import Stack from '../data-structures/stack/stack-linked-list'
+import Stack from './data-structures/stack/stack'
+// import Stack from './data-structures/stack/stack-linked-list'
 
 let option: number, el: unknown
 const stack = new Stack()
 
 do {
-
     option = questionInt(`
-Menu de opcoes:
-1 - Inserir elemento na pilha
-2 - Remover elemento da pilha
-3 - Obter quantidade de elementos na pilha
-4 - Obter elemento no topo da pilha
-5 - Imprimir pilha
-6 - Limpar pilha
-Opcao: `)
+Menu:
+1 - Insert element in the stack
+2 - Remove element in the stack
+3 - Get the quantity of elements in the stack
+4 - Get element in the top of the stack
+5 - Print stack
+6 - Clear stack
+Option: `)
 
     if (option === 1) {
 
-        el = questionInt('\nDigite o elemento a ser inserido: ')
+        el = questionInt('\nType the element to be insert: ')
         stack.push(el)
 
         console.log(`\n${stack.toString()}`)
-
 
     } else if (option === 2) {
 
         stack.pop()
 
-        if (!stack.isEmpty()) {
+        if (stack.length) {
             console.log(`\n${stack.toString()}`)
-
         } else {
-            console.log('\nA pilha esta vazia!')
+            console.log('\nThe stack is empty!')
         }
+
 
 
     } else if (option === 3) {
 
-        console.log(`\nQuantidade de elementos na pilha: ${stack.length}`)
+        console.log(`\nQuantity of elements in the stack: ${stack.length}`)
 
     } else if (option === 4) {
 
-        if (stack.isEmpty()) {
-            console.log('\nA pilha esta vazia!')
-
+        if (!stack.length) {
+            console.log('\nThe stack is empty!')
         } else {
-            console.log(`\nElemento no topo da pilha: ${stack.top}`)
+            console.log(`\nElement in the top the stack: ${stack.top}`)
         }
+
 
     } else if (option == 5) {
 
-        if (stack.isEmpty()) {
-            console.log('\nA pilha esta vazia!')
-
+        if (!stack.length) {
+            console.log('\nThe stack is empty!')
         } else {
             console.log(`\n${stack.toString()}`)
         }
@@ -64,12 +60,12 @@ Opcao: `)
 
         stack.clear()
 
-        if (stack.isEmpty()) {
-            console.log('\nA pilha esta vazia!')
+        if (!stack.length) {
+            console.log('\nThe stack is empty!')
         }
 
     } else {
-        console.log("\nOpcao Invalida!")
+        console.log("\nInvalid Option!")
     }
 
 } while (1)

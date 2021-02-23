@@ -6,11 +6,9 @@ export default class Deque<T> {
         private deque = {}) {
     }
 
-
     get length() {
         return this.count - this.lowestCount
     }
-
 
     get front() {
         if (!this.isEmpty()) {
@@ -18,13 +16,11 @@ export default class Deque<T> {
         }
     }
 
-
     get back() {
         if (!this.isEmpty()) {
             return this.deque[this.count - 1]
         }
     }
-
 
     push(el: T) {
         this.deque[this.count] = el
@@ -32,7 +28,6 @@ export default class Deque<T> {
 
         return this.length
     }
-
 
     pop(): T {
         if (!this.isEmpty()) {
@@ -44,7 +39,6 @@ export default class Deque<T> {
             return top
         }
     }
-
 
     unshift(el: T) {
         if (this.isEmpty()) {
@@ -66,7 +60,6 @@ export default class Deque<T> {
         return this.length
     }
 
-
     shift(): T {
         if (!this.isEmpty()) {
 
@@ -78,17 +71,12 @@ export default class Deque<T> {
         }
     }
 
-
-    isEmpty = () => this.length === 0
-
-
     clear() {
         while (!this.isEmpty()) {
             this.pop()
         }
     }
 
-    
     toString() {
         if (this.isEmpty()) {
             return ''

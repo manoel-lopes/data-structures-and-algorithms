@@ -1,13 +1,11 @@
 import { questionInt } from 'readline-sync'
-// import Deque from './data-structures/deque/deque'
-// import Deque from './data-structures/deque/deque-array'
+import Deque from './data-structures/deque/deque'
 import Deque from './data-structures/deque/deque-linked-list'
 
 let option: number, el: unknown
 const deque = new Deque()
 
 do {
-
     option = questionInt(`
 Menu de opcoes:
 1 - Inserir elemento no inicio da deque
@@ -23,14 +21,14 @@ Opcao: `)
 
     if (option === 1) {
 
-        el = questionInt('\nDigite o elemento a ser inserido: ')
+        el = questionInt('\nType the element to be insert: ')
         deque.unshift(el)
 
         console.log(`\n${deque.toString()}`)
 
     } else if (option === 2) {
 
-        el = questionInt('\nDigite o elemento a ser inserido: ')
+        el = questionInt('\nType the element to be insert: ')
         deque.push(el)
 
         console.log(`\n${deque.toString()}`)

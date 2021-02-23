@@ -1,39 +1,31 @@
 import DoublyLinkedList from '../lists/doubly-linked-list'
 
 export default class StackLinkedList<T>  {
+    
     constructor(private stack = new DoublyLinkedList<T>()) {
     }
-
     
     get length() {
         return this.stack.length
     }
 
-
     get top() {
         return this.stack.tail
     }
 
-
     push = (el: T) => this.stack.push(el)
-
 
     pop = () => this.stack.pop()
 
-
-    isEmpty = () => this.stack.isEmpty()
-
-
     clear() {
-        while (!this.isEmpty()) {
+        while (this.length) {
             this.pop()
         }
     }
 
-
     toString() {
 
-        if (this.isEmpty()) {
+        if (!this.length) {
             return ''
         }
 

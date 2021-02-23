@@ -33,19 +33,16 @@ export default class DequeLinkedList<T>  {
     shift = () => this.deque.removeAt(0)
 
 
-    isEmpty = () => this.deque.isEmpty()
-
-
     clear() {
-        while (!this.isEmpty()) {
+        while (this.length) {
             this.shift()
         }
     }
 
-    
+
     toString() {
 
-        if (this.isEmpty()) {
+        if (!this.length) {
             return ''
         }
 

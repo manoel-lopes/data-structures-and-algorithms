@@ -1,6 +1,3 @@
-/* LIFO (Last In First Out) - O ultimo elemento entrar na pilha é o primeiro
-elemento a sair da pilha */
-
 export default class Stack<T> {
 
     constructor(
@@ -8,18 +5,15 @@ export default class Stack<T> {
         private stack = {}) {
     }
 
-
     get length() {
         return this.count
     }
 
-
     get top(): T {
-        if (!this.isEmpty()) {
+        if (this.length) {
             return this.stack[this.count - 1]
         }
     }
-
 
     push(el: T) {
         this.stack[this.count] = el
@@ -28,9 +22,8 @@ export default class Stack<T> {
         return this.length
     }
 
-
     pop(): T {
-        if (!this.isEmpty()) {
+        if (this.length) {
             this.count--
             const top = this.stack[this.count]
             delete this.stack[this.count]
@@ -39,19 +32,14 @@ export default class Stack<T> {
         }
     }
 
-
-    isEmpty = () => this.count === 0
-
-
     clear() {
-        while (!this.isEmpty()) {
+        while (this.length) {
             this.pop()
         }
     }
-
     
     toString() {
-        if (this.isEmpty()) {
+        if (!this.length) {
             return ''
         }
         let str = `${this.stack[0]}`

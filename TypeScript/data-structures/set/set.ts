@@ -3,14 +3,14 @@ import binarySearch from '../../algorithms/search/binary-search'
 export default class Set<T> {
 
     constructor(
-        protected array: T[] = [],
-        protected set = {},
-        protected count = 0) {
+        private array: T[] = [],
+        private set = {},
+        private count = 0) {
 
         this.createSetFromArray(this.array)
     }
 
-    protected createSetFromArray(array: T[]) {
+    private createSetFromArray(array: T[]) {
         if (array) {
             const newArray = array.filter((el, i) => array.indexOf(el) === i)
             for (let el of newArray) {

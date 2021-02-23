@@ -4,14 +4,13 @@ import LinkedList from '../lists/linked-list'
 export default class SetLinkedList<T>  {
 
     constructor(
-        protected array: T[] = [],
-        protected set = new LinkedList<T>()) {
+        private array: T[] = [],
+        private set = new LinkedList<T>()) {
 
         this.createSetFromArray(this.array)
     }
 
-    
-    protected createSetFromArray(array: T[]) {
+    private createSetFromArray(array: T[]) {
         if (array) {
             const newArray = array.filter((el, i) => array.indexOf(el) === i)
             for (let el of newArray) {
@@ -20,11 +19,9 @@ export default class SetLinkedList<T>  {
         }
     }
 
-    
     get size() {
         return this.set.length
     }
-
 
     add(el: T) {
         if (!this.has(el)) {
@@ -32,7 +29,6 @@ export default class SetLinkedList<T>  {
         }
         return this
     }
-
 
     delete(el: T) {
         if (this.has(el)) {
@@ -42,7 +38,6 @@ export default class SetLinkedList<T>  {
         return false
     }
 
-
     values() {
         const setArray: T[] = []
         for (let i = 0; i < this.size; i++) {
@@ -51,7 +46,6 @@ export default class SetLinkedList<T>  {
         return setArray
     }
 
-
     //using Binary Search algorithm
     has(el: T) {
         const searchFn = binarySearch
@@ -59,9 +53,7 @@ export default class SetLinkedList<T>  {
         return searchFn(sortedArray, el) === -1 ? false : true
     }
 
-
     [Symbol.iterator] = () => this.values().values()
-
 
     isSupersetOf(otherSet: SetLinkedList<T>) {
         if (this.size < otherSet.size) {
@@ -70,18 +62,15 @@ export default class SetLinkedList<T>  {
         return [...otherSet].every(el => this.has(el))
     }
 
-
     union(otherSet: SetLinkedList<T>) {
         return new SetLinkedList([...this, ...otherSet])
     }
-
 
     symmetricDifference(otherSet: SetLinkedList<T>) {
         return new SetLinkedList([...this.union(otherSet)].filter(el => {
             return !this.intersection(otherSet).has(el)
         }))
     }
-
 
     intersection(otherSet: SetLinkedList<T>) {
         let biggerSet: SetLinkedList<T> = this
@@ -91,28 +80,24 @@ export default class SetLinkedList<T>  {
             biggerSet = otherSet
             smallerSet = this
         }
-        return new SetLinkedList([...smallerSet].filter(el => biggerSet.has(el)))
+        return new SetLinkedList([...smallerSet].filter(el =>
+            biggerSet.has(el)))
     }
 
 
     difference(otherSet: SetLinkedList<T>) {
-        return new SetLinkedList([...this].filter(el => !otherSet.has(el)))
+        return new SetLinkedList([...this].filter(el =>
+            !otherSet.has(el)))
     }
 
-
-    isEmpty = () => this.size === 0
-
-
     clear = () => this.set.clear()
-
 
     forEach(callbackFn: (el: T) => unknown) {
         [...this].forEach(el => callbackFn(el))
     }
 
-
     toString() {
-        if (this.isEmpty()) {
+        if (!this.size) {
             return `Set(0) {}`
         }
 

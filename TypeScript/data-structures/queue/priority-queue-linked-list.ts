@@ -8,7 +8,7 @@ export default class PriorityQueueLinkedList<T> extends QueueLinkedList<T> {
     }
 
     enqueue = (el: T) => {
-        if (this.queue.isEmpty()) {
+        if (!this.queue.length) {
             return this.queue.insert(el)
 
         } else {

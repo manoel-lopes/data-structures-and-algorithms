@@ -1,10 +1,6 @@
 import { question, questionInt } from 'readline-sync'
-import Set from '../data-structures/set/set'
-import Set from '../data-structures/set/set-array'
-import Set from '../data-structures/set/set-linked-list'
-// import Set from '../data-structures/set/multi-set'
-// import Set from '../data-structures/set/multi-set-array'
-// import Set from '../data-structures/set/multi-set-linked-list'
+import Set from './data-structures/set/set'
+// import Set from './data-structures/set/set-linked-list'
 
 let option: number, el: unknown, choice: string, isSupersetStr: string
 const setA = new Set(), setB = new Set()

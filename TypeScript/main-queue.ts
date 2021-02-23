@@ -1,28 +1,25 @@
 import { questionInt } from 'readline-sync'
-// import Queue from './data-structures/queue/queue'
-// import Queue from './data-structures/queue/queue-array'
+import Queue from './data-structures/queue/queue'
 // import Queue from './data-structures/queue/queue-linked-list'
-// import Queue from './data-structures/queue/priority-queue-array'
-import Queue from './data-structures/queue/priority-queue-linked-list'
+// import Queue from './data-structures/queue/priority-queue-linked-list'
 
 let option: number, el: number
 const queue = new Queue()
 
 do {
-
     option = questionInt(`
-Menu de opcoes:
-1 - Inserir elemento na fila
-2 - Remover elemento da fila
-3 - Obter quantidade de elementos na fila
-4 - Obter primeiro elemento da fila
-5 - Imprimir fila
-6 - Limpar fila
-Opcao: `)
+Menu:
+1 - Insert element in the queue
+2 - Remove element in the queue
+3 - Get the quantity of elements in the queue
+4 - Get the first element in the queue
+5 - Print queue
+6 - Clear queue
+Option: `)
 
     if (option === 1) {
 
-        el = questionInt('\nDigite o elemento a ser inserido: ')
+        el = questionInt('\nType the element to be insert: ')
         queue.enqueue(el)
 
         console.log(`\n${queue.toString()}`)
@@ -35,26 +32,26 @@ Opcao: `)
             console.log(`\n${queue.toString()}`)
 
         } else {
-            console.log('\nA fila esta vazia!')
+            console.log('\nThe queue is empty!')
         }
 
     } else if (option === 3) {
 
-        console.log(`\nQuantidade de elementos na lista: ${queue.length}`)
+        console.log(`\nQuantity of elements in the queue: ${queue.length}`)
 
     } else if (option === 4) {
 
         if (queue.isEmpty()) {
-            console.log('\nA lista esta vazia!')
+            console.log('\nThe queue is empty!')
 
         } else {
-            console.log(`\nPrimeiro elemento na fila: ${queue.front}`)
+            console.log(`\nFirst element in the queue: ${queue.front}`)
         }
 
     } else if (option == 5) {
 
         if (queue.isEmpty()) {
-            console.log('\nA fila esta vazia!')
+            console.log('\nThe queue is empty!')
 
         } else {
             console.log(`\n${queue.toString()}`)
@@ -65,11 +62,11 @@ Opcao: `)
         queue.clear()
 
         if (queue.isEmpty()) {
-            console.log('\nA fila esta vazia!')
+            console.log('\nThe queue is empty!')
         }
 
     } else {
-        console.log("\nOpcao Invalida!")
+        console.log("\nInvalid Option!")
     }
 
 } while (1)
