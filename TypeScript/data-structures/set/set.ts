@@ -82,8 +82,6 @@ export default class Set<T> {
         return new Set([...this].filter(el => !otherSet.has(el)))
     }
 
-    isEmpty = () => this.size === 0
-
     forEach(callbackFn: (el: T) => unknown) {
         [...this].forEach(el => callbackFn(el))
     }
@@ -94,7 +92,7 @@ export default class Set<T> {
     }
 
     toString() {
-        if (this.isEmpty()) {
+        if (!this.size) {
             return `Set(0) {}`
         }
 

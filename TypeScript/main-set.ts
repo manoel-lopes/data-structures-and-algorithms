@@ -102,7 +102,7 @@ Opcao: `)
         const symDiffSet = setA.symmetricDifference(setB)
         console.log(`Diferenca Simetrica: ${symDiffSet.toString()}`)
         // const symDiffSet = new Set([...unionSet].filter(el => {
-            // return !intersecSet.has(el)
+        // return !intersecSet.has(el)
         // }))
         // console.log("Diferenca Simetrica: %o", symDiffSet)
 
@@ -138,7 +138,7 @@ Opcao: `)
 
     }
     else {
-        console.log("\nOpcao Invalida!")
+        console.log('\nInvalid Option!')
     }
 
 } while (1)

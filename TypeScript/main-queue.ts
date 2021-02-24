@@ -66,7 +66,7 @@ Option: `)
         }
 
     } else {
-        console.log("\nInvalid Option!")
+        console.log('\nInvalid Option!')
     }
 
 } while (1)
