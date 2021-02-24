@@ -1,7 +1,7 @@
-import { questionInt } from "readline-sync"
-import List from "./data-structures/lists/linked-list"
-// import List from "./data-structures/lists/doubly-linked-list"
-// import List from "./data-structures/lists/circular-linked-list"
+import { questionInt } from 'readline-sync'
+// import List from './data-structures/lists/linked-list'
+// import List from './data-structures/lists/doubly-linked-list'
+import List from './data-structures/lists/circular-linked-list'
 
 let option: number, el: unknown, index: number
 const list = new List()
@@ -15,7 +15,7 @@ Menu:
 4  - Remove element in the beginning
 5  - Remove element in the end
 6  - Remove element (any)
-7  - Get quantity de elements in the list
+7  - Get quantity of elements in the list
 8  - Get element by index
 9  - Get index by element
 10 - Alterate element
@@ -25,22 +25,22 @@ Option: `)
 
     if (option === 1) {
 
-        el = questionInt("\nType it the element to be insert: ")
+        el = questionInt('\nType the element to be insert: ')
         list.insert(el)
 
         console.log(`\n${list.toString()}`)
 
     } else if (option === 2) {
 
-        el = questionInt("\nType it the element to be insert: ")
+        el = questionInt('\nType the element to be insert: ')
         list.push(el)
 
         console.log(`\n${list.toString()}`)
 
     } else if (option === 3) {
 
-        index = questionInt("\nType it the new element: ")
-        el = questionInt("Type it the new element's index: ")
+        index = questionInt('\nType the index of the new element: ')
+        el = questionInt('Type the new element: ')
 
         if (list.insert(el, index)) {
             console.log(`\n${list.toString()}`)
@@ -52,50 +52,56 @@ Option: `)
 
     } else if (option === 4) {
 
-            if (list.removeAt(0)) {
-                console.log(`\n${list.toString()}`)
-                
-            } else {
-                console.log("\nThe list it's empty!")
-            }
+        list.removeAt(0)
+
+        if (list.length) {
+            console.log(`\n${list.toString()}`)
+
+        } else {
+            console.log('\nThe list is empty!')
+        }
 
     } else if (option === 5) {
 
-            if (list.pop()) {
-                console.log(`\n${list.toString()}`)
-                
-            } else {
-                console.log("\nThe list it's empty!")
-            }
+        list.pop()
+        
+        if (list.length) {
+            console.log(`\n${list.toString()}`)
+
+        } else {
+            console.log('\nThe list is empty!')
+        }
 
     } else if (option === 6) {
 
         if (list.length) {
-            el = questionInt("\nType it the element to be remove: ")
+            el = questionInt('\nType the element to be remove: ')
             index = list.indexOf(el)
 
             if (index !== -1) {
 
-                if (list.removeAt(index)) {
+                list.removeAt(index)
+
+                if (list.length) {
                     console.log(`\n${list.toString()}`)
-                    
+
                 } else {
-                    console.log("\nThe list it's empty!")
+                    console.log('\nThe list is empty!')
                 }
 
             } else {
-                console.log(`\n${el} it's not in the list!`)
+                console.log(`\n${el} is not in the list!`)
             }
 
         } else {
-            console.log("\nThe list it's empty!")
+            console.log('\nThe list is empty!')
 
         }
 
     } else if (option === 7) {
 
         if (!list.length) {
-            console.log("\nThe list it's empty!")
+            console.log('\nThe list is empty!')
 
         } else {
             console.log(`\nQuantity of elements in the list: ${list.length}`)
@@ -103,32 +109,32 @@ Option: `)
 
     } else if (option === 8) {
 
-        index = questionInt("\nType it the new index: ")
+        index = questionInt('\nType the new index: ')
         el = list.getElementAt(index)
 
         if (el !== undefined) {
             console.log(`\nElement in position ${index}: ${el}`)
 
         } else {
-            console.log(`${el} it's not in the list\n!`)
+            console.log(`${el} is not in the list\n!`)
         }
 
     } else if (option === 9) {
 
-        el = questionInt("\nType it the element: ")
+        el = questionInt('\nType the element: ')
         index = list.indexOf(el)
 
         if (list.indexOf(el) !== -1) {
             console.log(`\nElement in position ${index}: ${el}`)
 
         } else {
-            console.log(`${el} it's not in the list\n!`)
+            console.log(`${el} is not in the list\n!`)
         }
 
     } else if (option === 10) {
 
-        index = questionInt("\nType it the index of the element to be alterate: ")
-        el = questionInt("Type it the new element: ")
+        index = questionInt('\nType the index of the element to be alterate: ')
+        el = questionInt('Type the new element: ')
 
         list.setElementAt(el, index)
 
@@ -143,7 +149,7 @@ Option: `)
     } else if (option === 11) {
 
         if (!list.length) {
-            console.log("\nThe list it's empty!");
+            console.log('\nThe list is empty!');
 
         } else {
             console.log(`\n${list.toString()}`)
@@ -155,11 +161,11 @@ Option: `)
         list.clear()
 
         if (!list.length) {
-            console.log("\nThe list it's empty!")
+            console.log('\nThe list is empty!')
         }
 
     } else {
-        console.log("\nInvalid Option!")
+        console.log('\nInvalid Option!')
     }
 
 } while (1)

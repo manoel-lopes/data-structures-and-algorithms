@@ -1,18 +1,18 @@
 import LinkedList from './linked-list'
-import { DoublyNode } from '../../models/linked-list-models'
+import { Node } from '../../models/linked-list-models'
 
 export default class DoublyLinkedList<T> extends LinkedList<T> {
 
   constructor(
-    protected _head?: DoublyNode<T>,
-    protected _tail?: DoublyNode<T>) {
+    protected _head?: Node<T>,
+    protected _tail?: Node<T>) {
     super()
 
   }
 
 
   push(el: T) {
-    const node = new DoublyNode(el)
+    const node = new Node(el)
 
     if (this.head == null) {
       this._head = node
@@ -32,7 +32,7 @@ export default class DoublyLinkedList<T> extends LinkedList<T> {
 
   protected getNode(index: number) {
     if (index >= 0 && index < this.length) {
-      let pointer: DoublyNode<T>
+      let pointer: Node<T>
 
       if (index > this.count / 2) {
         pointer = this._tail
@@ -52,7 +52,7 @@ export default class DoublyLinkedList<T> extends LinkedList<T> {
 
   insert(el: T, index = 0) {
     if (index >= 0 && index <= this.length) {
-      const node = new DoublyNode(el)
+      const node = new Node(el)
       let pointer = this._head
 
       if (index === 0) {
@@ -155,7 +155,7 @@ export default class DoublyLinkedList<T> extends LinkedList<T> {
       return ''
     }
 
-    let str = `${null} <- ${pointer.el}`
+    let str = `<- ${pointer.el}`
     pointer = pointer.next
 
     for (let i = 1; i < this.length && pointer; i++) {
