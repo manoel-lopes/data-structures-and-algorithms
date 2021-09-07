@@ -29,25 +29,29 @@ func main() {
 		fmt.Scanln(&option)
 
 		if option == 1 {
-		
+
 			fmt.Print("\nType the element to be insert: ")
 			fmt.Scanln(&el)
 
 			list.Insert(el, 0)
 
 			fmt.Printf("\n%v\n", list.ToString())
+			fmt.Printf("\nHead: %v\n", list.Head)
+			fmt.Printf("Tail: %v\n", list.Tail)
 
 		} else if option == 2 {
-		
+
 			fmt.Print("\nType the element to be insert: ")
 			fmt.Scanln(&el)
 
 			list.Append(el)
 
 			fmt.Printf("\n%v\n", list.ToString())
+			fmt.Printf("\nHead: %v\n", list.Head)
+			fmt.Printf("Tail: %v\n", list.Tail)
 
 		} else if option == 3 {
-		
+
 			fmt.Print("\nType the index of the new element: ")
 			fmt.Scanln(&index)
 
@@ -58,6 +62,8 @@ func main() {
 
 			if ok > 0 {
 				fmt.Printf("\n%v\n", list.ToString())
+				fmt.Printf("\nHead: %v\n", list.Head)
+				fmt.Printf("Tail: %v\n", list.Tail)
 
 			} else {
 				fmt.Print("\nInsertion failed!\n")
@@ -68,7 +74,7 @@ func main() {
 		} else if option == 6 {
 
 		} else if option == 7 {
-		
+
 			ok = list.Length
 
 			if ok == 0 {
@@ -79,11 +85,11 @@ func main() {
 			}
 
 		} else if option == 8 {
-		
+
 			fmt.Print("\nType the index: ")
 			fmt.Scanln(&index)
 
-			ok = list.GetElementAt(&el, index)
+			// ok = list.GetElementAt(&el, index)
 
 			if ok == 1 {
 				fmt.Printf("\nElement at index %v: %v!\n\n", index, el)
@@ -93,11 +99,11 @@ func main() {
 			}
 
 		} else if option == 9 {
-		
+
 			fmt.Print("\nType the element: ")
 			fmt.Scanln(&el)
 
-			list.IndexOf(&index, el)
+			ok = list.IndexOf(&index, el)
 
 			if ok == 1 {
 				fmt.Printf("\nElement at index %v: %v!\n\n", index, el)
@@ -107,14 +113,14 @@ func main() {
 			}
 
 		} else if option == 10 {
-		
+
 			fmt.Print("\nType the index of the element to be change: ")
 			fmt.Scanln(&index)
 
 			fmt.Print("Type the new element: ")
 			fmt.Scanln(&el)
 
-			ok = list.SetElementAt(el, index)
+			// ok = list.SetElementAt(el, index)
 
 			if ok == 1 {
 				fmt.Printf("\n%v\n", list.ToString())
@@ -124,21 +130,21 @@ func main() {
 			}
 
 		} else if option == 11 {
-		
+
 			fmt.Printf("\n%v\n", list.ToString())
 
 		} else if option == 12 {
 
-			list.Clear()
+			// list.Clear()
 
-			if list.Length == 0 {
-				fmt.Printf("\nThe list is empty\n")
-			}
+		// 	if list.Length == 0 {
+		// 		fmt.Printf("\nThe list is empty\n")
+		// 	}
 
-		} else {
-			
-			fmt.Print("\nInvalid Option!\n\n")
-		
+		// } else {
+
+		// 	fmt.Print("\nInvalid Option!\n\n")
+
 		}
 	}
 }

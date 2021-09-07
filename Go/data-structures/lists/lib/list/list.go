@@ -20,10 +20,6 @@ func (list *List) GetNode(index int) *Node {
 	return nil
 }
 
-func (list *List) GetSize() int {
-	return list.Length
-}
-
 func (list *List) GetElementAt(el *int, index int) int {
 	pointer := list.GetNode(index)
 
