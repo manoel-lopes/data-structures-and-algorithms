@@ -14,10 +14,6 @@ func New() *linkedList {
 	return &linkedList{}
 }
 
-func (list *linkedList) GetSize() int {
-	return list.Length
-}
-
 func (list *linkedList) Append(el int) int {
 	node := node.New(el)
 
