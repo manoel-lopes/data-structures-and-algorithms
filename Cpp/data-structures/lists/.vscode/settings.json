@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        ".sequelizerc": "javascript",
+        "*.js": "javascript",
+        "*.hbs": "html",
+        "vector": "cpp"
+    }
+}

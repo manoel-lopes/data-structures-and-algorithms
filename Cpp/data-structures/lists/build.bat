@@ -1,0 +1,1 @@
+g++ src/main.cpp src/lists/lib/*.cpp src/lists/entities/*.cpp src/models/* -o src/main && src/main
