@@ -21,13 +21,6 @@ func New() *linkedList {
 	}
 }
 
-func Join[T any](things []T) (result string) {
-    for _, v := range things {
-        result += v.String()
-    }
-    return result
-}
-
 func (list *linkedList) merge() {
 	if list.list.Head != nil && list.list.Tail != nil {
 		list.Head = &list.list.Head.El
