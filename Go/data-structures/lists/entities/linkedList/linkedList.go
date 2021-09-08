@@ -7,20 +7,31 @@ import (
 )
 
 type linkedList struct {
-	list List
-	Head int
-	Tail int
+	list   List
+	Head   *int
+	Tail   *int
 	Length int
 }
 
 func New() *linkedList {
-	return &linkedList{}
+	return &linkedList{
+		Head:   nil,
+		Tail:   nil,
+		Length: 0,
+	}
 }
 
-func (list *linkedList) merge(){
-	list.Head = list.list.Head.El
-	list.Tail = list.list.Tail.El
+func (list *linkedList) merge() {
+	if list.list.Head != nil && list.list.Tail != nil {
+		list.Head = &list.list.Head.El
+		list.Tail = &list.list.Tail.El
+	} else {
+		list.Head = nil
+		list.Tail = nil
+	}
+
 	list.Length = list.list.Length
+
 }
 
 func (list *linkedList) Append(el int) int {
@@ -75,7 +86,7 @@ func (list *linkedList) Insert(el int, index int) int {
 
 func (list *linkedList) ToString() string {
 	pointer := list.list.Head
-	
+
 	if pointer == nil {
 		return " "
 	}
@@ -85,11 +96,30 @@ func (list *linkedList) ToString() string {
 		pointer = pointer.Next
 		str = str + " -> " + strconv.Itoa(pointer.El)
 	}
-	
+
 	str = str + " -> "
 	return str
 }
 
+func (list *linkedList) GetElementAt(el *int, index int) int {
+	return list.list.GetElementAt(el, index)
+}
+
+func (list *linkedList) SetElementAt(el int, index int) int {
+	ok := list.list.SetElementAt(el, index)
+
+	if ok == 1 {
+		list.merge()
+	}
+
+	return ok
+}
+
 func (list *linkedList) IndexOf(index *int, el int) int {
 	return list.list.IndexOf(index, el)
+}
+
+func (list *linkedList) Clear() {
+	list.list.Clear()
+	list.merge()
 }

@@ -36,8 +36,8 @@ func main() {
 			list.Insert(el, 0)
 
 			fmt.Printf("\n%v\n", list.ToString())
-			fmt.Printf("\nHead: %v\n", list.Head)
-			fmt.Printf("Tail: %v\n", list.Tail)
+			fmt.Printf("\nHead: %v\n", *list.Head)
+			fmt.Printf("Tail: %v\n", *list.Tail)
 
 		} else if option == 2 {
 
@@ -47,8 +47,8 @@ func main() {
 			list.Append(el)
 
 			fmt.Printf("\n%v\n", list.ToString())
-			fmt.Printf("\nHead: %v\n", list.Head)
-			fmt.Printf("Tail: %v\n", list.Tail)
+			fmt.Printf("\nHead: %v\n", *list.Head)
+			fmt.Printf("Tail: %v\n", *list.Tail)
 
 		} else if option == 3 {
 
@@ -62,8 +62,8 @@ func main() {
 
 			if ok > 0 {
 				fmt.Printf("\n%v\n", list.ToString())
-				fmt.Printf("\nHead: %v\n", list.Head)
-				fmt.Printf("Tail: %v\n", list.Tail)
+				fmt.Printf("\nHead: %v\n", *list.Head)
+				fmt.Printf("Tail: %v\n", *list.Tail)
 
 			} else {
 				fmt.Print("\nInsertion failed!\n")
@@ -89,7 +89,7 @@ func main() {
 			fmt.Print("\nType the index: ")
 			fmt.Scanln(&index)
 
-			// ok = list.GetElementAt(&el, index)
+			ok = list.GetElementAt(&el, index)
 
 			if ok == 1 {
 				fmt.Printf("\nElement at index %v: %v!\n\n", index, el)
@@ -120,10 +120,12 @@ func main() {
 			fmt.Print("Type the new element: ")
 			fmt.Scanln(&el)
 
-			// ok = list.SetElementAt(el, index)
+			ok = list.SetElementAt(el, index)
 
 			if ok == 1 {
 				fmt.Printf("\n%v\n", list.ToString())
+				fmt.Printf("Head: %v\n", *list.Head)
+				fmt.Printf("Tail: %v\n", *list.Tail)
 
 			} else {
 				fmt.Println("Change failed!")
@@ -135,15 +137,15 @@ func main() {
 
 		} else if option == 12 {
 
-			// list.Clear()
+			list.Clear()
 
-		// 	if list.Length == 0 {
-		// 		fmt.Printf("\nThe list is empty\n")
-		// 	}
+			if list.Length == 0 {
+				fmt.Printf("\nThe list is empty\n")
+			}
 
-		// } else {
+		} else {
 
-		// 	fmt.Print("\nInvalid Option!\n\n")
+			fmt.Print("\nInvalid Option!\n\n")
 
 		}
 	}

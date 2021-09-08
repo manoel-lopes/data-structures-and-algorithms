@@ -60,7 +60,7 @@ func (list *List) IndexOf(index *int, el int) int {
 }
 
 func (list *List) Clear() {
-	list.Length = 0
 	list.Head = nil
 	list.Tail = nil
+	list.Length = 0
 }
