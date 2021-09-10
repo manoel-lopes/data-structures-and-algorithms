@@ -1,1 +1,0 @@
-/mnt/c/Users/manoel/Documents/GitHub/Implementations/data-structures-and-algorithms/Rust/target/debug/Rust: /mnt/c/Users/manoel/Documents/GitHub/Implementations/data-structures-and-algorithms/Rust/src/lists/mod.rs /mnt/c/Users/manoel/Documents/GitHub/Implementations/data-structures-and-algorithms/Rust/src/main.rs
