@@ -37,7 +37,7 @@ void fillArray(int *array, int n)
 
 void printArray(int *array, int n)
 {
-    for (int i = n - 1; i >= 0; i--)
+    for (int i = 0; i < n; i++)
         printf("%d ", array[i]);
 }
 
@@ -62,7 +62,7 @@ void combSort(int *array, int n)
     for (i = 0; i < n && again; i++)
         for (i = 0; i < n - 1 && again; i++)
             for (j = n - 1, again = 0; j > i; j--)
-                if (array[j] > array[j - 1])
+                if (array[j] < array[j - 1])
                 {
                     swap(array, j, j - 1);
                     again = 1;
