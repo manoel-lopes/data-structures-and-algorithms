@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-// #include <cstdio>
 
 using namespace std;
 
@@ -14,7 +13,7 @@ int main()
 {
     int n;
 
-    printf("\nType the array size: ");
+    cout << "\nType the array size: ";
     scanf("%d", &n);
 
     vector<int> v(n);
@@ -23,25 +22,25 @@ int main()
 
     combSort(v);
 
-    printf("\nSorted array: ");
+    cout << "\nSorted array: ";
     printArray(v);
 
-    printf("\n");
+    cout << "\n";
 
     return 0;
 }
 
 void fillArray(vector<int> &v)
 {
-    printf("\nType the elements: ");
+    cout << "\nType the elements: ";
     for (int i = 0; i < v.size(); i++)
-        scanf("%d", &v[i]);
+         cin >> v[i];
 }
 
 void printArray(vector<int> &v)
 {
     for (int i = 0; i < v.size(); i++)
-        printf("%d ", v[i]);
+        cout << v[i] << " ";
 }
 
 void swap(vector<int> &v, int i, int j)

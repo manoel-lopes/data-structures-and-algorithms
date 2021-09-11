@@ -8,13 +8,13 @@ int main()
 {
     LinkedList<int> linkedList;
     linkedList.push(0);
-    printf("%d", linkedList[0]);
+    cout << linkedList[0] << endl;
     linkedList.push(1);
-    printf("%s", linkedList.toString());
-    printf("%d", linkedList[1]);
+    cout << linkedList.toString() << endl;
+    cout << linkedList[1] << endl;
     linkedList[1] = 2;
-    printf("%d", linkedList[1]);
-    // printf("%d", linkedList[2]);
+    cout << linkedList[1] << endl;
+    // cout << linkedList[2] << endl;
 
     return 0;
 }
