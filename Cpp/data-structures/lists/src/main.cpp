@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdio>
 
 #include "lists/entities/linkedList.cpp"
 
@@ -9,13 +8,13 @@ int main()
 {
     LinkedList<int> linkedList;
     linkedList.push(0);
-    cout << linkedList[0] << endl;
+    printf("%d", linkedList[0]);
     linkedList.push(1);
-    cout << linkedList.toString() << endl;
-    cout << linkedList[1] << endl;
+    printf("%s", linkedList.toString());
+    printf("%d", linkedList[1]);
     linkedList[1] = 2;
-    cout << linkedList[1] << endl;
-    // cout << linkedList[2] << endl;
+    printf("%d", linkedList[1]);
+    // printf("%d", linkedList[2]);
 
     return 0;
 }
