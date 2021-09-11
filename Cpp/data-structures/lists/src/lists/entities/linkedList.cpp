@@ -20,6 +20,7 @@ public:
 
         this->tail = node;
         this->length++;
+        
         return this->length;
     }
 
@@ -28,7 +29,7 @@ public:
         Node<T> *pointer = this->head;
         string str;
 
-        if (!this->isEmpty())
+        if (this->size())
         {
             str = to_string(pointer->el);
             while (pointer->next)

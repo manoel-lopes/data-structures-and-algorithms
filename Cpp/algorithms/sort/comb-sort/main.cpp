@@ -1,79 +1,73 @@
 #include <iostream>
 #include <vector>
+#include <cstdio>
 
 using namespace std;
 
-void lerVetor(FILE *file, vector<int> &v);
+void fillArray(vector<int> &v);
+void printArray(vector<int> &v);
+
 void swap(vector<int> &v, int i, int j);
-void combSort(vector<int> &v, int n);
+void combSort(vector<int> &v);
 
 int main()
 {
-    char filename[50];
-    scanf("%s", filename);
+    int n;
 
-    vector<int> v;
-    FILE *file;
+    printf("\nType the array size: ");
+    scanf("%d", &n);
 
-    file = fopen(filename, "r");
+    vector<int> v(n);
 
-    lerVetor(file, v);
+    fillArray(v);
 
-    int n = v.size() - 1;
-    combSort(v, n);
+    combSort(v);
 
-    fclose(file);
+    printf("\nSorted array: ");
+    printArray(v);
+
+    printf("\n");
 
     return 0;
 }
 
-void lerVetor(FILE *file, vector<int> &v)
+void fillArray(vector<int> &v)
 {
-    int i;
-    while (!feof(file))
-    {
-        fscanf(file, "%d", &i);
-        v.push_back(i);
-    }
+    printf("\nType the elements: ");
+    for (int i = 0; i < v.size(); i++)
+        scanf("%d", &v[i]);
+}
+
+void printArray(vector<int> &v)
+{
+    for (int i = 0; i < v.size(); i++)
+        printf("%d ", v[i]);
 }
 
 void swap(vector<int> &v, int i, int j)
 {
-    int temp;
-    temp = v[i];
+    int temp = v[i];
     v[i] = v[j];
     v[j] = temp;
 }
 
-void combSort(vector<int> &v, int n)
+void combSort(vector<int> &v)
 {
-    int step = n, i, j, k, again = 1, comparasions = 0, swaps = 0;
+    int step = v.size(), i, j, k, again = 1;
 
     while ((step = int(step / 1.3)) > 1)
-        for (j = 0; j < n - step; j++)
+        for (j = 0; j < v.size() - step; j++)
         {
             k = j + step;
-            comparasions++;
             if (v[j] > v[k])
-            {
-                printf("%d %d\n", j, k);
                 swap(v, j, k);
-                swaps++;
-            }
         }
 
-    for (i = 0; i < n - 1 && again; i++)
-        for (j = n -1, again = 0; j > i; j--)
-        {
-            comparasions++;
+    for (i = 0; i < v.size() - 1 && again; i++)
+        for (j = v.size() - 1, again = 0; j > i; j--)
             if (v[j] < v[j - 1])
             {
-                printf("%d %d\n", j - 1, j);
                 swap(v, j, j - 1);
-                swaps++;
                 again = 1;
             }
-        }
-
-    printf("%d %d", comparasions, swaps);
 }

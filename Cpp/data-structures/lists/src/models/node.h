@@ -1,4 +1,5 @@
 template <class T>
+
 class Node
 {
 public:

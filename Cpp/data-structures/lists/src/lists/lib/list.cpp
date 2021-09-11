@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdio>
+
 #include "../../models/node.h"
 
 using namespace std;
@@ -28,11 +29,6 @@ public:
     bool size()
     {
         return length;
-    }
-
-    bool isEmpty()
-    {
-        return length == 0;
     }
 
     T &operator[](unsigned int index)
