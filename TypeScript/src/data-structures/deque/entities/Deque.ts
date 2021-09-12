@@ -1,4 +1,4 @@
-export default class Deque<T> {
+export class Deque<T> {
     private count = 0
     private lowestCount = 0
     private deque = {}

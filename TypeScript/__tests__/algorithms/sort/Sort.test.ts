@@ -1,7 +1,7 @@
 import { generateArrayWithRandomValues, isArraySorted } from '../../../src/util'
 
-import { selectionSort } from '../../../src/algorithms/sort/selectionSort'
-import { combSort } from '../../../src/algorithms/sort/combSort'
+import { selectionSort } from '../../../src/algorithms/sorting/selectionSort'
+import { combSort } from '../../../src/algorithms/sorting/combSort'
 
 const array = generateArrayWithRandomValues(10000)
 

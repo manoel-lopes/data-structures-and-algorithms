@@ -1,6 +1,7 @@
 import { questionInt } from 'readline-sync'
-// import Deque from './entities/Deque'
-import Deque from './entities/DequeLinkedList'
+
+// import { DequeLinkedList as Deque } from './entities/DequeLinkedList'
+import { Deque } from './entities/Deque'
 
 let option: number, el: unknown
 const deque = new Deque()

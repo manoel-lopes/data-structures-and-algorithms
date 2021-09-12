@@ -1,6 +1,6 @@
-import DoublyLinkedList from '../../lists/entities/DoublyLinkedList'
+import { DoublyLinkedList } from '../../lists/entities/DoublyLinkedList'
 
-export default class StackLinkedList<T> {
+export class StackLinkedList<T> {
   private stack = new DoublyLinkedList<T>()
 
   get length() {
@@ -13,7 +13,7 @@ export default class StackLinkedList<T> {
 
   push = (el: T) => this.stack.push(el)
 
-  pop = () => this.stack.removeAt()
+  pop = () => this.stack.removeAt(this.length - 1)
 
   clear() {
     while (this.length) {

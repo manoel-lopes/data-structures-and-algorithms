@@ -1,5 +1,6 @@
-import { binarySearch } from '../../../algorithms/search/binary-search'
-import DoublyLinkedList from '../../lists/entities/DoublyLinkedList'
+import { binarySearch } from './../../../algorithms/searching/binarySearch'
+
+import { DoublyLinkedList } from '../../lists/entities/DoublyLinkedList'
 
 export default class SetLinkedList<T> {
   private set = new DoublyLinkedList<T>()
@@ -57,7 +58,7 @@ export default class SetLinkedList<T> {
     if (this.size < otherSet.size) {
       return false
     }
-    return [...otherSet].every(el => this.has(el))
+    return [...otherSet].every((el) => this.has(el))
   }
 
   union(otherSet: SetLinkedList<T>) {
@@ -66,7 +67,7 @@ export default class SetLinkedList<T> {
 
   symmetricDifference(otherSet: SetLinkedList<T>) {
     return new SetLinkedList(
-      [...this.union(otherSet)].filter(el => {
+      [...this.union(otherSet)].filter((el) => {
         return !this.intersection(otherSet).has(el)
       })
     )
@@ -80,17 +81,17 @@ export default class SetLinkedList<T> {
       biggerSet = otherSet
       smallerSet = this
     }
-    return new SetLinkedList([...smallerSet].filter(el => biggerSet.has(el)))
+    return new SetLinkedList([...smallerSet].filter((el) => biggerSet.has(el)))
   }
 
   difference(otherSet: SetLinkedList<T>) {
-    return new SetLinkedList([...this].filter(el => !otherSet.has(el)))
+    return new SetLinkedList([...this].filter((el) => !otherSet.has(el)))
   }
 
   clear = () => this.set.clear()
 
   forEach(callbackFn: (el: T) => unknown) {
-    [...this].forEach(el => callbackFn(el))
+    ;[...this].forEach((el) => callbackFn(el))
   }
 
   toString() {

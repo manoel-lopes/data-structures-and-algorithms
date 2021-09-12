@@ -1,7 +1,7 @@
-import QueueLinkedList from './QueueLinkedList'
-import DoublyLinkedList from '../../lists/entities/DoublyLinkedList'
+import { QueueLinkedList } from './QueueLinkedList'
+import { DoublyLinkedList } from '../../lists/entities/DoublyLinkedList'
 
-export default class PriorityQueueLinkedList<T> extends QueueLinkedList<T> {
+export class PriorityQueueLinkedList<T> extends QueueLinkedList<T> {
   protected queue = new DoublyLinkedList<T>()
 
   constructor() {

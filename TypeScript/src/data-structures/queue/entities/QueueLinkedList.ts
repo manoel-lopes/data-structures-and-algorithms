@@ -1,6 +1,6 @@
-import DoublyLinkedList from '../../lists/entities/DoublyLinkedList'
+import { DoublyLinkedList } from '../../lists/entities/DoublyLinkedList'
 
-export default class QueueLinkedList<T> {
+export class QueueLinkedList<T> {
   protected queue = new DoublyLinkedList<T>()
 
   get length() {

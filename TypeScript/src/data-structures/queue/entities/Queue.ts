@@ -1,4 +1,4 @@
-export default class Queue<T> {
+export class Queue<T> {
   private count = 0
   private lowestCount = 0
   private queue = {}

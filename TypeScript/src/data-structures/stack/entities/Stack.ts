@@ -1,4 +1,4 @@
-export default class Stack<T> {
+export class Stack<T> {
     private count = 0
     private stack = {}
 

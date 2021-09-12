@@ -1,5 +1,5 @@
 import { defaultToString } from '../../../util'
-import ValuePair from '../../models/ValuePair'
+import { ValuePair } from '../../models/ValuePair'
 
 export default class Map<K, V> {
 

@@ -1,5 +1,5 @@
-import HashTable from './entities/HashTable'
-// import HashTable from './entities/HashTableSeparateChaining'
+// import { HashTableSeparateChaining as HashTable } from './entities/HashTableSeparateChaining'
+import { HashTable } from './entities/HashTable'
 
 const technologies = new HashTable()
 technologies.put('react', { framework: false })

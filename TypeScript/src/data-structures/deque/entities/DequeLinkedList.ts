@@ -1,6 +1,6 @@
-import DoublyLinkedList from '../../lists/entities/DoublyLinkedList'
+import { DoublyLinkedList } from '../../lists/entities/DoublyLinkedList'
 
-export default class DequeLinkedList<T> {
+export class DequeLinkedList<T> {
   private deque = new DoublyLinkedList<T>()
 
   get length() {

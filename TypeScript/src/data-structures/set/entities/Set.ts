@@ -1,4 +1,4 @@
-import { binarySearch } from '../../../algorithms/search/binary-search'
+import { binarySearch } from './../../../algorithms/searching/binarySearch'
 
 export default class Set<T> {
   private set = {}
@@ -32,7 +32,7 @@ export default class Set<T> {
   delete(el: T) {
     if (this.has(el)) {
       const keys = Object.keys(this.set)
-      const key = keys.find(key => this.set[key] === el)
+      const key = keys.find((key) => this.set[key] === el)
       delete this.set[key]
       this.count--
       return true
@@ -52,16 +52,14 @@ export default class Set<T> {
   }
 
   isSupersetOf(otherSet: Set<T>) {
-    return this.size < otherSet.size
-      ? false
-      : [...otherSet].every(el => this.has(el))
+    return this.size < otherSet.size ? false : [...otherSet].every((el) => this.has(el))
   }
 
   union = (otherSet: Set<T>) => new Set([...this, ...otherSet])
 
   symmetricDifference(otherSet: Set<T>) {
     return new Set(
-      [...this.union(otherSet)].filter(el => {
+      [...this.union(otherSet)].filter((el) => {
         return !this.intersection(otherSet).has(el)
       })
     )
@@ -75,15 +73,15 @@ export default class Set<T> {
       biggerSet = otherSet
       smallerSet = this
     }
-    return new Set([...smallerSet].filter(el => biggerSet.has(el)))
+    return new Set([...smallerSet].filter((el) => biggerSet.has(el)))
   }
 
   difference(otherSet: Set<T>) {
-    return new Set([...this].filter(el => !otherSet.has(el)))
+    return new Set([...this].filter((el) => !otherSet.has(el)))
   }
 
   forEach(callbackFn: (el: T) => unknown) {
-    [...this].forEach(el => callbackFn(el))
+    ;[...this].forEach((el) => callbackFn(el))
   }
 
   clear() {

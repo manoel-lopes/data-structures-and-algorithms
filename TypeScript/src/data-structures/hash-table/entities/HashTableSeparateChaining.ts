@@ -1,11 +1,9 @@
-import { defaultToString } from '../../../util'
-import ValuePair from '../../models/ValuePair'
-import DoublyLinkedList from '../../lists/entities/DoublyLinkedList'
+import { DoublyLinkedList } from '../../lists/entities/DoublyLinkedList'
+import { ValuePair } from '../../models/ValuePair'
 
-export default class HashTableSeparateChaining<
-  K = number | string,
-  V = unknown
-> {
+import { defaultToString } from '../../../util'
+
+export class HashTableSeparateChaining<K = number | string, V = unknown> {
   constructor(
     private _table: {
       [key: string]: DoublyLinkedList<ValuePair<number | string, V>>
@@ -51,15 +49,14 @@ export default class HashTableSeparateChaining<
       const position = this.hashCode(key)
 
       if (this._table[position] == null) {
-        this._table[position] = new DoublyLinkedList<
-          ValuePair<number | string, V>
-        >()
+        this._table[position] = new DoublyLinkedList<ValuePair<number | string, V>>()
       }
 
       this._table[position].push(new ValuePair(`${key}`, value))
       this.count++
       return true
     }
+
     return false
   }
 
@@ -129,7 +126,7 @@ export default class HashTableSeparateChaining<
 
   keys() {
     const keysArray: string[] = []
-    Object.values(this._table).forEach(linkedList => {
+    Object.values(this._table).forEach((linkedList) => {
       let current = linkedList.head
 
       for (let i = 1; i < this.size && current != null; i++) {
@@ -143,7 +140,7 @@ export default class HashTableSeparateChaining<
 
   values() {
     const valuesArray: unknown[] = []
-    Object.values(this._table).forEach(linkedList => {
+    Object.values(this._table).forEach((linkedList) => {
       let current = linkedList.head
 
       for (let i = 1; i < this.size && current != null; i++) {
@@ -155,15 +152,13 @@ export default class HashTableSeparateChaining<
     return valuesArray
   }
 
-  isEmpty = () => this.size === 0
-
   clear() {
     this.count = 0
     this._table = {}
   }
 
   toString() {
-    if (this.isEmpty()) {
+    if (!this.size) {
       return 'Hash Table(0) {}'
     }
 
