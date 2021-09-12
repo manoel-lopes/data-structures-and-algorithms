@@ -58,20 +58,7 @@ export const generateArrayWithRandomValues = (n: number, max = n) => {
   return array
 }
 
-const isArrayInDescendingOrder = (array: number[]) => {
-  let isArraySorted = true
-
-  for (let i = 0; i < array.length - 1; i++) {
-    if (array[i] < array[i + 1]) {
-      isArraySorted = false
-      break
-    }
-  }
-
-  return isArraySorted
-}
-
-const isArrayInAscendingOrder = (array: number[]) => {
+export const isArraySorted = (array: number[]) => {
   let isArraySorted = true
 
   for (let i = 0; i < array.length - 1; i++) {
@@ -82,12 +69,4 @@ const isArrayInAscendingOrder = (array: number[]) => {
   }
 
   return isArraySorted
-}
-
-export const isArraySorted = (array: number[]) => {
-  if (!isArrayInAscendingOrder(array) && !isArrayInDescendingOrder(array)) {
-    return false
-  }
-
-  return true
 }

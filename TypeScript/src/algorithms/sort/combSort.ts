@@ -18,7 +18,7 @@ export const combSort = (array: number[]) => {
   for (i = 0; i < length && again; i++)
     for (i = 0; i < length - 1 && again; i++)
       for (j = length - 1, again = false; j > i; j--)
-        if (sortedArray[j] > sortedArray[j - 1]) {
+        if (sortedArray[j] < sortedArray[j - 1]) {
           swap(sortedArray, j, j - 1)
           again = true
         }
