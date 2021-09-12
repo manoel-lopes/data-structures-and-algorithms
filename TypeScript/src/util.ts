@@ -41,16 +41,16 @@ export const convertToAscii = (str: string) => {
   return asciiNumber
 }
 
-export const generateRandomValuesForArray = (n: number, max = n) => {
+const generateRandomValue = (max: number) => Math.floor(Math.random() * max)
+
+export const generateArrayWithRandomValues = (n: number, max = n) => {
   const array = []
   let el: number
 
   while (array.length < n) {
-    el = Math.floor(Math.random() * max)
+    el = generateRandomValue(max)
 
-    if (array.indexOf(el) !== -1) {
-      el = Math.floor(Math.random() * max)
-    } else {
+    if (array.indexOf(el) == -1) {
       array.push(el)
     }
   }
@@ -58,7 +58,7 @@ export const generateRandomValuesForArray = (n: number, max = n) => {
   return array
 }
 
-const determineIfArrayIsInDescendingOrder = (array: number[]) => {
+const isArrayInDescendingOrder = (array: number[]) => {
   let isArraySorted = true
 
   for (let i = 0; i < array.length - 1; i++) {
@@ -71,7 +71,7 @@ const determineIfArrayIsInDescendingOrder = (array: number[]) => {
   return isArraySorted
 }
 
-const determineIfArrayIsInAscendingOrder = (array: number[]) => {
+const isArrayInAscendingOrder = (array: number[]) => {
   let isArraySorted = true
 
   for (let i = 0; i < array.length - 1; i++) {
@@ -84,11 +84,8 @@ const determineIfArrayIsInAscendingOrder = (array: number[]) => {
   return isArraySorted
 }
 
-export const determineIfArrayIsSorted = (array: number[]) => {
-  const isArrayAscending = determineIfArrayIsInAscendingOrder(array)
-  const isArrayDescending = determineIfArrayIsInDescendingOrder(array)
-
-  if (!isArrayAscending && !isArrayDescending) {
+export const isArraySorted = (array: number[]) => {
+  if (!isArrayInAscendingOrder(array) && !isArrayInDescendingOrder(array)) {
     return false
   }
 

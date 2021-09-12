@@ -1,16 +1,19 @@
 import { swap } from '../../util'
 
 export const selectionSort = (array: number[]) => {
+  const sortedArray = array.slice()
   let indexMin: number
 
-  for (let i = 0; i < array.length - 1; i++) {
+  for (let i = 0; i < sortedArray.length - 1; i++) {
     indexMin = i
-    for (let j = i + 1; j < array.length; j++) {
-      if (array[indexMin] > array[j]) {
+    for (let j = i + 1; j < sortedArray.length; j++) {
+      if (sortedArray[indexMin] > sortedArray[j]) {
         indexMin = j
       }
     }
 
-    i !== indexMin && swap(array, i, indexMin)
+    i !== indexMin && swap(sortedArray, i, indexMin)
   }
+
+  return sortedArray
 }
