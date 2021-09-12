@@ -20,29 +20,29 @@ func (list *List) GetNode(index int) *Node {
 	return nil
 }
 
-func (list *List) GetElementAt(el *int, index int) int {
+func (list *List) GetElementAt(el *int, index int) bool {
 	pointer := list.GetNode(index)
 
 	if pointer != nil {
 		*el = pointer.El
 
-		return 1
+		return true
 	}
-	return 0
+	return false
 }
 
-func (list *List) SetElementAt(el int, index int) int {
+func (list *List) SetElementAt(el int, index int) bool {
 	pointer := list.GetNode(index)
 
 	if pointer != nil {
 		pointer.El = el
 
-		return 1
+		return true
 	}
-	return 0
+	return false
 }
 
-func (list *List) IndexOf(index *int, el int) int {
+func (list *List) IndexOf(index *int, el int) bool {
 	pointer := list.Head
 	i := 0
 
@@ -50,13 +50,13 @@ func (list *List) IndexOf(index *int, el int) int {
 		if pointer.El == el {
 			*index = i
 
-			return 1
+			return true
 		}
 
 		pointer = pointer.Next
 		i++
 	}
-	return 0
+	return false
 }
 
 func (list *List) Clear() {

@@ -2,6 +2,7 @@ package main
 
 import (
 	linkedList "Go/data-structures/lists/entities/linkedList"
+	// sort "Go/algorithms/sort/mergeSort"
 	"fmt"
 )
 
@@ -9,7 +10,8 @@ func main() {
 
 	list := linkedList.New()
 
-	var option, el, index, ok int
+	var option, el, index int
+	var ok bool
 
 	for {
 		fmt.Println("\nMenu:")
@@ -36,8 +38,6 @@ func main() {
 			list.Insert(el, 0)
 
 			fmt.Printf("\n%v\n", list.ToString())
-			fmt.Printf("\nHead: %v\n", *list.Head)
-			fmt.Printf("Tail: %v\n", *list.Tail)
 
 		} else if option == 2 {
 
@@ -47,8 +47,6 @@ func main() {
 			list.Append(el)
 
 			fmt.Printf("\n%v\n", list.ToString())
-			fmt.Printf("\nHead: %v\n", *list.Head)
-			fmt.Printf("Tail: %v\n", *list.Tail)
 
 		} else if option == 3 {
 
@@ -58,12 +56,8 @@ func main() {
 			fmt.Print("Type the new element: ")
 			fmt.Scanln(&el)
 
-			ok = list.Insert(el, index)
-
-			if ok > 0 {
+			if list.Insert(el, index) > 1 {
 				fmt.Printf("\n%v\n", list.ToString())
-				fmt.Printf("\nHead: %v\n", *list.Head)
-				fmt.Printf("Tail: %v\n", *list.Tail)
 
 			} else {
 				fmt.Print("\nInsertion failed!\n")
@@ -75,9 +69,7 @@ func main() {
 
 		} else if option == 7 {
 
-			ok = list.Length
-
-			if ok == 0 {
+			if list.Length == 0 {
 				fmt.Printf("\nThe list is empty\n")
 
 			} else {
@@ -91,7 +83,7 @@ func main() {
 
 			ok = list.GetElementAt(&el, index)
 
-			if ok == 1 {
+			if ok {
 				fmt.Printf("\nElement at index %v: %v!\n\n", index, el)
 
 			} else {
@@ -105,7 +97,7 @@ func main() {
 
 			ok = list.IndexOf(&index, el)
 
-			if ok == 1 {
+			if ok {
 				fmt.Printf("\nElement at index %v: %v!\n\n", index, el)
 
 			} else {
@@ -122,10 +114,8 @@ func main() {
 
 			ok = list.SetElementAt(el, index)
 
-			if ok == 1 {
+			if ok {
 				fmt.Printf("\n%v\n", list.ToString())
-				fmt.Printf("Head: %v\n", *list.Head)
-				fmt.Printf("Tail: %v\n", *list.Tail)
 
 			} else {
 				fmt.Println("Change failed!")

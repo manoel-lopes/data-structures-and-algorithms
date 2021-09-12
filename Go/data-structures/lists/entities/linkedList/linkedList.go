@@ -101,21 +101,21 @@ func (list *linkedList) ToString() string {
 	return str
 }
 
-func (list *linkedList) GetElementAt(el *int, index int) int {
+func (list *linkedList) GetElementAt(el *int, index int) bool {
 	return list.list.GetElementAt(el, index)
 }
 
-func (list *linkedList) SetElementAt(el int, index int) int {
+func (list *linkedList) SetElementAt(el int, index int) bool {
 	ok := list.list.SetElementAt(el, index)
 
-	if ok == 1 {
+	if ok {
 		list.merge()
 	}
 
 	return ok
 }
 
-func (list *linkedList) IndexOf(index *int, el int) int {
+func (list *linkedList) IndexOf(index *int, el int) bool {
 	return list.list.IndexOf(index, el)
 }
 
