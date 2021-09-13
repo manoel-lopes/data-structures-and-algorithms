@@ -2,7 +2,6 @@ package main
 
 import (
 	linkedList "Go/data-structures/lists/entities/linkedList"
-	// sort "Go/algorithms/sort/mergeSort"
 	"fmt"
 )
 
