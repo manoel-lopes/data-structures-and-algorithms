@@ -1,4 +1,4 @@
-package sort_test
+package sorting
 
 func merge(arr []int, start, middle, end int){
 

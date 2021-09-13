@@ -1,7 +1,7 @@
-package sort_test
+package sorting_test
 
 import (
-	sort "Go/algorithms/sort/mergeSort"
+	sorting "Go/algorithms/sorting/mergeSort"
 	"Go/util"
 	"testing"
 )
