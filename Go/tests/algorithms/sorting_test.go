@@ -13,7 +13,7 @@ func TestMergeSort(t *testing.T) {
 
 	arr := util.GenerateArrayWithRandomValues(n, max)
 
-	sort.MergeSort(arr, 0, len(arr))
+	sorting.MergeSort(arr, 0, len(arr))
 
 	if !util.IsArraySorted(arr) {
 		t.Error("must be true")
