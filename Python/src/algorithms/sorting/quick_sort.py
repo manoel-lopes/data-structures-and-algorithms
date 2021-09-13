@@ -1,10 +1,13 @@
 from typing import List
 
+from src.util.functions import swap
+
 
 def partition(list: List[int], start: int, end: int) -> int:
     pivot = list[start]
     low = start + 1
     high = end
+
     while True:
         while low <= high and list[high] >= pivot:
             high = high - 1
@@ -17,7 +20,7 @@ def partition(list: List[int], start: int, end: int) -> int:
         else:
             break
 
-    list[start], list[high] = list[high], list[start]
+    swap(list, start, high)
     return high
 
 
