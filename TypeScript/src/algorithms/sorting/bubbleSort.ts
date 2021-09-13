@@ -1,9 +1,15 @@
-import { swap } from './../../util';
-const bubbleSort = (array: number[]) => {
-    let temp;
+import { swap } from './../../util'
 
-    for (let i = 0; i < array.length - 1; i++)
-        for (let j = array.length - 1; j > i; j--)
-            if (array[j] < array[j - 1])
-                swap(array, j, j - 1);
+export const bubbleSort = (array: number[]) => {
+  const sortedArray = array.slice()
+
+  for (let i = 0; i < sortedArray.length - 1; i++) {
+    for (let j = sortedArray.length - 1; j > i; j--) {
+      if (sortedArray[j] < sortedArray[j - 1]) {
+        swap(sortedArray, j, j - 1)
+      }
+    }
+  }
+
+  return sortedArray
 }
