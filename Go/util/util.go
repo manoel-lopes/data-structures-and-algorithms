@@ -24,7 +24,7 @@ func isValuePresentInArray(arr []int, el int) bool {
 }
 
 func GenerateArrayWithRandomValues(n, max int) []int {
-	arr := make([]int, 0)
+	var arr []int
 
 	for len(arr) < n {
 		el := generateRandomValue(max)
