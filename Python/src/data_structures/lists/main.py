@@ -1,4 +1,4 @@
-from data_structures.lists.entities.linked_list import LinkedList
+from src.data_structures.lists.entities.linked_list import LinkedList
 # from entities.doubly_linked_list import LinkedList
 # from entities.circular_linked_list import LinkedList
 

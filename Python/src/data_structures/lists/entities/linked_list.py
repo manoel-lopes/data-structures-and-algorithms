@@ -1,5 +1,5 @@
-from data_structures.lists.lib.list import List
-from data_structures.models.node import Node
+from src.data_structures.lists.lib.list import List
+from src.data_structures.models.node import Node
 
 from typing import TypeVar, Union
 

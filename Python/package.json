@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "lists" : "python3.9 -m data_structures.lists.main",
-    "stack" : "python3.9 -m data_structures.stack.main",
-    "queue" : "python3.9 -m data_structures.queue.main",
-    "deque" : "python3.9 -m data_structures.deque.main"
+    "lists" : "python3.9 -m src.data_structures.lists.main",
+    "stack" : "python3.9 -m src.data_structures.stack.main",
+    "queue" : "python3.9 -m src.data_structures.queue.main",
+    "deque" : "python3.9 -m src.data_structures.deque.main"
   }
 }

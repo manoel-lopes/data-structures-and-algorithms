@@ -1,7 +1,7 @@
 from typing import Optional, TypeVar, Generic, Union
 from abc import ABC, abstractmethod
 
-from data_structures.models.node import Node
+from src.data_structures.models.node import Node
 
 T = TypeVar('T')
 
