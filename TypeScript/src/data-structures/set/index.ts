@@ -1,9 +1,11 @@
 import { question, questionInt } from 'readline-sync'
-import Set from './entities/Set'
-// import Set from './entities/SetLinkedList'
+
+// import { Set } from './entities/Set'
+import { Set } from './entities/SetLinkedList'
 
 let option: number, el: unknown, choice: string, isSupersetStr: string
-const setA = new Set(); const setB = new Set()
+const setA = new Set()
+const setB = new Set()
 
 do {
   option = questionInt(`
@@ -19,64 +21,63 @@ Option: `)
   if (option === 1) {
 
     choice = question('\nSet A or B? ')
-    
+
     if (choice === 'A') {
-      
       el = questionInt('\nType the element to be insert: ')
-      
+
       setA.add(el)
       console.log(`\nA: ${setA.toString()}`)
       // console.log("\nA: %o", setA)
-      
+
     } else if (choice === 'B') {
-      
+
       el = questionInt('\nType the element to be insert: ')
-      
+
       setB.add(el)
       console.log(`\nB: ${setB.toString()}`)
       // console.log("\nB: %o", setB)
-      
+
     } else {
       console.log('\nInvalid Option!')
     }
-    
+
   } else if (option === 2) {
-    
+
     choice = question('\nSet A or B? ')
 
     if (choice === 'A') {
-      
+
       el = questionInt('\nType the element to be remove: ')
-      
+
       if (setA.delete(el)) {
         console.log(`\nA: ${setA.toString()}`)
         // console.log("\nA: %o", setA)
-        
+
       } else {
         console.log(`${el} is not in the set!`)
       }
-      
+
     } else if (choice === 'B') {
-      
+
       el = questionInt('\nType the element to be remove: ')
-      
+
       if (setB.delete(el)) {
         console.log(`\nB: ${setB.toString()}`)
         // console.log("\nB: %o", setB)
-        
+
       } else {
         console.log(`${el} is not in the set!`)
       }
-      
+
     } else {
       console.log('\nInvalid Option!')
     }
-    
+
   } else if (option === 3) {
-    
+
     console.log(`\nQuantity of elements in the set A: ${setA.size}`)
     console.log(`\nQuantity of elements in the set B: ${setB.size}`)
-    
+
   } else if (option === 4) {
 
     console.log(`\nA: ${setA.toString()}`)
@@ -92,7 +93,7 @@ Option: `)
     const intersecSet = setA.intersection(setB)
     console.log(`Intersection: ${intersecSet.toString()}`)
     // const intersecSet = new Set([...setA].filter(el => setB.has(el)))
-    // console.log("Intercessao: %o", intersecSet)
+    // console.log("Intersection: %o", intersecSet)
 
     const diffSet = setA.difference(setB)
     console.log(`Difference: ${diffSet.toString()}`)
@@ -139,5 +140,5 @@ Option: `)
   } else {
     console.log('\nInvalid Option!')
   }
-
+  
 } while (1)

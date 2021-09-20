@@ -1,4 +1,5 @@
 import { Node } from '../../models/Node'
+
 import {
   CallbackForEachFn,
   CompareFn,
@@ -120,7 +121,7 @@ export abstract class List<T> {
       acc = callbackFn(acc, this.getElementAt(i), i, this)
     }
     return acc
-  } 
+  }
 
   // Using the Quick sort algorithm
   protected swap(a: number, b: number) {

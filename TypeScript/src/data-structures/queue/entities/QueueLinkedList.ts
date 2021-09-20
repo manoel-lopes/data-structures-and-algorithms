@@ -1,7 +1,7 @@
-import { DoublyLinkedList } from '../../lists/entities/DoublyLinkedList'
+import { LinkedList } from '../../lists/entities/DoublyLinkedList'
 
-export class QueueLinkedList<T> {
-  protected queue = new DoublyLinkedList<T>()
+class QueueLinkedList<T> {
+  protected queue = new LinkedList<T>()
 
   get length() {
     return this.queue.length
@@ -34,3 +34,5 @@ export class QueueLinkedList<T> {
     return str
   }
 }
+
+export { QueueLinkedList as Queue }

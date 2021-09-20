@@ -1,7 +1,7 @@
 import { questionInt } from 'readline-sync'
 
-// import { StackLinkedList as Stack } from '../stack/entities/StackLinkedList'
-import { Stack } from './entities/Stack'
+import { Stack } from './entities/StackLinkedList'
+// import { Stack } from './entities/Stack'
 
 let option: number, el: unknown
 const stack = new Stack()

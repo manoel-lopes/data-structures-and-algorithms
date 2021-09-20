@@ -3,13 +3,12 @@ import { Node } from '../../models/Node'
 
 import { CallbackMapFilterFn } from '../../../util'
 
-export class CircularLinkedList<T> extends List<T> {
+class CircularLinkedList<T> extends List<T> {
   push(el: T) {
     const node = new Node(el)
 
     if (!this._head) {
       this._head = node
-
     } else {
       this._tail.next = node
     }
@@ -27,12 +26,10 @@ export class CircularLinkedList<T> extends List<T> {
       let current = this._head
 
       if (!index) {
-
         if (!this._head) {
           this._head = node
           this._tail = node
           this._tail.next = this._head
-        
         } else {
           node.next = this._head
 
@@ -40,13 +37,11 @@ export class CircularLinkedList<T> extends List<T> {
           this._head = node
           this._tail.next = this._head
         }
-
       } else if (index === this.length) {
         current = this._tail
         current.next = node
         this._tail = node
         this._tail.next = this._head
-
       } else {
         // insertion between two elements
         const ancestor = this.getNode(index - 1)
@@ -65,24 +60,20 @@ export class CircularLinkedList<T> extends List<T> {
       let current = this._head
 
       if (!index) {
-
         if (this.length === 1) {
           this._head = null
           this._tail = null
-
         } else {
           current = this._head
           this._head = this._head.next
           this._tail.next = this._head
         }
-
       } else if (index === this.length - 1) {
         // removing last element
         const secondToLast = this.getNode(this.length - 2)
         this._tail = secondToLast
         this._tail.next = this._head
         current = secondToLast.next
-
       } else {
         // removing a element between others two
         const ancestor = this.getNode(index - 1)
@@ -139,3 +130,5 @@ export class CircularLinkedList<T> extends List<T> {
     return `${str} -> ${this._tail.next.el}`
   }
 }
+
+export { CircularLinkedList as LinkedList }

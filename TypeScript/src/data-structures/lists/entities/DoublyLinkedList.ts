@@ -3,7 +3,7 @@ import { DoublyNode } from '../../models/DoublyNode'
 
 import { CallbackMapFilterFn } from '../../../util'
 
-export class DoublyLinkedList<T> extends List<T> {
+class DoublyLinkedList<T> extends List<T> {
   protected _head?: DoublyNode<T>
   protected _tail?: DoublyNode<T>
 
@@ -32,7 +32,6 @@ export class DoublyLinkedList<T> extends List<T> {
     if (this.head == null) {
       this._head = node
       this._tail = node
-   
     } else {
       // attach to the tail node
       this._tail.next = node
@@ -53,7 +52,6 @@ export class DoublyLinkedList<T> extends List<T> {
         if (!this._head) {
           this._head = node
           this._tail = node
-        
         } else {
           node.next = this._head
           this._head.prev = node
@@ -66,7 +64,6 @@ export class DoublyLinkedList<T> extends List<T> {
         current.next = node
         node.prev = current
         this._tail = node
-      
       } else {
         // insertion between two elements
         const ancestor = this.getNode(index - 1)
@@ -94,7 +91,6 @@ export class DoublyLinkedList<T> extends List<T> {
         if (this.length === 1) {
           // {2}
           this._tail = null
-        
         } else {
           this._head.prev = null // {3}
         }
@@ -104,7 +100,6 @@ export class DoublyLinkedList<T> extends List<T> {
         pointer = this._tail // {4}
         this._tail = pointer.prev
         this._tail.next = null
-      
       } else {
         pointer = this.getNode(index)
         const ancestor = pointer.prev
@@ -162,3 +157,5 @@ export class DoublyLinkedList<T> extends List<T> {
     return newList
   }
 }
+
+export { DoublyLinkedList as LinkedList }

@@ -1,7 +1,7 @@
-import { DoublyLinkedList } from '../../lists/entities/DoublyLinkedList'
+import { LinkedList } from '../../lists/entities/DoublyLinkedList'
 
-export class StackLinkedList<T> {
-  private stack = new DoublyLinkedList<T>()
+class StackLinkedList<T> {
+  private stack = new LinkedList<T>()
 
   get length() {
     return this.stack.length
@@ -34,3 +34,5 @@ export class StackLinkedList<T> {
     return str
   }
 }
+
+export { StackLinkedList as Stack }

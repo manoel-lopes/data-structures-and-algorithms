@@ -1,8 +1,8 @@
-import { QueueLinkedList } from './QueueLinkedList'
-import { DoublyLinkedList } from '../../lists/entities/DoublyLinkedList'
+import { Queue } from './QueueLinkedList'
+import { LinkedList } from '../../lists/entities/DoublyLinkedList'
 
-export class PriorityQueueLinkedList<T> extends QueueLinkedList<T> {
-  protected queue = new DoublyLinkedList<T>()
+class PriorityQueueLinkedList<T> extends Queue<T> {
+  protected queue = new LinkedList<T>()
 
   constructor() {
     super()
@@ -26,3 +26,5 @@ export class PriorityQueueLinkedList<T> extends QueueLinkedList<T> {
     }
   }
 }
+
+export { PriorityQueueLinkedList as Queue }

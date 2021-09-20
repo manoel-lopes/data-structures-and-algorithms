@@ -1,8 +1,8 @@
 import { questionInt } from 'readline-sync'
 
-// import { PriorityQueueLinkedList as Queue } from './entities/PriorityQueueLinkedList'
-// import { QueueLinkedList as Queue } from './entities/QueueLinkedList'
-import { Queue } from './entities/Queue'
+// import { Queue } from './entities/PriorityQueueLinkedList'
+import { Queue } from './entities/QueueLinkedList'
+// import { Queue } from './entities/Queue'
 
 let option: number, el: number
 const queue = new Queue()

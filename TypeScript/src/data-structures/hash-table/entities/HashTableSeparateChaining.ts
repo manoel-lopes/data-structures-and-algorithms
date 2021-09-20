@@ -1,12 +1,12 @@
-import { DoublyLinkedList } from '../../lists/entities/DoublyLinkedList'
+import { LinkedList } from '../../lists/entities/DoublyLinkedList'
 import { ValuePair } from '../../models/ValuePair'
 
 import { defaultToString } from '../../../util'
 
-export class HashTableSeparateChaining<K = number | string, V = unknown> {
+class HashTableSeparateChaining<K = number | string, V = unknown> {
   constructor(
     private _table: {
-      [key: string]: DoublyLinkedList<ValuePair<number | string, V>>
+      [key: string]: LinkedList<ValuePair<number | string, V>>
     } = {},
     private toStrFn: (key: K) => string = defaultToString,
     private count = 0
@@ -49,7 +49,7 @@ export class HashTableSeparateChaining<K = number | string, V = unknown> {
       const position = this.hashCode(key)
 
       if (this._table[position] == null) {
-        this._table[position] = new DoublyLinkedList<ValuePair<number | string, V>>()
+        this._table[position] = new LinkedList<ValuePair<number | string, V>>()
       }
 
       this._table[position].push(new ValuePair(`${key}`, value))
@@ -126,7 +126,7 @@ export class HashTableSeparateChaining<K = number | string, V = unknown> {
 
   keys() {
     const keysArray: string[] = []
-    Object.values(this._table).forEach((linkedList) => {
+    Object.values(this._table).forEach(linkedList => {
       let current = linkedList.head
 
       for (let i = 1; i < this.size && current != null; i++) {
@@ -140,7 +140,7 @@ export class HashTableSeparateChaining<K = number | string, V = unknown> {
 
   values() {
     const valuesArray: unknown[] = []
-    Object.values(this._table).forEach((linkedList) => {
+    Object.values(this._table).forEach(linkedList => {
       let current = linkedList.head
 
       for (let i = 1; i < this.size && current != null; i++) {
@@ -179,3 +179,5 @@ export class HashTableSeparateChaining<K = number | string, V = unknown> {
     return `Hash Table(${this.size}) { ${str} }`
   }
 }
+
+export { HashTableSeparateChaining as HashTable }
