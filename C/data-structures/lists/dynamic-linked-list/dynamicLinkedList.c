@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "dynamicLinkedList.h"
+
+void convertIntToString(int el, int size, char *str);
+int getListStrLength(List *list);
+int countNumberOfDigits(int n);
 
 typedef struct node
 {
@@ -276,6 +281,26 @@ int searchListElement(List *list, int el, int *position)
 		return 0;
 
 	*position = i;
+	return 1;
+}
+
+int clearList(List *list)
+{
+	if (!list || isListEmpty(list))
+		return 0;
+
+	Node *pointer;
+	while ((list->head))
+	{
+		pointer = list->head;
+		list->head = list->head->next;
+		free(pointer);
+	}
+
+	list->head = NULL;
+	list->tail = NULL;
+	list->length = 0;
+
 	return 1;
 }
 
