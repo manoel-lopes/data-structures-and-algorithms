@@ -3,10 +3,6 @@
 #include <string.h>
 #include "dynamicLinkedList.h"
 
-void convertIntToString(int el, int size, char *str);
-int getListStrLength(List *list);
-int countNumberOfDigits(int n);
-
 typedef struct node
 {
 	int el;
@@ -58,12 +54,30 @@ int freeList(List *list)
 	return 1;
 }
 
-int getListSize(List *list)
+int getListLength(List *list)
 {
 	if (!list)
 		return -1;
 
 	return list->length;
+}
+
+int getListHead(List *list, int *el)
+{
+	if (!list || !list->head)
+		return 0;
+
+	*el = list->head->el;
+	return 1;
+}
+
+int getListTail(List *list, int *el)
+{
+	if (!list || !list->head)
+		return 0;
+
+	*el = list->tail->el;
+	return 1;
 }
 
 int isListEmpty(List *list)
@@ -77,9 +91,9 @@ int isListEmpty(List *list)
 	return 1;
 }
 
-int insertListFront(List *list, int el)
+int insertInList(List *list, int el, int position)
 {
-	if (!list)
+	if (!list || position <= 0)
 		return 0;
 
 	Node *node = createNode();
@@ -88,12 +102,32 @@ int insertListFront(List *list, int el)
 		return 0;
 
 	node->el = el;
-	node->next = list->head;
+	node->next = NULL;
 
-	if (!list->head)
-		list->tail = node;
+	if (position == 1)
+	{
+		node->next = list->head;
 
-	list->head = node;
+		if (!list->head)
+			list->tail = node;
+
+		list->head = node;
+	}
+	else if (position == list->length + 1)
+	{
+		list->tail->next = node; // * put node at position
+		list->tail = node; // * set new tail
+	}
+	else
+	{
+		Node *ancestor = list->head;
+		for (int i = 1; i < position - 1; i++)
+			ancestor = ancestor->next;
+
+		Node *current = ancestor->next;
+		node->next = current;
+		ancestor->next = node;
+	}
 
 	list->length++;
 	return 1;
@@ -124,49 +158,6 @@ int insertListBack(List *list, int el)
 	return 1;
 }
 
-int insertListInOrder(List *list, int el)
-{
-	if (!list)
-		return 0;
-
-	Node *node = createNode();
-
-	if (!node)
-		return 0;
-
-	node->el = el;
-
-	if (!list->head)
-	{
-		node->next = NULL;
-		list->head = node;
-	}
-	else
-	{
-		Node *ancestor, *current = list->head;
-		while (current && current->el < el)
-		{
-			ancestor = current;
-			current = current->next;
-		}
-
-		// insert att first position
-		if (current == list->head)
-		{
-			node->next = list->head;
-			list->head = node;
-		}
-		else
-		{
-			node->next = current;
-			ancestor->next = node;
-		}
-	}
-
-	list->length++;
-	return 1;
-}
-
 int removeListFront(List *list)
 {
 	if (!list || !list->head)
@@ -190,19 +181,18 @@ int removeListBack(List *list)
 		return 0;
 
 	Node *ancestor, *current = list->head;
-
 	while (current->next)
 	{
 		ancestor = current;
 		current = current->next;
 	}
 
-	// the list has only one element
 	if (current == list->head)
 	{
 		list->head = NULL;
 		list->tail = NULL;
 	}
+	
 	else
 	{
 		ancestor->next = current->next;
@@ -214,7 +204,7 @@ int removeListBack(List *list)
 	return 1;
 }
 
-int removeInList(List *list, int el)
+int removeInList(List *list, int el) // TODO: refactor function to update tail
 {
 	if (!list || !list->head)
 		return 0;
@@ -229,7 +219,7 @@ int removeInList(List *list, int el)
 	if (!current)
 		return 0;
 
-	// remove the first element
+	// * remove first element
 	if (current == list->head)
 		list->head = current->next;
 
@@ -245,6 +235,12 @@ int searchListPosition(List *list, int position, int *el)
 {
 	if (!list || !list->head || position <= 0)
 		return 0;
+
+	if (position == list->length)
+	{
+		*el = list->tail->el;
+		return 1;
+	}
 
 	Node *pointer = list->head;
 	int i = 1;
@@ -264,7 +260,6 @@ int searchListPosition(List *list, int position, int *el)
 
 int searchListElement(List *list, int el, int *position)
 {
-
 	if (!list || !list->head)
 		return 0;
 
@@ -286,7 +281,7 @@ int searchListElement(List *list, int el, int *position)
 
 int clearList(List *list)
 {
-	if (!list || isListEmpty(list))
+	if (!list || !list->head)
 		return 0;
 
 	Node *pointer;

@@ -3,12 +3,13 @@ typedef struct list List;
 List *createList();
 int freeList(List *list);
 
-int getListSize(List *list);
+int getListHead(List *list, int *el);
+int getListTail(List *list, int *el);
+int getListLength(List *list);
 int isListEmpty(List *list);
 
-int insertListFront(List *list, int el);
+int insertInList(List *list, int el, int position);
 int insertListBack(List *list, int el);
-int insertListInOrder(List *list, int el);
 
 int removeListFront(List *list);
 int removeListBack(List *list);
