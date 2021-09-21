@@ -16,7 +16,7 @@ if __name__ == '__main__':
         print('7  - Get list length')
         print('8  - Get element by index')
         print('9  - Get index by element')
-        print('10 - Alterate element')
+        print('10 - Change element')
         print('11 - Print list')
         print('12 - Clear list')
         option = int(input('Option: '))
