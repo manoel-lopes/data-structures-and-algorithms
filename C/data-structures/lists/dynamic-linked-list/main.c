@@ -16,13 +16,13 @@ int main()
     do
     {
       printf("\n\nMenu:");
-      printf("\n1  - Insert element in front");
-      printf("\n2  - Insert element in end");
+      printf("\n1  - Insert element at front");
+      printf("\n2  - Insert element at back");
       printf("\n3  - Insert element (any position)");
-      printf("\n4  - Remove element in front");
-      printf("\n5  - Remove element in end");
+      printf("\n4  - Remove element at front");
+      printf("\n5  - Remove element at back");
       printf("\n6  - Remove element");
-      printf("\n7  - Get the quantity of elements in the list");
+      printf("\n7  - Get list length");
       printf("\n8  - Search element by position");
       printf("\n9  - Search position by element");
       printf("\n10 - Print list");
