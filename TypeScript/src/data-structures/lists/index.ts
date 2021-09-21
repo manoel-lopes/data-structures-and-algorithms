@@ -12,18 +12,18 @@ const list: List<unknown> = new LinkedList()
 do {
   option = questionInt(`
 Menu:
-1  - Insert element in front
-2  - Insert element in end
-3  - Insert element in order
-4  - Remove element in front
-5  - Remove element in end
+1  - Insert element at front
+2  - Insert element at back
+3  - Insert element (any position)
+4  - Remove element at front
+5  - Remove element at back
 6  - Remove element
-7  - Get the quantity of elements in the list
-8  - Search element by position
-9  - Search position by element
-10 - Print list
-11 - Clear list
-12 - Finish
+7  - Get list length
+8  - Get element by index
+9  - Get index by element
+10 - Change element
+11 - Print list
+12 - Clear list
 Option: `)
 
   if (option === 1) {
