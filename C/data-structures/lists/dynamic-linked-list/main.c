@@ -7,7 +7,7 @@ void createElement(int *el);
 int main()
 {
   List *list = NULL;
-  int option, el, ok, position;
+  int option, el, ok, index;
 
   list = createList();
 
@@ -18,16 +18,17 @@ int main()
       printf("\n\nMenu:");
       printf("\n1  - Insert element at front");
       printf("\n2  - Insert element at back");
-      printf("\n3  - Insert element (any position)");
+      printf("\n3  - Insert element (any index)");
       printf("\n4  - Remove element at front");
       printf("\n5  - Remove element at back");
       printf("\n6  - Remove element");
       printf("\n7  - Get list length");
-      printf("\n8  - Search element by position");
-      printf("\n9  - Search position by element");
-      printf("\n10 - Print list");
-      printf("\n11 - Clear list");
-      printf("\n12 - Finish");
+      printf("\n8  - Get element by index");
+      printf("\n9  - Get index by element");
+      printf("\n10 - Change element");
+      printf("\n11 - Print list");
+      printf("\n12 - Clear list");
+      printf("\n13 - Finish");
       printf("\nOption: ");
       scanf("%d", &option);
 
@@ -35,20 +36,20 @@ int main()
       {
         printf("\n");
         createElement(&el);
-        ok = insertInList(list, el, 1);
+        ok = insert(list, el, 1);
 
         if (ok)
         {
           printf("\n");
           printList(list);
 
-          ok = getListHead(list, &el);
+          ok = getHead(list, &el);
 
           if (ok)
           {
             printf("\nHead: %d", el);
 
-            getListTail(list, &el);
+            getTail(list, &el);
             printf("\nTail: %d", el);
           }
         }
@@ -61,20 +62,20 @@ int main()
       {
         printf("\n");
         createElement(&el);
-        ok = insertListBack(list, el);
+        ok = push(list, el);
 
         if (ok)
         {
           printf("\n");
           printList(list);
 
-          ok = getListHead(list, &el);
+          ok = getHead(list, &el);
 
           if (ok)
           {
             printf("\nHead: %d", el);
 
-            getListTail(list, &el);
+            getTail(list, &el);
             printf("\nTail: %d", el);
           }
         }
@@ -85,24 +86,24 @@ int main()
 
       else if (option == 3)
       {
-        printf("\nType the position: ");
-        scanf("%d", &position);
+        printf("\nType the index: ");
+        scanf("%d", &index);
 
         createElement(&el);
-        ok = insertInList(list, el, position);
+        ok = insert(list, el, index);
 
         if (ok)
         {
           printf("\n");
           printList(list);
 
-          ok = getListHead(list, &el);
+          ok = getHead(list, &el);
 
           if (ok)
           {
             printf("\nHead: %d", el);
 
-            getListTail(list, &el);
+            getTail(list, &el);
             printf("\nTail: %d", el);
           }
         }
@@ -113,28 +114,33 @@ int main()
 
       else if (option == 4)
       {
-        ok = removeListFront(list);
+        ok = getHead(list, &el);
 
         if (ok)
         {
-          if (isListEmpty(list) == 1)
-            printf("\nThe list is empty!");
+          ok = delete(list, el);
 
-          else
+          if (ok)
           {
-            printf("\n");
-            printList(list);
+            if (isEmpty(list) == 1)
+              printf("\nThe list is empty!");
 
-            if (isListEmpty(list) != 1)
+            else
             {
-              ok = getListHead(list, &el);
+              printf("\n");
+              printList(list);
 
-              if (ok)
+              if (isEmpty(list) != 1)
               {
-                printf("\nHead: %d", el);
+                ok = getHead(list, &el);
 
-                getListTail(list, &el);
-                printf("\nTail: %d", el);
+                if (ok)
+                {
+                  printf("\nHead: %d", el);
+
+                  getTail(list, &el);
+                  printf("\nTail: %d", el);
+                }
               }
             }
           }
@@ -146,28 +152,34 @@ int main()
 
       else if (option == 5)
       {
-        ok = removeListBack(list);
+        ok = getTail(list, &el);
 
         if (ok)
         {
-          if (isListEmpty(list) == 1)
-            printf("\nThe list is empty!");
 
-          else
+          ok = delete(list, el);
+
+          if (ok)
           {
-            printf("\n");
-            printList(list);
+            if (isEmpty(list) == 1)
+              printf("\nThe list is empty!");
 
-            if (isListEmpty(list) != 1)
+            else
             {
-              ok = getListHead(list, &el);
+              printf("\n");
+              printList(list);
 
-              if (ok)
+              if (isEmpty(list) != 1)
               {
-                printf("\nHead: %d", el);
+                ok = getHead(list, &el);
 
-                getListTail(list, &el);
-                printf("\nTail: %d", el);
+                if (ok)
+                {
+                  printf("\nHead: %d", el);
+
+                  getTail(list, &el);
+                  printf("\nTail: %d", el);
+                }
               }
             }
           }
@@ -181,11 +193,12 @@ int main()
       {
         printf("\nType the element to be remove: ");
         scanf("%d", &el);
-        ok = removeInList(list, el);
+
+        ok = delete (list, el);
 
         if (ok)
         {
-          if (isListEmpty(list) == 1)
+          if (isEmpty(list) == 1)
             printf("\nThe list is empty!");
 
           else
@@ -193,15 +206,15 @@ int main()
             printf("\n");
             printList(list);
 
-            if (isListEmpty(list) != 1)
+            if (isEmpty(list) != 1)
             {
-              ok = getListHead(list, &el);
+              ok = getHead(list, &el);
 
               if (ok)
               {
                 printf("\nHead: %d", el);
 
-                getListTail(list, &el);
+                getTail(list, &el);
                 printf("\nTail: %d", el);
               }
             }
@@ -214,25 +227,25 @@ int main()
 
       else if (option == 7)
       {
-        if (isListEmpty(list) == 1)
+        if (isEmpty(list) == 1)
           printf("\nThe list is empty!");
 
         else
-          printf("\nQuantity of elements in the list: %d", getListLength(list));
+          printf("\nQuantity of elements in the list: %d", len(list));
       }
 
       else if (option == 8)
       {
-        printf("\nType the position: ");
-        scanf("%d", &position);
+        printf("\nType the index: ");
+        scanf("%d", &index);
 
-        ok = searchListPosition(list, position, &el);
+        ok = getElementAt(list, index, &el);
 
         if (ok)
-          printf("\nElement in position %d: %d", position, el);
+          printf("\nElement at index %d: %d", index, el);
 
         else
-          printf("\nPosition out of range!");
+          printf("\nIndex out of range!");
       }
 
       else if (option == 9)
@@ -240,10 +253,10 @@ int main()
         printf("\nType the element: ");
         scanf("%d", &el);
 
-        ok = searchListElement(list, el, &position);
+        ok = indexOf(list, el, &index);
 
         if (ok)
-          printf("\nElement in position %d: %d", position, el);
+          printf("\nElement at index %d: %d", index, el);
 
         else
           printf("\nElement not found!");
@@ -251,7 +264,7 @@ int main()
 
       else if (option == 10)
       {
-        if (isListEmpty(list) == 1)
+        if (isEmpty(list) == 1)
           printf("\nThe list is empty!");
 
         else
@@ -263,7 +276,7 @@ int main()
 
       else if (option == 11)
       {
-        ok = clearList(list);
+        ok = clear(list);
 
         if (ok)
           printf("\nList cleared with success!");
