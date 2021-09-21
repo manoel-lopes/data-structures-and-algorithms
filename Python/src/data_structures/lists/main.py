@@ -7,13 +7,13 @@ list = LinkedList[int]()
 if __name__ == '__main__':
     while True:
         print('\nMenu:')
-        print('1  - Insert element in the beginning')
-        print('2  - Insert element in the end')
+        print('1  - Insert element at front')
+        print('2  - Insert element at back')
         print('3  - Insert element (any position)')
-        print('4  - Remove element in the beginning')
-        print('5  - Remove element in the end')
-        print('6  - Remove element (any)')
-        print('7  - Get quantity de elements in the list')
+        print('4  - Remove element at front')
+        print('5  - Remove element at back')
+        print('6  - Remove element')
+        print('7  - Get list length')
         print('8  - Get element by index')
         print('9  - Get index by element')
         print('10 - Alterate element')
@@ -22,19 +22,19 @@ if __name__ == '__main__':
         option = int(input('Option: '))
 
         if option == 1:
-            el = int(input("\nType the element to be insert: "))
+            el = int(input('\nType the element to be insert: '))
             list.insert(0, el)
 
             print(f'\n{list}')
 
         elif option == 2:
-            el = int(input("\nType the element to be insert: "))
+            el = int(input('\nType the element to be insert: '))
             list.append(el)
 
             print(f'\n{list}')
 
         elif option == 3:
-            el = int(input("\nType the element to be insert: "))
+            el = int(input('\nType the element to be insert: '))
             index = int(input("Type the new element's index: "))
 
             list.insert(index, el)
@@ -47,7 +47,7 @@ if __name__ == '__main__':
             if len(list):
                 print(f'\n{list}')
             else:
-                print("\nThe list is empty!")
+                print('\nThe list is empty!')
 
         elif option == 5:
             list.remove(list.tail)
@@ -55,7 +55,7 @@ if __name__ == '__main__':
             if len(list):
                 print(f'\n{list}')
             else:
-                print("\nThe list is empty!")
+                print('\nThe list is empty!')
 
         elif option == 6:
 
@@ -65,13 +65,13 @@ if __name__ == '__main__':
             if len(list):
                 print(f'\n{list}')
             else:
-                print("\nThe list is empty!")
+                print('\nThe list is empty!')
 
         elif option == 7:
             if len(list):
-                print(f"\nQuantity of elements in the list: {len(list)}")
+                print(f'\nQuantity of elements in the list: {len(list)}')
             else:
-                print("\nThe list is empty!\n")
+                print('\nThe list is empty!\n')
 
         elif option == 8:
             index = int(input("\nType the element's index: "))
@@ -80,35 +80,35 @@ if __name__ == '__main__':
             print(f'\nElement in position {index}: {el}')
 
         elif option == 9:
-            el = int(input("\nType the element: "))
+            el = int(input('\nType the element: '))
             index = list.index(el)
 
             print(f'\nElement in position {index}: {el}')
 
         elif option == 10:
             index = int(
-                input("\nType the index of the element to be alterate: "))
-            el = int(input("Type the new element: "))
+                input('\nType the index of the element to be alterate: '))
+            el = int(input('Type the new element: '))
 
             list[index] = el
 
             if list[index] == el:
-                print("\nSuccessful alteration!\n")
-                print(f"{list}")
+                print('\nSuccessful alteration!\n')
+                print(f'{list}')
             else:
-                print("\nThere was an error in the alteration!")
+                print('\nThere was an error in the alteration!')
 
         elif option == 11:
             if len(list):
                 print(f'\n{list}')
             else:
-                print("\nThe list is empty!")
+                print('\nThe list is empty!')
 
         elif option == 12:
             list.clear()
 
             if not len(list):
-                print("\nThe list is empty!")
+                print('\nThe list is empty!')
 
         else:
-            print("\nInvalid Option!")
+            print('\nInvalid Option!')
