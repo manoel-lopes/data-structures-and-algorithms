@@ -1,10 +1,8 @@
-import 'package:Dart/util/interfaces.dart';
+import 'package:dart/util/interfaces/linked_list.dart';
 
-import 'package:Dart/util/functions.dart' show getNode;
+import 'package:dart/data_structures/models/node.dart';
 
-import 'package:Dart/data_structures/models/node.dart';
-
-import '../../models/node.dart';
+import 'package:dart/util/functions/get_node.dart';
 
 class SinglyLinkedList<T> implements LinkedList<T> {
   Node<T>? _head;

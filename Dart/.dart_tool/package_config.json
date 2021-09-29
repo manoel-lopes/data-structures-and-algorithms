@@ -2,13 +2,13 @@
   "configVersion": 2,
   "packages": [
     {
-      "name": "Dart",
+      "name": "dart",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-09-29T17:01:14.333930Z",
+  "generated": "2021-09-29T22:25:34.411659Z",
   "generator": "pub",
   "generatorVersion": "2.14.2"
 }

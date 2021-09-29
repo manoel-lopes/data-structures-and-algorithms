@@ -1,4 +1,4 @@
-import '../data_structures/models/node.dart';
+import 'package:dart/data_structures/models/node.dart';
 
 Node<T>? getNode<T>({
   required Node<T>? listHead,
