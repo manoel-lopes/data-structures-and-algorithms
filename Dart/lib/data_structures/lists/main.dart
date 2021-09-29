@@ -1,10 +1,9 @@
-// import 'package:dart/util/interfaces/linked_list.dart';
+import 'package:dart/util/interfaces/linked_list.dart';
 
 import 'entities/singly_linked_list.dart';
 
 void main() {
-  // final LinkedList<int> linkedList = new SinglyLinkedList<int>();
-  final linkedList = new SinglyLinkedList<int>();
+  final LinkedList<int> linkedList = new SinglyLinkedList<int>();
   linkedList.push(el: 1);
   print(linkedList.length);
 
