@@ -1,4 +1,4 @@
-import { swap } from './../../util'
+import { swap } from '../../util/types'
 
 export const combSort = (array: number[]) => {
   const sortedArray = array.slice()

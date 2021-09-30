@@ -1,6 +1,6 @@
-import Stack from '../data-structures/stack/entities/Stack'
+import { Stack } from '../data-structures/stack/entities/Stack'
 
-function baseConverter(decNumber: number, base: number) {
+const baseConverter = (decNumber: number, base: number) => {
   const remStack = new Stack<number>()
   const digits = '0123456789ABCDEF'
   let rem: number

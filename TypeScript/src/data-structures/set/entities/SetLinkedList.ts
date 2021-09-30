@@ -1,8 +1,8 @@
+import { LinkedList } from '../../lists/entities/DoublyLinkedList'
+
 import { binarySearch } from './../../../algorithms/searching/binarySearch'
 
-import { CallbackForEachFn } from '../../../util'
-
-import { LinkedList } from '../../lists/entities/DoublyLinkedList'
+import { CallbackForeachFn } from '../../../util/types'
 
 class SetLinkedList<T> {
   private set = new LinkedList<T>()
@@ -92,7 +92,7 @@ class SetLinkedList<T> {
 
   clear = () => this.set.clear()
 
-  forEach = (callbackFn: CallbackForEachFn<T>) =>
+  forEach = (callbackFn: CallbackForeachFn<T>) =>
     [...this].forEach(el => callbackFn(el))
 
   toString() {

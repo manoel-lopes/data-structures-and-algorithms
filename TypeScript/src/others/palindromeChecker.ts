@@ -1,12 +1,12 @@
-import Deque from '../data-structures/deque/entities/Deque'
+import { Deque } from '../data-structures/deque/entities/Deque'
 
-function palindromeChecker(aString: string) {
-  if (!aString || aString === ' ') {
+const palindromeChecker = (str: string) => {
+  if (!str || str === ' ') {
     return false
   }
 
   const deque = new Deque<string>()
-  const lowerString = aString.toLocaleLowerCase().split(' ').join('')
+  const lowerString = str.toLocaleLowerCase().split(' ').join('')
 
   for (let i = 0; i < lowerString.length; i++) {
     deque.push(lowerString.charAt(i))

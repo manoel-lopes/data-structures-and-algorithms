@@ -1,4 +1,4 @@
-import { swap } from './../../util'
+import { swap } from '../../util/types'
 
 export const bubbleSort = (array: number[]) => {
   const sortedArray = array.slice()

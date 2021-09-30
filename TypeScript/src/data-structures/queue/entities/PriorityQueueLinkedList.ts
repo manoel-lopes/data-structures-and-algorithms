@@ -1,4 +1,5 @@
 import { Queue } from './QueueLinkedList'
+
 import { LinkedList } from '../../lists/entities/DoublyLinkedList'
 
 class PriorityQueueLinkedList<T> extends Queue<T> {

@@ -1,6 +1,6 @@
 import { ValuePair } from '../../models/ValuePair'
 
-import { defaultToString } from '../../../util'
+import { defaultToString } from '../../../util/functions'
 
 export class HashTable<K = number | string, V = unknown> {
   constructor(

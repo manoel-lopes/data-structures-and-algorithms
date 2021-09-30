@@ -1,7 +1,8 @@
 import { LinkedList } from '../../lists/entities/DoublyLinkedList'
+
 import { ValuePair } from '../../models/ValuePair'
 
-import { defaultToString } from '../../../util'
+import { defaultToString } from '../../../util/functions'
 
 class HashTableSeparateChaining<K = number | string, V = unknown> {
   constructor(

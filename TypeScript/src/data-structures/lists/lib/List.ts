@@ -1,21 +1,20 @@
 import { Node } from '../../models/Node'
 
 import {
-  CallbackForEachFn,
   CompareFn,
-  ascendingOrderFnStr,
-  descendingOrderFnStr,
+  CallbackForeachFn,
+  CallbackFilterFn,
+  CallbackMapFn,
   CallbackReduceFn,
-  CallbackMapFilterFn,
-} from '../../../util'
+} from '../../../util/types'
 
 export abstract class List<T> {
-  protected count = 0
+  protected _length = 0
   protected _head?: Node<T>
   protected _tail?: Node<T>
 
   get length() {
-    return this.count
+    return this._length
   }
 
   get head() {
@@ -58,6 +57,7 @@ export abstract class List<T> {
       pointer = pointer.next
       i++
     }
+    
     return -1
   }
 
@@ -78,7 +78,7 @@ export abstract class List<T> {
   }
 
   clear() {
-    this.count = 0
+    this._length = 0
     this._head = null
     this._tail = null
   }
@@ -99,7 +99,7 @@ export abstract class List<T> {
     this._head = ancestor
   }
 
-  forEach(callbackFn: CallbackForEachFn<T>) {
+  forEach(callbackFn: CallbackForeachFn<T>) {
     for (let i = 0; i < this.length; i++) {
       callbackFn(this.getElementAt(i), i, this)
     }
@@ -107,9 +107,9 @@ export abstract class List<T> {
 
   abstract concat(list: List<T>): List<T>
 
-  abstract filter(callbackFn: CallbackMapFilterFn<T>): List<T>
-
-  abstract map(callbackFn: CallbackMapFilterFn<T>): List<T>
+  abstract filter(callbackFn: CallbackFilterFn<T>): List<T>
+  
+  abstract map(callbackFn: CallbackMapFn<T>): List<T>
 
   reduce(callbackFn: CallbackReduceFn<T>, initialValue?: T) {
     let acc = initialValue
@@ -131,6 +131,10 @@ export abstract class List<T> {
   }
 
   protected partition(left: number, right: number, compareFn: CompareFn) {
+    const ascendingOrderFnStr = `${(a: number, b: number) => a - b}`
+
+    const descendingOrderFnStr = `${(a: number, b: number) => b - a}`
+
     const pivot = this.getElementAt(Math.floor((right + left) / 2))
     let i = left
     let j = right

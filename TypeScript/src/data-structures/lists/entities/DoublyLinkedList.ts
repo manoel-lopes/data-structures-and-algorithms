@@ -1,7 +1,9 @@
 import { List } from '../lib/List'
+
 import { DoublyNode } from '../../models/DoublyNode'
 
-import { CallbackMapFilterFn } from '../../../util'
+import { CallbackFilterFn, CallbackMapFn } from './../../../util/types'
+import { concatLists, filterList, mapList } from './../../../util/functions'
 
 class DoublyLinkedList<T> extends List<T> {
   protected _head?: DoublyNode<T>
@@ -11,9 +13,9 @@ class DoublyLinkedList<T> extends List<T> {
     if (index >= 0 && index < this.length) {
       let pointer: DoublyNode<T>
 
-      if (index > this.count / 2) {
+      if (index > this._length / 2) {
         pointer = this._tail
-        for (let i = this.count; i > 0 && pointer; i--) {
+        for (let i = this._length; i > 0 && pointer; i--) {
           pointer = pointer.prev
         }
       }
@@ -39,7 +41,7 @@ class DoublyLinkedList<T> extends List<T> {
       this._tail = node
     }
 
-    this.count++
+    this._length++
     return this.length
   }
 
@@ -75,7 +77,7 @@ class DoublyLinkedList<T> extends List<T> {
         node.prev = ancestor // NEW
       }
 
-      this.count++
+      this._length++
       return this.length
     }
   }
@@ -108,7 +110,7 @@ class DoublyLinkedList<T> extends List<T> {
         pointer.next.prev = ancestor // NEW
       }
 
-      this.count--
+      this._length--
       return pointer.el
     }
   }
@@ -132,28 +134,22 @@ class DoublyLinkedList<T> extends List<T> {
 
   concat(list: List<T>) {
     const newList = new DoublyLinkedList<T>()
-
-    this.forEach((el: T) => newList.push(el))
-    list.forEach((el: T) => newList.push(el))
+    concatLists(this, list, newList)
 
     return newList
   }
 
-  filter(callbackFn: CallbackMapFilterFn<T>) {
+  filter(callbackFn: CallbackFilterFn<T>) {
     const newList = new DoublyLinkedList<T>()
-    for (let i = 0; i < this.length; i++) {
-      if (callbackFn(this.getElementAt(i), i, this)) {
-        newList.push(this.getElementAt(i))
-      }
-    }
+    filterList(this, newList, callbackFn)
+
     return newList
   }
 
-  map(callbackFn: CallbackMapFilterFn<T>) {
+  map(callbackFn: CallbackMapFn<T>) {
     const newList = new DoublyLinkedList<T>()
-    for (let i = 0; i < this.length; i++) {
-      newList.push(callbackFn(this.getElementAt(i), i, this) as T)
-    }
+    mapList(this, newList, callbackFn)
+
     return newList
   }
 }

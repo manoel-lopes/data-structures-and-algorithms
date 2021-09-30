@@ -1,7 +1,9 @@
 import { List } from '../lib/List'
+
 import { Node } from '../../models/Node'
 
-import { CallbackMapFilterFn } from '../../../util'
+import { CallbackFilterFn, CallbackMapFn } from './../../../util/types'
+import { concatLists, filterList, mapList } from './../../../util/functions'
 
 export class LinkedList<T> extends List<T> {
   push(el: T) {
@@ -15,12 +17,12 @@ export class LinkedList<T> extends List<T> {
 
     this._tail = node
 
-    this.count++
-    return this.length
+    this._length++
+    return this._length
   }
 
   insert(el: T, index = 0) {
-    if (index >= 0 && index <= this.length) {
+    if (index >= 0 && index <= this._length) {
       const node = new Node(el)
 
       if (!index) {
@@ -34,7 +36,7 @@ export class LinkedList<T> extends List<T> {
           this._head = node
         }
       
-      } else if (index === this.length) {
+      } else if (index === this._length) {
         this._tail.next = node
         this._tail = node
       
@@ -45,13 +47,13 @@ export class LinkedList<T> extends List<T> {
         ancestor.next = node
       }
 
-      this.count++
-      return this.length
+      this._length++
+      return this._length
     }
   }
 
   removeAt(index: number) {
-    if (this._head && index >= 0 && index < this.length) {
+    if (this._head && index >= 0 && index < this._length) {
       let pointer = this._head
 
       if (!index) {
@@ -68,7 +70,7 @@ export class LinkedList<T> extends List<T> {
         this._tail = ancestor
       }
 
-      this.count--
+      this._length--
       return pointer.el
     }
   }
@@ -83,7 +85,7 @@ export class LinkedList<T> extends List<T> {
     let str = `${pointer.el}`
     pointer = pointer.next
 
-    for (let i = 1; i < this.length && pointer; i++) {
+    for (let i = 1; i < this._length && pointer; i++) {
       str = `${str} -> ${pointer.el}`
       pointer = pointer.next
     }
@@ -92,28 +94,22 @@ export class LinkedList<T> extends List<T> {
 
   concat(list: List<T>) {
     const newList = new LinkedList<T>()
-
-    this.forEach((el: T) => newList.push(el))
-    list.forEach((el: T) => newList.push(el))
+    concatLists(this, list, newList)
 
     return newList
   }
 
-  filter(callbackFn: CallbackMapFilterFn<T>) {
+  filter(callbackFn: CallbackFilterFn<T>) {
     const newList = new LinkedList<T>()
-    for (let i = 0; i < this.length; i++) {
-      if (callbackFn(this.getElementAt(i), i, this)) {
-        newList.push(this.getElementAt(i))
-      }
-    }
+    filterList(this, newList, callbackFn)
+
     return newList
   }
 
-  map(callbackFn: CallbackMapFilterFn<T>) {
+  map(callbackFn: CallbackMapFn<T>) {
     const newList = new LinkedList<T>()
-    for (let i = 0; i < this.length; i++) {
-      newList.push(callbackFn(this.getElementAt(i), i, this) as T)
-    }
+    mapList(this, newList, callbackFn)
+
     return newList
   }
 }

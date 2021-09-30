@@ -1,14 +1,14 @@
-import { defaultToString } from '../../../util'
 import { ValuePair } from '../../models/ValuePair'
 
+import { defaultToString } from '../../../util/functions'
+
 export default class Map<K, V> {
-
   constructor(
-        private array: unknown[][] = [],
-        private map: { [key: string]: ValuePair<K, V> } = {},
-        private toStrFn: (key: K) => string = defaultToString,
-        private count = 0) {
-
+    private array: unknown[][] = [],
+    private map: { [key: string]: ValuePair<K, V> } = {},
+    private toStrFn: (key: K) => string = defaultToString,
+    private count = 0
+  ) {
     this.createMapFromTwoDimensionalArray(this.array)
   }
 
@@ -48,54 +48,54 @@ export default class Map<K, V> {
     }
   }
 
-    [Symbol.iterator] = () => Object.values(this.map).values()
+  [Symbol.iterator] = () => Object.values(this.map).values()
 
-    has = (key: K) => !!this.map[this.toStrFn(key)]
+  has = (key: K) => !!this.map[this.toStrFn(key)]
 
-    entries() {
-      const entriesArray: unknown[] = []
-      const keys = this.keys()
-      const values = this.values()
+  entries() {
+    const entriesArray: unknown[] = []
+    const keys = this.keys()
+    const values = this.values()
 
-      for (let i = 0; i < this.size; i++) {
-        if (keys[i] != null && values[i] != null) {
-          entriesArray[i] = []
-          entriesArray[i][0] = keys[i]
-          entriesArray[i][1] = values[i]
-        }
+    for (let i = 0; i < this.size; i++) {
+      if (keys[i] != null && values[i] != null) {
+        entriesArray[i] = []
+        entriesArray[i][0] = keys[i]
+        entriesArray[i][1] = values[i]
       }
-
-      return entriesArray
     }
 
-    keys = () => Object.values(this.map).map(valuePair => valuePair.key)
+    return entriesArray
+  }
 
-    values = () => Object.values(this.map).map(valuePair => valuePair.value)
+  keys = () => Object.values(this.map).map(valuePair => valuePair.key)
 
-    isEmpty = () => this.size === 0
+  values = () => Object.values(this.map).map(valuePair => valuePair.value)
 
-    forEach(callbackFn: (key: K, value: V) => unknown) {
-      [...this].forEach(valuePair => {
-        callbackFn(valuePair.key, valuePair.value)
-      })
+  isEmpty = () => this.size === 0
+
+  forEach(callbackFn: (key: K, value: V) => unknown) {
+    ;[...this].forEach(valuePair => {
+      callbackFn(valuePair.key, valuePair.value)
+    })
+  }
+
+  clear() {
+    this.count = 0
+    this.map = {}
+  }
+
+  toString() {
+    if (this.isEmpty()) {
+      return 'Map(0) {}'
     }
+    const valuePairs = [...this]
 
-    clear() {
-      this.count = 0
-      this.map = {}
+    let str = `${valuePairs[0]}`
+
+    for (let i = 1; i < valuePairs.length; i++) {
+      str = `${str}, ${valuePairs[i]}`
     }
-
-    toString() {
-      if (this.isEmpty()) {
-        return 'Map(0) {}'
-      }
-      const valuePairs = [...this]
-
-      let str = `${valuePairs[0]}`
-
-      for (let i = 1; i < valuePairs.length; i++) {
-        str = `${str}, ${valuePairs[i]}`
-      }
-      return `Map(${valuePairs.length}) { ${str} }`
-    }
+    return `Map(${valuePairs.length}) { ${str} }`
+  }
 }

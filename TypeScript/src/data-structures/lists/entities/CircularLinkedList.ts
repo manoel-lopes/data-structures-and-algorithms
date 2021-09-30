@@ -1,7 +1,9 @@
 import { List } from '../lib/List'
+
 import { Node } from '../../models/Node'
 
-import { CallbackMapFilterFn } from '../../../util'
+import { CallbackFilterFn, CallbackMapFn } from './../../../util/types'
+import { concatLists, filterList, mapList } from './../../../util/functions'
 
 class CircularLinkedList<T> extends List<T> {
   push(el: T) {
@@ -16,7 +18,7 @@ class CircularLinkedList<T> extends List<T> {
     this._tail = node
     this._tail.next = this._head
 
-    this.count++
+    this._length++
     return this.length
   }
 
@@ -50,7 +52,7 @@ class CircularLinkedList<T> extends List<T> {
         ancestor.next = node
       }
 
-      this.count++
+      this._length++
       return this.length
     }
   }
@@ -81,35 +83,29 @@ class CircularLinkedList<T> extends List<T> {
         ancestor.next = current.next
       }
 
-      this.count--
+      this._length--
       return current.el
     }
   }
 
   concat(list: List<T>) {
     const newList = new CircularLinkedList<T>()
-
-    this.forEach((el: T) => newList.push(el))
-    list.forEach((el: T) => newList.push(el))
+    concatLists(this, list, newList)
 
     return newList
   }
 
-  filter(callbackFn: CallbackMapFilterFn<T>) {
+  filter(callbackFn: CallbackFilterFn<T>) {
     const newList = new CircularLinkedList<T>()
-    for (let i = 0; i < this.length; i++) {
-      if (callbackFn(this.getElementAt(i), i, this)) {
-        newList.push(this.getElementAt(i))
-      }
-    }
+    filterList(this, newList, callbackFn)
+
     return newList
   }
 
-  map(callbackFn: CallbackMapFilterFn<T>) {
+  map(callbackFn: CallbackMapFn<T>) {
     const newList = new CircularLinkedList<T>()
-    for (let i = 0; i < this.length; i++) {
-      newList.push(callbackFn(this.getElementAt(i), i, this) as T)
-    }
+    mapList(this, newList, callbackFn)
+
     return newList
   }
 

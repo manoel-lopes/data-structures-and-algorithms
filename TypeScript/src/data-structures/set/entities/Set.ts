@@ -1,6 +1,6 @@
 import { binarySearch } from './../../../algorithms/searching/binarySearch'
 
-import { CallbackForEachFn } from './../../../util'
+import { CallbackForeachFn } from './../../../util/types';
 
 export class Set<T> {
   private set = {}
@@ -84,7 +84,7 @@ export class Set<T> {
     return new Set([...this].filter(el => !otherSet.has(el)))
   }
 
-  forEach = (callbackFn: CallbackForEachFn<T>) =>
+  forEach = (callbackFn: CallbackForeachFn<T>) =>
     [...this].forEach(el => callbackFn(el))
 
   clear() {

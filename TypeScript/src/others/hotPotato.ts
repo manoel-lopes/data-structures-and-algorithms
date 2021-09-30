@@ -1,6 +1,6 @@
-import Queue from '../data-structures/queue/entities/Queue'
+import { Queue } from '../data-structures/queue/entities/Queue'
 
-function hotPotato(array: string[], num: number) {
+const hotPotato = (array: string[], num: number) => {
   const queue = new Queue()
   const eliminatedList: string[] = []
 

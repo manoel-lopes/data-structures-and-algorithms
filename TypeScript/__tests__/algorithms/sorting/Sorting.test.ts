@@ -1,4 +1,4 @@
-import { generateArrayWithRandomValues, isArraySorted } from '../../../src/util'
+import { generateArrayWithRandomValues, isArraySorted } from '../../../src/util/types'
 
 import { selectionSort } from '../../../src/algorithms/sorting/selectionSort'
 import { bubbleSort } from '../../../src/algorithms/sorting/bubbleSort'
