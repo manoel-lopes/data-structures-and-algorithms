@@ -1,4 +1,4 @@
-import { swap } from '../../util/types'
+import { swap } from '../../util/functions'
 
 export const selectionSort = (array: number[]) => {
   const sortedArray = array.slice()
