@@ -27,7 +27,6 @@ class StackLinkedList<T> {
     }
 
     let str = `${this.stack.head}`
-
     for (let i = 1; i < this.length; i++) {
       str = `${this.stack.getElementAt(i)}\n${str}`
     }

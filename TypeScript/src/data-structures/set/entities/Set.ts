@@ -1,6 +1,6 @@
 import { binarySearch } from './../../../algorithms/searching/binarySearch'
 
-import { CallbackForeachFn } from './../../../util/types';
+import { CallbackForeachFn } from './../../../util/types'
 
 export class Set<T> {
   private set = {}
@@ -77,6 +77,7 @@ export class Set<T> {
       biggerSet = otherSet
       smallerSet = this
     }
+
     return new Set([...smallerSet].filter(el => biggerSet.has(el)))
   }
 

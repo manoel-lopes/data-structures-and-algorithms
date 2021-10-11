@@ -27,7 +27,6 @@ class QueueLinkedList<T> {
     }
 
     let str = `${this.queue.head}`
-
     for (let i = 1; i < this.length; i++) {
       str = `${str} ${this.queue.getElementAt(i)}`
     }
