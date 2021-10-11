@@ -1,11 +1,11 @@
-import { List } from '../lib/List'
+import { LinkedList } from '../lib/LinkedList'
 
 import { DoublyNode } from '../../models/DoublyNode'
 
 import { CallbackFilterFn, CallbackMapFn } from './../../../util/types'
 import { concatLists, filterList, mapList } from './../../../util/functions'
 
-class DoublyLinkedList<T> extends List<T> {
+class DoublyLinkedList<T> extends LinkedList<T> {
   protected _head?: DoublyNode<T>
   protected _tail?: DoublyNode<T>
 
@@ -132,25 +132,25 @@ class DoublyLinkedList<T> extends List<T> {
     return `${str} ->`
   }
 
-  concat(list: List<T>) {
-    const newList = new DoublyLinkedList<T>()
-    concatLists(this, list, newList)
+  concat(linkedList: LinkedList<T>) {
+    const newLinkedList = new DoublyLinkedList<T>()
+    concatLists(this, linkedList, newLinkedList)
 
-    return newList
+    return newLinkedList
   }
 
   filter(callbackFn: CallbackFilterFn<T>) {
-    const newList = new DoublyLinkedList<T>()
-    filterList(this, newList, callbackFn)
+    const newLinkedList = new DoublyLinkedList<T>()
+    filterList(this, newLinkedList, callbackFn)
 
-    return newList
+    return newLinkedList
   }
 
   map(callbackFn: CallbackMapFn<T>) {
-    const newList = new DoublyLinkedList<T>()
-    mapList(this, newList, callbackFn)
+    const newLinkedList = new DoublyLinkedList<T>()
+    mapList(this, newLinkedList, callbackFn)
 
-    return newList
+    return newLinkedList
   }
 }
 

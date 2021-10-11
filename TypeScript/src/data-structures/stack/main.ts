@@ -7,7 +7,7 @@ let option: number, el: unknown
 const stack = new Stack()
 
 do {
-  option = questionInt(`
+  const option = questionInt(`
 Menu:
 1 - Insert element on stack
 2 - Remove element on stack

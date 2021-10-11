@@ -1,14 +1,14 @@
 import { Node } from '../../models/Node'
 
 import {
-  CompareFn,
   CallbackForeachFn,
+  CallbackReduceFn,
   CallbackFilterFn,
   CallbackMapFn,
-  CallbackReduceFn,
+  CompareFn,
 } from '../../../util/types'
 
-export abstract class List<T> {
+export abstract class LinkedList<T> {
   protected _length = 0
   protected _head?: Node<T>
   protected _tail?: Node<T>
@@ -57,7 +57,7 @@ export abstract class List<T> {
       pointer = pointer.next
       i++
     }
-    
+
     return -1
   }
 
@@ -105,11 +105,11 @@ export abstract class List<T> {
     }
   }
 
-  abstract concat(list: List<T>): List<T>
+  abstract concat(linkedList: LinkedList<T>): LinkedList<T>
 
-  abstract filter(callbackFn: CallbackFilterFn<T>): List<T>
-  
-  abstract map(callbackFn: CallbackMapFn<T>): List<T>
+  abstract filter(callbackFn: CallbackFilterFn<T>): LinkedList<T>
+
+  abstract map(callbackFn: CallbackMapFn<T>): LinkedList<T>
 
   reduce(callbackFn: CallbackReduceFn<T>, initialValue?: T) {
     let acc = initialValue

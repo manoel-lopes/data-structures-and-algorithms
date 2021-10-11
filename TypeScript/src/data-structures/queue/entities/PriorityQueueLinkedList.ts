@@ -28,4 +28,4 @@ class PriorityQueueLinkedList<T> extends Queue<T> {
   }
 }
 
-export { PriorityQueueLinkedList as Queue }
+export { PriorityQueueLinkedList as PriorityQueue }
