@@ -2,19 +2,21 @@ import { questionInt } from 'readline-sync'
 
 import { LinkedList } from '../lib/LinkedList'
 
-export const createLinkedListExecutionMap = (linkedList: LinkedList<unknown>) => {
-  let el: unknown, index: number
+import { createElement } from '../../../util/functions'
+
+export const createLinkedListExecutionMap = <T>(linkedList: LinkedList<T>) => {
+  let el: T, index: number
   const executionMap = {}
 
   executionMap[1] = () => {
-    el = questionInt('\nType the element to be insert: ')
+    el = createElement('\nType the element to be insert: ')
     linkedList.insert(el)
 
     console.log(`\n${linkedList.toString()}`)
   }
 
   executionMap[2] = () => {
-    el = questionInt('\nType the element to be insert: ')
+    el = createElement('\nType the element to be insert: ')
     linkedList.push(el)
 
     console.log(`\n${linkedList.toString()}`)
@@ -22,7 +24,7 @@ export const createLinkedListExecutionMap = (linkedList: LinkedList<unknown>) =>
 
   executionMap[3] = () => {
     index = questionInt('\nType the index of the new element: ')
-    el = questionInt('Type the new element: ')
+    el = createElement('Type the new element: ')
 
     if (!linkedList.insert(el, index)) {
       console.log('\nInsertion failed!')
@@ -60,7 +62,7 @@ export const createLinkedListExecutionMap = (linkedList: LinkedList<unknown>) =>
       return
     }
 
-    el = questionInt('\nType the element to be remove: ')
+    el = createElement('\nType the element to be remove: ')
     index = linkedList.indexOf(el)
 
     if (index === -1) {
@@ -99,7 +101,7 @@ export const createLinkedListExecutionMap = (linkedList: LinkedList<unknown>) =>
   }
 
   executionMap[9] = () => {
-    el = questionInt('\nType the element: ')
+    el = createElement('\nType the element: ')
     index = linkedList.indexOf(el)
 
     if (linkedList.indexOf(el) === -1) {
@@ -112,7 +114,7 @@ export const createLinkedListExecutionMap = (linkedList: LinkedList<unknown>) =>
 
   executionMap[10] = () => {
     index = questionInt('\nType the index of the element to be change: ')
-    el = questionInt('Type the new element: ')
+    el = createElement('Type the new element: ')
 
     linkedList.setElementAt(el, index)
 

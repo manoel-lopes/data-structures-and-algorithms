@@ -3,5 +3,5 @@
   "singleQuote": true,
   "useTabs": false,
   "arrowParens": "avoid",
-  "printWidth": 80
+  "printWidth": 84
 }
