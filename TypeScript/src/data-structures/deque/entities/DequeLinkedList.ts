@@ -15,15 +15,19 @@ class DequeLinkedList<T> {
     return this.deque.tail
   }
 
-  unshift = (el: T) => this.deque.insert(el)
-
   push = (el: T) => this.deque.push(el)
-
-  shift = () => this.deque.removeAt(0)
 
   pop = () => this.deque.removeAt(this.deque.length - 1)
 
-  clear = () => this.deque.clear()
+  unshift = (el: T) => this.deque.insert(el)
+
+  shift = () => this.deque.removeAt(0)
+
+  clear() {
+    while (this.length) {
+      this.shift()
+    }
+  }
 
   toString() {
     if (!this.length) {
@@ -31,6 +35,7 @@ class DequeLinkedList<T> {
     }
 
     let str = `${this.deque.head}`
+
     for (let i = 1; i < this.length; i++) {
       str = `${str} ${this.deque.getElementAt(i)}`
     }
