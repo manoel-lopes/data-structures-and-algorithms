@@ -2,8 +2,8 @@ import { questionInt } from 'readline-sync'
 
 import { List } from './lib/List'
 
-// import { LinkedList } from './entities/LinkedList'
-import { LinkedList } from './entities/DoublyLinkedList'
+import { LinkedList } from './entities/LinkedList'
+// import { LinkedList } from './entities/DoublyLinkedList'
 // import { LinkedList } from './entities/CircularLinkedList'
 
 let option: number, el: unknown, index: number

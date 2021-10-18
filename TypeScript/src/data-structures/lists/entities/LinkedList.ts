@@ -3,7 +3,12 @@ import { List } from '../lib/List'
 import { Node } from '../../models/Node'
 
 import { CallbackFilterFn, CallbackMapFn } from './../../../util/types'
-import { concatLists, filterList, mapList } from './../../../util/functions'
+
+import {
+  concatLists,
+  filterList,
+  mapList,
+} from './../../../util/functions'
 
 export class LinkedList<T> extends List<T> {
   push(el: T) {
@@ -26,20 +31,16 @@ export class LinkedList<T> extends List<T> {
       const node = new Node(el)
 
       if (!index) {
-      
         if (!this._head) {
           this._head = node
           this._tail = node
-      
         } else {
           node.next = this._head
           this._head = node
         }
-      
       } else if (index === this._length) {
         this._tail.next = node
         this._tail = node
-      
       } else {
         const ancestor = this.getNode(index - 1)
         const current = ancestor.next
@@ -62,7 +63,6 @@ export class LinkedList<T> extends List<T> {
         if (!this._head) {
           this._tail = null
         }
-      
       } else {
         const ancestor = this.getNode(index - 1)
         pointer = ancestor.next
@@ -82,13 +82,14 @@ export class LinkedList<T> extends List<T> {
       return ''
     }
 
-    let str = `${pointer.el}`
+    let str = JSON.stringify(pointer.el)
     pointer = pointer.next
 
     for (let i = 1; i < this._length && pointer; i++) {
-      str = `${str} -> ${pointer.el}`
+      str = `${str} -> ${JSON.stringify(pointer.el)}`
       pointer = pointer.next
     }
+
     return `${str} ->`
   }
 

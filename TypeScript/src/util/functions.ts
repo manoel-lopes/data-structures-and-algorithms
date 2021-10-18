@@ -64,7 +64,11 @@ const concatLists = <T>(listA: List<T>, listB: List<T>, newList: List<T>) => {
   return newList
 }
 
-const filterList = <T>(list: List<T>, newList: List<T>, callbackFn: CallbackFilterFn<T>) => {
+const filterList = <T>(
+  list: List<T>,
+  newList: List<T>,
+  callbackFn: CallbackFilterFn<T>
+) => {
   for (let i = 0; i < list.length; i++) {
     if (callbackFn(list.getElementAt(i), i, list)) {
       newList.push(list.getElementAt(i))
@@ -73,7 +77,11 @@ const filterList = <T>(list: List<T>, newList: List<T>, callbackFn: CallbackFilt
   return newList
 }
 
-const mapList = <T>(list: List<T>, newList: List<T>, callbackFn: CallbackMapFn<T>) => {
+const mapList = <T>(
+  list: List<T>,
+  newList: List<T>,
+  callbackFn: CallbackMapFn<T>
+) => {
   for (let i = 0; i < list.length; i++) {
     newList.push(callbackFn(list.getElementAt(i), i, list))
   }
