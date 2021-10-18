@@ -8,7 +8,7 @@ import { LinkedList } from './entities/SinglyLinkedList'
 
 import { createRage, isInRange } from '../../util/functions'
 
-const linkedList = new LinkedList<number>()
+const linkedList = new LinkedList()
 
 const main = () => {
   do {

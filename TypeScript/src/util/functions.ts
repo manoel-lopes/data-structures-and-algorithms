@@ -1,5 +1,3 @@
-import { question } from 'readline-sync'
-
 import { LinkedList } from '../data-structures/lists/lib/LinkedList'
 
 import { CallbackFilterFn, CallbackMapFn } from './../util/types'
@@ -59,33 +57,6 @@ const isArraySorted = (array: number[]) => {
   return isArraySorted
 }
 
-const createRage = (start: number, end: number) => {
-  return Array.from(Array(end - start + 1)).map((_, i) => start + i)
-}
-
-const isInRange = (range: number[], value: number) => {
-  return range.find(el => el === value) == undefined ? false : true
-}
-
-const isNumber = (value: string) => {
-  return !value.length ? false : Number(value) === 0 ? true : !!Number(value)
-}
-
-const createElement = (query: string): unknown => {
-  const el = question(query)
-
-  if (isNumber(el)) {
-    return Number(el)
-  } else if (el === 'false' || el === 'true') {
-    if (el === 'false') {
-      return false
-    }
-    return true
-  }
-
-  return el
-}
-
 const concatLists = <T>(
   linkedListA: LinkedList<T>,
   linkedListB: LinkedList<T>,
@@ -121,6 +92,14 @@ const mapList = <T>(
   return newLinkedList
 }
 
+const createRage = (start: number, end: number) => {
+  return Array.from(Array(end - start + 1)).map((_, i) => start + i)
+}
+
+const isInRange = (range: number[], value: number) => {
+  return range.find(el => el === value) == undefined ? false : true
+}
+
 export {
   defaultToString,
   swap,
@@ -128,10 +107,9 @@ export {
   generateRandomValue,
   generateArrayWithRandomValues,
   isArraySorted,
-  createRage,
-  isInRange,
-  createElement,
   concatLists,
   filterList,
   mapList,
+  createRage,
+  isInRange,
 }
