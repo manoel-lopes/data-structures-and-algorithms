@@ -39,7 +39,6 @@ export class Stack<T> {
     if (!this.length) {
       return ''
     }
-    
     let str = `${this.stack[0]}`
     for (let i = 1; i < this.count; i++) {
       str = `${this.stack[i]}\n${str}`

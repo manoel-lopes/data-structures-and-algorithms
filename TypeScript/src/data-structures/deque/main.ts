@@ -3,11 +3,11 @@ import { questionInt } from 'readline-sync'
 // import { Deque } from './entities/DequeLinkedList'
 import { Deque } from './entities/Deque'
 
-let el: unknown
+let option: number, el: unknown
 const deque = new Deque()
 
 do {
-  const option = questionInt(`
+  option = questionInt(`
 Menu:
 1 - Insert element at the front of deque
 2 - Insert element at the back of deque
@@ -26,7 +26,6 @@ Option: `)
 
     console.log(`\n${deque.toString()}`)
   } else if (option === 2) {
-
     el = questionInt('\nType the element to be insert: ')
     deque.push(el)
 
@@ -73,7 +72,6 @@ Option: `)
     if (!deque.length) {
       console.log('\nThe deque is empty!')
     }
-    
   } else {
     console.log('\nInvalid Option!')
   }

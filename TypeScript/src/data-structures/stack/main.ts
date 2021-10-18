@@ -3,7 +3,7 @@ import { questionInt } from 'readline-sync'
 import { Stack } from './entities/StackLinkedList'
 // import { Stack } from './entities/Stack'
 
-let el: unknown
+let option: number, el: unknown
 const stack = new Stack()
 
 do {

@@ -4,7 +4,7 @@ import { PriorityQueue as Queue } from './entities/PriorityQueueLinkedList'
 // import { Queue } from './entities/QueueLinkedList'
 // import { Queue } from './entities/Queue'
 
-let el: unknown
+let option: number, el: number
 const queue = new Queue()
 
 do {

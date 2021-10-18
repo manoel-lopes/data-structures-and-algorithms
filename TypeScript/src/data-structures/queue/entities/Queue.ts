@@ -39,12 +39,12 @@ export class Queue<T> {
   toString() {
     if (!this.length) {
       return ''
+    } else {
+      let str = `${this.queue[this.lowestCount]}`
+      for (let i = this.lowestCount + 1; i < this.count; i++) {
+        str = `${str} ${this.queue[i]}`
+      }
+      return str
     }
-    
-    let str = `${this.queue[this.lowestCount]}`
-    for (let i = this.lowestCount + 1; i < this.count; i++) {
-      str = `${str} ${this.queue[i]}`
-    }
-    return str
   }
 }

@@ -75,8 +75,7 @@ export default class Map<K, V> {
   isEmpty = () => this.size === 0
 
   forEach(callbackFn: (key: K, value: V) => unknown) {
-    const array = [...this]
-    array.forEach(valuePair => {
+    ;[...this].forEach(valuePair => {
       callbackFn(valuePair.key, valuePair.value)
     })
   }

@@ -3,7 +3,7 @@ import { question, questionInt } from 'readline-sync'
 // import { Set } from './entities/Set'
 import { Set } from './entities/SetLinkedList'
 
-let el: unknown, choice: string, isSupersetStr: string
+let option: number, el: unknown, choice: string, isSupersetStr: string
 const setA = new Set()
 const setB = new Set()
 

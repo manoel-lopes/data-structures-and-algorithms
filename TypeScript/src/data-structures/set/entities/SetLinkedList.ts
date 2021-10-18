@@ -101,6 +101,7 @@ class SetLinkedList<T> {
     }
 
     let str = `${this.set.getElementAt(0)}`
+
     for (let i = 1; i < this.size; i++) {
       str = `${str}, ${this.set.getElementAt(i)}`
     }

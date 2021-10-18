@@ -12,18 +12,19 @@ class PriorityQueueLinkedList<T> extends Queue<T> {
   enqueue = (el: T) => {
     if (!this.queue.length) {
       return this.queue.insert(el)
-    }
+    } else {
+      let pointer: T, i: number
 
-    let pointer: T, i: number
-    for (i = 0; i < this.queue.length; i++) {
-      pointer = this.queue.getElementAt(i)
+      for (i = 0; i < this.queue.length; i++) {
+        pointer = this.queue.getElementAt(i)
 
-      if (el < pointer) {
-        return this.queue.insert(el, i)
+        if (el < pointer) {
+          return this.queue.insert(el, i)
+        }
       }
-    }
 
-    return this.queue.insert(el, this.queue.length)
+      return this.queue.insert(el, this.queue.length)
+    }
   }
 }
 
