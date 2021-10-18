@@ -8,7 +8,7 @@ const setA = new Set()
 const setB = new Set()
 
 do {
-  const option = questionInt(`
+  option = questionInt(`
 Menu:
 1  - Insert element on set
 2  - Remove element on set

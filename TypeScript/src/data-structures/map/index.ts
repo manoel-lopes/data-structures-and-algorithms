@@ -10,10 +10,12 @@ console.log('Angular: ', technologies.get('angular'))
 
 // const variedKeys = new Map<unknown, unknown>([
 const variedKeys = new Map([
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   [function() { }, 'Function'],
   [{}, 'Object'],
   [123, 'Number']
 ])
+
 
 console.log()
 variedKeys.forEach((k, v) => console.log(k, v))

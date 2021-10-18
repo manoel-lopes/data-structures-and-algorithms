@@ -1,14 +1,14 @@
 import { questionInt } from 'readline-sync'
 
-import { PriorityQueue as Queue } from './entities/PriorityQueueLinkedList'
-// import { Queue } from './entities/QueueLinkedList'
+// import { Queue } from './entities/PriorityQueueLinkedList'
+import { Queue } from './entities/QueueLinkedList'
 // import { Queue } from './entities/Queue'
 
 let option: number, el: number
 const queue = new Queue()
 
 do {
-  const option = questionInt(`
+  option = questionInt(`
 Menu:
 1 - Insert element on queue
 2 - Remove element on queue

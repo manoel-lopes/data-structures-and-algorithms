@@ -1,4 +1,4 @@
-import { LinkedList } from '../../../src/data-structures/lists/entities/SinglyLinkedList'
+import { LinkedList } from '../../../src/data-structures/lists/entities/LinkedList'
 
 test('Must insert a element at the end of the linked list', () => {
   const linkedList = new LinkedList()

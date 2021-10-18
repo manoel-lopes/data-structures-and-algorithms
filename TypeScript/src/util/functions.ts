@@ -1,4 +1,4 @@
-import { LinkedList } from '../data-structures/lists/lib/LinkedList'
+import { List } from '../data-structures/lists/lib/List'
 
 import { CallbackFilterFn, CallbackMapFn } from './../util/types'
 
@@ -57,47 +57,27 @@ const isArraySorted = (array: number[]) => {
   return isArraySorted
 }
 
-const concatLists = <T>(
-  linkedListA: LinkedList<T>,
-  linkedListB: LinkedList<T>,
-  newLinkedList: LinkedList<T>
-) => {
-  linkedListA.forEach((el: T) => newLinkedList.push(el))
-  linkedListB.forEach((el: T) => newLinkedList.push(el))
+const concatLists = <T>(listA: List<T>, listB: List<T>, newList: List<T>) => {
+  listA.forEach((el: T) => newList.push(el))
+  listB.forEach((el: T) => newList.push(el))
 
-  return newLinkedList
+  return newList
 }
 
-const filterList = <T>(
-  linkedList: LinkedList<T>,
-  newLinkedList: LinkedList<T>,
-  callbackFn: CallbackFilterFn<T>
-) => {
-  for (let i = 0; i < linkedList.length; i++) {
-    if (callbackFn(linkedList.getElementAt(i), i, linkedList)) {
-      newLinkedList.push(linkedList.getElementAt(i))
+const filterList = <T>(list: List<T>, newList: List<T>, callbackFn: CallbackFilterFn<T>) => {
+  for (let i = 0; i < list.length; i++) {
+    if (callbackFn(list.getElementAt(i), i, list)) {
+      newList.push(list.getElementAt(i))
     }
   }
-  return newLinkedList
+  return newList
 }
 
-const mapList = <T>(
-  linkedList: LinkedList<T>,
-  newLinkedList: LinkedList<T>,
-  callbackFn: CallbackMapFn<T>
-) => {
-  for (let i = 0; i < linkedList.length; i++) {
-    newLinkedList.push(callbackFn(linkedList.getElementAt(i), i, linkedList))
+const mapList = <T>(list: List<T>, newList: List<T>, callbackFn: CallbackMapFn<T>) => {
+  for (let i = 0; i < list.length; i++) {
+    newList.push(callbackFn(list.getElementAt(i), i, list))
   }
-  return newLinkedList
-}
-
-const createRage = (start: number, end: number) => {
-  return Array.from(Array(end - start + 1)).map((_, i) => start + i)
-}
-
-const isInRange = (range: number[], value: number) => {
-  return range.find(el => el === value) == undefined ? false : true
+  return newList
 }
 
 export {
@@ -110,6 +90,4 @@ export {
   concatLists,
   filterList,
   mapList,
-  createRage,
-  isInRange,
 }

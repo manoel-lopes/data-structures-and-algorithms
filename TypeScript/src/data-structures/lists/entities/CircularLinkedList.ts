@@ -1,11 +1,11 @@
-import { LinkedList } from '../lib/LinkedList'
+import { List } from '../lib/List'
 
 import { Node } from '../../models/Node'
 
 import { CallbackFilterFn, CallbackMapFn } from './../../../util/types'
 import { concatLists, filterList, mapList } from './../../../util/functions'
 
-class CircularLinkedList<T> extends LinkedList<T> {
+class CircularLinkedList<T> extends List<T> {
   push(el: T) {
     const node = new Node(el)
 
@@ -88,25 +88,25 @@ class CircularLinkedList<T> extends LinkedList<T> {
     }
   }
 
-  concat(linkedList: LinkedList<T>) {
-    const newLinkedList = new CircularLinkedList<T>()
-    concatLists(this, linkedList, newLinkedList)
+  concat(list: List<T>) {
+    const newList = new CircularLinkedList<T>()
+    concatLists(this, list, newList)
 
-    return newLinkedList
+    return newList
   }
 
   filter(callbackFn: CallbackFilterFn<T>) {
-    const newLinkedList = new CircularLinkedList<T>()
-    filterList(this, newLinkedList, callbackFn)
+    const newList = new CircularLinkedList<T>()
+    filterList(this, newList, callbackFn)
 
-    return newLinkedList
+    return newList
   }
 
   map(callbackFn: CallbackMapFn<T>) {
-    const newLinkedList = new CircularLinkedList<T>()
-    mapList(this, newLinkedList, callbackFn)
+    const newList = new CircularLinkedList<T>()
+    mapList(this, newList, callbackFn)
 
-    return newLinkedList
+    return newList
   }
 
   toString() {

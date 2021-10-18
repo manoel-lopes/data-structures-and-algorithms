@@ -1,11 +1,11 @@
-import { LinkedList } from '../lib/LinkedList'
+import { List } from '../lib/List'
 
 import { Node } from '../../models/Node'
 
-import { CallbackFilterFn, CallbackMapFn } from '../../../util/types'
-import { concatLists, filterList, mapList } from '../../../util/functions'
+import { CallbackFilterFn, CallbackMapFn } from './../../../util/types'
+import { concatLists, filterList, mapList } from './../../../util/functions'
 
-class SinglyLinkedList<T> extends LinkedList<T> {
+export class LinkedList<T> extends List<T> {
   push(el: T) {
     const node = new Node(el)
 
@@ -92,26 +92,24 @@ class SinglyLinkedList<T> extends LinkedList<T> {
     return `${str} ->`
   }
 
-  concat(linkedList: LinkedList<T>) {
-    const newLinkedList = new SinglyLinkedList<T>()
-    concatLists(this, linkedList, newLinkedList)
+  concat(list: List<T>) {
+    const newList = new LinkedList<T>()
+    concatLists(this, list, newList)
 
-    return newLinkedList
+    return newList
   }
 
   filter(callbackFn: CallbackFilterFn<T>) {
-    const newLinkedList = new SinglyLinkedList<T>()
-    filterList(this, newLinkedList, callbackFn)
+    const newList = new LinkedList<T>()
+    filterList(this, newList, callbackFn)
 
-    return newLinkedList
+    return newList
   }
 
   map(callbackFn: CallbackMapFn<T>) {
-    const newLinkedList = new SinglyLinkedList<T>()
-    mapList(this, newLinkedList, callbackFn)
+    const newList = new LinkedList<T>()
+    mapList(this, newList, callbackFn)
 
-    return newLinkedList
+    return newList
   }
 }
-
-export { SinglyLinkedList as LinkedList }
