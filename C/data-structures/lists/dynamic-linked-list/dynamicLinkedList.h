@@ -9,8 +9,7 @@ List *createList(int TYPE_SIZE);
 int len(List *list);
 // int isEmpty(List *list);
 
-// int insert(List *list, int el, int index);
-// int push(List *list, int el);
+int insert(List *list, void *el, int index);
 int push(List *list, void *el);
 
 // int delete(List *list, int el);
@@ -19,7 +18,6 @@ int push(List *list, void *el);
 // int getElementAt(List *list, int index, int *el);
 // int setElementAt(List *list, int index, int *el);
 
-// int printList(List *list);
 void printList(List *list, void (*printfn)(void *));
 
 // int clear(List *list);

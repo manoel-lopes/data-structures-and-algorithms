@@ -8,14 +8,15 @@ void print(void *el);
 
 int main()
 {
-  int ok;
 
   List *list = createList(sizeof(int));
 
   int el = 1;
-  ok = push(list, &el);
+  push(list, &el);
   el = 2;
-  ok = push(list, &el);
+  push(list, &el);
+  el = 0;
+  insert(list, &el, 1);
 
   printList(list, print);
 

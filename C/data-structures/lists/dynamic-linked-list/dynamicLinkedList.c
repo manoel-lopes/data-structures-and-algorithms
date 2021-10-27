@@ -81,52 +81,48 @@ int len(List *list)
 // 	return 1;
 // }
 
-// int insert(List *list, void *el, int index)
-// {
-// 	if (!list || index <= 0)
-// 		return 0;
+int insert(List *list, void *el, int index)
+{
+	if (!list || index <= 0)
+		return 0;
 
-// 	Node *pointer, *node = createNode();
+	Node *pointer, *node = createNode();
+	if (!node)
+		return 0;
 
-// 	if (!node)
-// 		return 0;
+	node->el = malloc(list->TYPE_SIZE);
+	if (!node->el)
+		return 0;
 
-// 	void *el = malloc(list->TYPE_SIZE);
-// 	if (!el)
-// 		return 0;
+	memcpy(node->el, el, list->TYPE_SIZE);
 
-// 	memcpy(el, node->el, list->TYPE_SIZE);
+	if (index == 1)
+	{
+		node->next = list->head;
 
-// 	// node->el = el;
-// 	node->next = NULL;
+		if (!list->head)
+			list->tail = node;
 
-// 	if (index == 1)
-// 	{
-// 		node->next = list->head;
+		list->head = node;
+	}
+	else if (index == list->length + 1)
+	{
+		list->tail->next = node; // * put node at index
+		list->tail = node;		 // * set new tail
+	}
+	else
+	{
+		Node *pointer = list->head;
+		for (int i = 1; i < index - 1; i++)
+			pointer = pointer->next;
 
-// 		if (!list->head)
-// 			list->tail = node;
+		node->next = pointer->next;
+		pointer->next = node;
+	}
 
-// 		list->head = node;
-// 	}
-// 	else if (index == list->length + 1)
-// 	{
-// 		list->tail->next = node; // * put node at index
-// 		list->tail = node;		 // * set new tail
-// 	}
-// 	else
-// 	{
-// 		Node *pointer = list->head;
-// 		for (int i = 1; i < index - 1; i++)
-// 			pointer = pointer->next;
-
-// 		node->next = pointer->next;
-// 		pointer->next = node;
-// 	}
-
-// 	list->length++;
-// 	return 1;
-// }
+	list->length++;
+	return 1;
+}
 
 int push(List *list, void *el)
 {
