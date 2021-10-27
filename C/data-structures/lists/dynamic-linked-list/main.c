@@ -3,239 +3,254 @@
 #include "dynamicLinkedList.h"
 
 void createElement(int *el);
+int toInt(void *value);
+void print(void *el);
 
 int main()
 {
-  List *list = NULL;
-  int option, el, ok, index;
+  int ok;
 
-  list = createList();
+  List *list = createList(sizeof(int));
 
-  if (list)
-  {
-    do
-    {
-      printf("\n\nMenu:");
-      printf("\n1  - Insert element at front");
-      printf("\n2  - Insert element at back");
-      printf("\n3  - Insert element (any index)");
-      printf("\n4  - Remove element at front");
-      printf("\n5  - Remove element at back");
-      printf("\n6  - Remove element");
-      printf("\n7  - Get list length");
-      printf("\n8  - Get element by index");
-      printf("\n9  - Get index by element");
-      printf("\n10 - Change element");
-      printf("\n11 - Print list");
-      printf("\n12 - Clear list");
-      printf("\n13 - Finish");
-      printf("\nOption: ");
-      scanf("%d", &option);
+  int el = 1;
+  ok = push(list, &el);
+  el = 2;
+  ok = push(list, &el);
 
-      if (option == 1)
-      {
-        printf("\n");
-        createElement(&el);
-        ok = insert(list, el, 1);
+  printList(list, print);
 
-        if (ok)
-        {
-          printf("\n");
-          printList(list);
-        }
+  // printf("\n%d\n", ok);
 
-        else
-          printf("\nError inserting the element!");
-      }
+  // List *list = NULL;
+  // int option, el, ok, index;
 
-      else if (option == 2)
-      {
-        printf("\n");
-        createElement(&el);
-        ok = push(list, el);
+  // list = createList(sizeof(int));
 
-        if (ok)
-        {
-          printf("\n");
-          printList(list);
-        }
+  // if (list)
+  // {
+  //   do
+  //   {
+  //     printf("\n\nMenu:");
+  //     printf("\n1  - Insert element at front");
+  //     printf("\n2  - Insert element at back");
+  //     printf("\n3  - Insert element (any index)");
+  //     printf("\n4  - Remove element at front");
+  //     printf("\n5  - Remove element at back");
+  //     printf("\n6  - Remove element");
+  //     printf("\n7  - Get list length");
+  //     printf("\n8  - Get element by index");
+  //     printf("\n9  - Get index by element");
+  //     printf("\n10 - Change element");
+  //     printf("\n11 - Print list");
+  //     printf("\n12 - Clear list");
+  //     printf("\n13 - Finish");
+  //     printf("\nOption: ");
+  //     scanf("%d", &option);
 
-        else
-          printf("\nError inserting the element!");
-      }
+  //     if (option == 1)
+  //     {
+  //       printf("\n");
+  //       createElement(&el);
+  //       ok = insert(list, el, 1);
 
-      else if (option == 3)
-      {
-        printf("\nType the index: ");
-        scanf("%d", &index);
+  //       if (ok)
+  //       {
+  //         printf("\n");
+  //         printList(list);
+  //       }
 
-        createElement(&el);
-        ok = insert(list, el, index);
+  //       else
+  //         printf("\nError inserting the element!");
+  //     }
 
-        if (ok)
-        {
-          printf("\n");
-          printList(list);
-        }
+  //     else if (option == 2)
+  //     {
+  //       printf("\n");
+  //       createElement(&el);
+  //       ok = push(list, el);
 
-        else
-          printf("\nError inserting the element!");
-      }
+  //       if (ok)
+  //       {
+  //         printf("\n");
+  //         printList(list);
+  //       }
 
-      else if (option == 4)
-      {
-        ok = getHead(list, &el);
+  //       else
+  //         printf("\nError inserting the element!");
+  //     }
 
-        if (ok)
-        {
-          ok = delete (list, el);
+  //     else if (option == 3)
+  //     {
+  //       printf("\nType the index: ");
+  //       scanf("%d", &index);
 
-          if (ok)
-          {
-            if (!len(list))
-              printf("\nThe list is empty!");
+  //       createElement(&el);
+  //       ok = insert(list, el, index);
 
-            else
-            {
-              printf("\n");
-              printList(list);
-            }
-          }
-        }
+  //       if (ok)
+  //       {
+  //         printf("\n");
+  //         printList(list);
+  //       }
 
-        else
-          printf("\nError removing the element!");
-      }
+  //       else
+  //         printf("\nError inserting the element!");
+  //     }
 
-      else if (option == 5)
-      {
-        ok = getTail(list, &el);
+  //     else if (option == 4)
+  //     {
+  //       ok = getHead(list, &el);
 
-        if (ok)
-        {
+  //       if (ok)
+  //       {
+  //         ok = delete (list, el);
 
-          ok = delete (list, el);
+  //         if (ok)
+  //         {
+  //           if (!len(list))
+  //             printf("\nThe list is empty!");
 
-          if (ok)
-          {
-            if (!len(list))
-              printf("\nThe list is empty!");
+  //           else
+  //           {
+  //             printf("\n");
+  //             printList(list);
+  //           }
+  //         }
+  //       }
 
-            else
-            {
-              printf("\n");
-              printList(list);
-            }
-          }
-        }
+  //       else
+  //         printf("\nError removing the element!");
+  //     }
 
-        else
-          printf("\nError removing the element!");
-      }
+  //     else if (option == 5)
+  //     {
+  //       ok = getTail(list, &el);
 
-      else if (option == 6)
-      {
-        printf("\nType the element to be remove: ");
-        scanf("%d", &el);
+  //       if (ok)
+  //       {
 
-        ok = delete (list, el);
+  //         ok = delete (list, el);
 
-        if (ok)
-        {
-          if (!len(list))
-            printf("\nThe list is empty!");
+  //         if (ok)
+  //         {
+  //           if (!len(list))
+  //             printf("\nThe list is empty!");
 
-          else
-          {
-            printf("\n");
-            printList(list);
-          }
-        }
+  //           else
+  //           {
+  //             printf("\n");
+  //             printList(list);
+  //           }
+  //         }
+  //       }
 
-        else
-          printf("\nError removing the element!");
-      }
+  //       else
+  //         printf("\nError removing the element!");
+  //     }
 
-      else if (option == 7)
-      {
-        if (!len(list))
-          printf("\nThe list is empty!");
+  //     else if (option == 6)
+  //     {
+  //       printf("\nType the element to be remove: ");
+  //       scanf("%d", &el);
 
-        else
-          printf("\nQuantity of elements in the list: %d", len(list));
-      }
+  //       ok = delete (list, el);
 
-      else if (option == 8)
-      {
-        printf("\nType the index: ");
-        scanf("%d", &index);
+  //       if (ok)
+  //       {
+  //         if (!len(list))
+  //           printf("\nThe list is empty!");
 
-        ok = getElementAt(list, index, &el);
+  //         else
+  //         {
+  //           printf("\n");
+  //           printList(list);
+  //         }
+  //       }
 
-        if (ok)
-          printf("\nElement at index %d: %d", index, el);
+  //       else
+  //         printf("\nError removing the element!");
+  //     }
 
-        else
-          printf("\nIndex out of range!");
-      }
+  //     else if (option == 7)
+  //     {
+  //       if (!len(list))
+  //         printf("\nThe list is empty!");
 
-      else if (option == 9)
-      {
-        printf("\nType the element: ");
-        scanf("%d", &el);
+  //       else
+  //         printf("\nQuantity of elements in the list: %d", len(list));
+  //     }
 
-        ok = indexOf(list, el, &index);
+  //     else if (option == 8)
+  //     {
+  //       printf("\nType the index: ");
+  //       scanf("%d", &index);
 
-        if (ok)
-          printf("\nElement at index %d: %d", index, el);
+  //       ok = getElementAt(list, index, &el);
 
-        else
-          printf("\nElement not found!");
-      }
+  //       if (ok)
+  //         printf("\nElement at index %d: %d", index, el);
 
-      else if (option == 10)
-      {
-        if (!len(list))
-          printf("\nThe list is empty!");
+  //       else
+  //         printf("\nIndex out of range!");
+  //     }
 
-        else
-        {
-          printf("\n");
-          printList(list);
-        }
-      }
+  //     else if (option == 9)
+  //     {
+  //       printf("\nType the element: ");
+  //       scanf("%d", &el);
 
-      else if (option == 11)
-      {
-        ok = clear(list);
+  //       ok = indexOf(list, el, &index);
 
-        if (ok)
-          printf("\nList cleared with success!");
+  //       if (ok)
+  //         printf("\nElement at index %d: %d", index, el);
 
-        else
-          printf("\nError clearing the list!");
-      }
+  //       else
+  //         printf("\nElement not found!");
+  //     }
 
-      else if (option == 12)
-      {
-        ok = freeList(list);
+  //     else if (option == 10)
+  //     {
+  //       if (!len(list))
+  //         printf("\nThe list is empty!");
 
-        if (ok)
-        {
-          printf("\nList freed with success!");
-          printf("\nFinishing...\n");
-        }
+  //       else
+  //       {
+  //         printf("\n");
+  //         printList(list);
+  //       }
+  //     }
 
-        else
-          printf("\nError freeding the list!");
-      }
+  //     else if (option == 11)
+  //     {
+  //       ok = clear(list);
 
-      else
-        printf("\nInvalid Option!");
-    } while (1);
+  //       if (ok)
+  //         printf("\nList cleared with success!");
 
-    return 0;
-  }
+  //       else
+  //         printf("\nError clearing the list!");
+  //     }
+
+  //     else if (option == 12)
+  //     {
+  //       ok = freeList(list);
+
+  //       if (ok)
+  //       {
+  //         printf("\nList freed with success!");
+  //         printf("\nFinishing...\n");
+  //       }
+
+  //       else
+  //         printf("\nError freeding the list!");
+  //     }
+
+  //     else
+  //       printf("\nInvalid Option!");
+  //   } while (1);
+
+  //   return 0;
+  // }
 }
 
 void createElement(int *el)
@@ -243,3 +258,7 @@ void createElement(int *el)
   printf("Type the element: ");
   scanf("%d", el);
 }
+
+int toInt(void *value) { return *((int *)value); }
+
+void print(void *el) { printf("%d -> ", toInt(el)); }
