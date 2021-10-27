@@ -42,16 +42,6 @@ int main()
         {
           printf("\n");
           printList(list);
-
-          ok = getHead(list, &el);
-
-          if (ok)
-          {
-            printf("\nHead: %d", el);
-
-            getTail(list, &el);
-            printf("\nTail: %d", el);
-          }
         }
 
         else
@@ -68,16 +58,6 @@ int main()
         {
           printf("\n");
           printList(list);
-
-          ok = getHead(list, &el);
-
-          if (ok)
-          {
-            printf("\nHead: %d", el);
-
-            getTail(list, &el);
-            printf("\nTail: %d", el);
-          }
         }
 
         else
@@ -96,16 +76,6 @@ int main()
         {
           printf("\n");
           printList(list);
-
-          ok = getHead(list, &el);
-
-          if (ok)
-          {
-            printf("\nHead: %d", el);
-
-            getTail(list, &el);
-            printf("\nTail: %d", el);
-          }
         }
 
         else
@@ -118,30 +88,17 @@ int main()
 
         if (ok)
         {
-          ok = delete(list, el);
+          ok = delete (list, el);
 
           if (ok)
           {
-            if (isEmpty(list) == 1)
+            if (!len(list))
               printf("\nThe list is empty!");
 
             else
             {
               printf("\n");
               printList(list);
-
-              if (isEmpty(list) != 1)
-              {
-                ok = getHead(list, &el);
-
-                if (ok)
-                {
-                  printf("\nHead: %d", el);
-
-                  getTail(list, &el);
-                  printf("\nTail: %d", el);
-                }
-              }
             }
           }
         }
@@ -157,30 +114,17 @@ int main()
         if (ok)
         {
 
-          ok = delete(list, el);
+          ok = delete (list, el);
 
           if (ok)
           {
-            if (isEmpty(list) == 1)
+            if (!len(list))
               printf("\nThe list is empty!");
 
             else
             {
               printf("\n");
               printList(list);
-
-              if (isEmpty(list) != 1)
-              {
-                ok = getHead(list, &el);
-
-                if (ok)
-                {
-                  printf("\nHead: %d", el);
-
-                  getTail(list, &el);
-                  printf("\nTail: %d", el);
-                }
-              }
             }
           }
         }
@@ -198,26 +142,13 @@ int main()
 
         if (ok)
         {
-          if (isEmpty(list) == 1)
+          if (!len(list))
             printf("\nThe list is empty!");
 
           else
           {
             printf("\n");
             printList(list);
-
-            if (isEmpty(list) != 1)
-            {
-              ok = getHead(list, &el);
-
-              if (ok)
-              {
-                printf("\nHead: %d", el);
-
-                getTail(list, &el);
-                printf("\nTail: %d", el);
-              }
-            }
           }
         }
 
@@ -227,7 +158,7 @@ int main()
 
       else if (option == 7)
       {
-        if (isEmpty(list) == 1)
+        if (!len(list))
           printf("\nThe list is empty!");
 
         else
@@ -264,7 +195,7 @@ int main()
 
       else if (option == 10)
       {
-        if (isEmpty(list) == 1)
+        if (!len(list))
           printf("\nThe list is empty!");
 
         else

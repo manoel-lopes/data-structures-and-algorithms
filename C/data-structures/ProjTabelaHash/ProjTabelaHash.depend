@@ -1,0 +1,47 @@
+# depslib dependency file v1.0
+1392665970 source:d:\projtabelahash\main.c
+	<stdio.h>
+	<stdlib.h>
+	"TabelaHash2.h"
+
+1392665878 d:\projtabelahash\tabelahash2.h
+
+1392665879 source:d:\projtabelahash\tabelahash2.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"TabelaHash2.h"
+
+1392665970 source:d:\projtabelahash2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"TabelaHash2.h"
+
+1392665878 d:\projtabelahash2\tabelahash2.h
+
+1392665879 source:d:\projtabelahash2\tabelahash2.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"TabelaHash2.h"
+
+1422189001 source:d:\andre\pesquisa\publicações\livros\livro estutura de dados em c\material auxiliar\códigos\projtabelahash\main.c
+	<stdio.h>
+	<stdlib.h>
+	"TabelaHash.h"
+
+1392669480 d:\andre\pesquisa\publicações\livros\livro estutura de dados em c\material auxiliar\códigos\projtabelahash\tabelahash.h
+
+1422961226 source:d:\pesquisa\publicações\livros\livro estutura de dados em c\material auxiliar\códigos\projtabelahash\main.c
+	<stdio.h>
+	<stdlib.h>
+	"TabelaHash.h"
+
+1422961166 d:\pesquisa\publicações\livros\livro estutura de dados em c\material auxiliar\códigos\projtabelahash\tabelahash.h
+
+1422899739 source:d:\pesquisa\publicações\livros\livro estutura de dados em c\material auxiliar\códigos\projtabelahash\tabelahash.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"TabelaHash.h"
+

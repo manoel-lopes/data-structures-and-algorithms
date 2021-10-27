@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "styles.js": "javascriptreact",
+        "styles.ts": "typescriptreact",
+        "colors.js": "javascriptreact",
+        "colors.ts": "typescriptreact",
+        "index.js": "javascriptreact",
+        "index.ts": "typescriptreact",
+        ".sequelizerc": "javascript",
+        "*.hbs": "html",
+        "*.blade.php": "html",
+        "dynamiclinkedlist.h": "c"
+    }
+}
