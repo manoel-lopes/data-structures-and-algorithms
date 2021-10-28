@@ -20,6 +20,24 @@ int main()
 
   printList(list, print);
 
+  getHead(list, &el);
+  printf("Head: %d\n", el);
+  getTail(list, &el);
+  printf("Tail: %d\n", el);
+
+  getElementAt(list, 2, &el);
+  printf("%d\n", el);
+
+  // el = -1;
+  // setElementAt(list, 3, &el);
+  // printList(list, print);
+  // printf("%d\n", el);
+
+  int index;
+  el = 0;
+  indexOf(list, &el, &index);
+  printf("%d\n", index);
+
   // printf("\n%d\n", ok);
 
   // List *list = NULL;

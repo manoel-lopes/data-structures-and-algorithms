@@ -34,26 +34,25 @@ List *createList(int TYPE_SIZE)
 Node *createNode()
 {
 	Node *node = malloc(sizeof(Node));
-
 	return node;
 }
 
-// int freeList(List *list)
-// {
-// 	if (!list)
-// 		return 0;
+int freeList(List *list)
+{
+	if (!list)
+		return 0;
 
-// 	Node *pointer;
-// 	while (list->head)
-// 	{
-// 		pointer = list->head;
-// 		list->head = list->head->next;
-// 		free(pointer);
-// 	}
+	Node *pointer;
+	while (list->head)
+	{
+		pointer = list->head;
+		list->head = list->head->next;
+		free(pointer);
+	}
 
-// 	free(list);
-// 	return 1;
-// }
+	free(list);
+	return 1;
+}
 
 int len(List *list)
 {
@@ -63,23 +62,23 @@ int len(List *list)
 	return list->length;
 }
 
-// int getHead(List *list, int *el)
-// {
-// 	if (!list || !list->head)
-// 		return 0;
+int getHead(List *list, void *el)
+{
+	if (!list || !list->head)
+		return 0;
 
-// 	*el = list->head->el;
-// 	return 1;
-// }
+	memcpy(el, list->head->el, list->TYPE_SIZE);
+	return 1;
+}
 
-// int getTail(List *list, int *el)
-// {
-// 	if (!list || !list->head)
-// 		return 0;
+int getTail(List *list, void *el)
+{
+	if (!list || !list->head)
+		return 0;
 
-// 	*el = list->tail->el;
-// 	return 1;
-// }
+	memcpy(el, list->tail->el, list->TYPE_SIZE);
+	return 1;
+}
 
 int insert(List *list, void *el, int index)
 {
@@ -138,8 +137,6 @@ int push(List *list, void *el)
 		return 0;
 
 	memcpy(node->el, el, list->TYPE_SIZE);
-
-	// node->el = el;
 	node->next = NULL;
 
 	if (!list->head)
@@ -188,75 +185,81 @@ int push(List *list, void *el)
 // 	return 1;
 // }
 
-// int getElementAt(List *list, int index, int *el)
-// {
-// 	if (!list || !list->head || index <= 0)
-// 		return 0;
+int getElementAt(List *list, int index, void *el)
+{
+	if (!list || !list->head || index <= 0 || index > list->length)
+		return 0;
 
-// 	if (index == list->length)
-// 	{
-// 		*el = list->tail->el;
-// 		return 1;
-// 	}
+	if (index == list->length)
+	{
+		memcpy(el, list->tail->el, list->TYPE_SIZE);
+		return 1;
+	}
 
-// 	Node *pointer = list->head;
-// 	int i = 1;
 
-// 	while (pointer && i < index)
-// 	{
-// 		pointer = pointer->next;
-// 		i++;
-// 	}
+	int i = 1;
+	Node *pointer = list->head;
+	while (pointer && i < index)
+	{
+		pointer = pointer->next;
+		i++;
+	}
 
-// 	if (!pointer)
-// 		return 0;
+	if (!pointer)
+		return 0;
 
-// 	*el = pointer->el;
-// 	free(pointer);
+	memcpy(el, pointer->el, list->TYPE_SIZE);
 
-// 	return 1;
-// }
+	return 1;
+}
 
-// int indexOf(List *list, int el, int *index)
-// {
-// 	if (!list || !list->head)
-// 		return 0;
+int setElementAt(List *list, int index, void *el)
+{
+	if (!list || !list->head || index <= 0 || index > list->length)
+		return 0;
 
-// 	Node *pointer = list->head;
-// 	int i = 1;
+	if (index == list->length)
+	{
+		memcpy(list->tail->el, el, list->TYPE_SIZE);
+		return 1;
+	}
 
-// 	while (pointer && pointer->el != el)
-// 	{
-// 		pointer = pointer->next;
-// 		i++;
-// 	}
+	int i = 1;
+	Node *pointer = list->head;
+	while (pointer && i < index)
+	{
+		pointer = pointer->next;
+		i++;
+	}
 
-// 	if (!pointer)
-// 		return 0;
+	if (!pointer)
+		return 0;
 
-// 	*index = i;
-// 	free(pointer);
+	memcpy(pointer->el, el, list->TYPE_SIZE);
 
-// 	return 1;
-// }
+	return 1;
+}
 
-// int printList(List *list)
-// {
-// 	if (!list || !list->head)
-// 		return 0;
+int indexOf(List *list, void *el, int *index)
+{
+	if (!list || !list->head)
+		return 0;
 
-// 	Node *pointer = list->head;
-// 	while (pointer->next)
-// 	{
-// 		printf("%d -> ", pointer->el);
-// 		pointer = pointer->next;
-// 	}
+	int i = 1;
+	Node *pointer = list->head;
+	while (pointer && pointer->el != el)
+	{
+		pointer = pointer->next;
+		i++;
+	}
 
-// 	printf("%d", pointer->el);
-// 	printf(" -> ");
+	if (!pointer)
+		return 0;
 
-// 	return 1;
-// }
+	*index = i;
+
+	return 1;
+}
 
 void printList(List *list, void (*printfn)(void *))
 {
@@ -273,23 +276,3 @@ void printList(List *list, void (*printfn)(void *))
 
 	printf("\n");
 }
-
-// int clear(List *list)
-// {
-// 	if (!list || !list->head)
-// 		return 0;
-
-// 	Node *pointer;
-// 	while (list->head)
-// 	{
-// 		pointer = list->head;
-// 		list->head = list->head->next;
-// 		free(pointer);
-// 	}
-
-// 	list->head = NULL;
-// 	list->tail = NULL;
-// 	list->length = 0;
-
-// 	return 1;
-// }
