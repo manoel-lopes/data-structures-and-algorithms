@@ -240,14 +240,14 @@ int setElementAt(List *list, int index, void *el)
 	return 1;
 }
 
-int indexOf(List *list, void *el, int *index, int (*comparefn)(void *))
+int indexOf(List *list, void *el, int *index, int (*comparefn)(void *, void *))
 {
 	if (!list || !list->head)
 		return 0;
 
 	int i = 1;
 	Node *pointer = list->head;
-	while (pointer && !comparefn(pointer->el))
+	while (pointer && !comparefn(el, pointer->el))
 	{
 		pointer = pointer->next;
 		i++;

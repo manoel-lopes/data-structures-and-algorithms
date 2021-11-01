@@ -5,6 +5,7 @@
 void createElement(int *el);
 int toInt(void *value);
 void print(void *el);
+int compare(void *el, void *listEl);
 
 int main()
 {
@@ -25,8 +26,8 @@ int main()
   getTail(list, &el);
   printf("Tail: %d\n", el);
 
-  getElementAt(list, 2, &el);
-  printf("%d\n", el);
+  // getElementAt(list, 2, &el);
+  // printf("%d\n", el);
 
   // el = -1;
   // setElementAt(list, 3, &el);
@@ -34,9 +35,10 @@ int main()
   // printf("%d\n", el);
 
   int index;
-  el = 0;
-  indexOf(list, &el, &index);
-  printf("%d\n", index);
+  el = -1;
+  indexOf(list, &el, &index, compare);
+  printf("el: %d\n", el);
+  printf("index: %d\n", index);
 
   // printf("\n%d\n", ok);
 
@@ -281,3 +283,11 @@ void createElement(int *el)
 int toInt(void *value) { return *((int *)value); }
 
 void print(void *el) { printf("%d -> ", toInt(el)); }
+
+int compare(void *el, void *listEl)
+{
+  if (toInt(el) != toInt(listEl))
+    return 0;
+
+  return 1;
+}
