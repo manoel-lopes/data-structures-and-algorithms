@@ -13,7 +13,7 @@ int push(List *list, void *el);
 
 // int delete(List *list, int el);
 
-int indexOf(List *list, void* el, int *index);
+int indexOf(List *list, void *el, int *index, int (*comparefn)(void *));
 int getElementAt(List *list, int index, void *el);
 int setElementAt(List *list, int index, void *el);
 
