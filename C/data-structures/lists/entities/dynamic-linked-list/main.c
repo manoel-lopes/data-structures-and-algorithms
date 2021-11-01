@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../lib/list.h"
+#include "../../lib/list.h"
 
 void createElement(int *el);
 int toInt(void *value);

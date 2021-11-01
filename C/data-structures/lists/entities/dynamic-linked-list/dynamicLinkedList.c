@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../../models/node.h"
-#include "../lib/list.h"
+#include "../../../models/node.h"
+#include "../../lib/list.h"
 
 struct list
 {
