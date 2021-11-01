@@ -9,6 +9,9 @@
         ".sequelizerc": "javascript",
         "*.hbs": "html",
         "*.blade.php": "html",
-        "dynamiclinkedlist.h": "c"
+        "dynamiclinkedlist.h": "c",
+        "node.h": "c",
+        "dynamicdoublylinkedlist.h": "c",
+        "list.h": "c"
     }
 }

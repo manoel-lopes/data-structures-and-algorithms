@@ -1,13 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "dynamicLinkedList.h"
 
-typedef struct node
-{
-	void *el;
-	struct node *next;
-} Node;
+#include "../../models/node.h"
+#include "../lib/list.h"
 
 struct list
 {

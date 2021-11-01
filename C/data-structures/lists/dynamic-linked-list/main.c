@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "dynamicLinkedList.h"
+
+#include "../lib/list.h"
 
 void createElement(int *el);
 int toInt(void *value);
@@ -26,16 +27,16 @@ int main()
   getTail(list, &el);
   printf("Tail: %d\n", el);
 
-  // getElementAt(list, 2, &el);
-  // printf("%d\n", el);
+  getElementAt(list, 2, &el);
+  printf("%d\n", el);
 
-  // el = -1;
-  // setElementAt(list, 3, &el);
-  // printList(list, print);
-  // printf("%d\n", el);
+  el = -1;
+  setElementAt(list, 3, &el);
+  printList(list, print);
+  printf("%d\n", el);
 
   int index;
-  el = -1;
+  el = 1;
   indexOf(list, &el, &index, compare);
   printf("el: %d\n", el);
   printf("index: %d\n", index);
