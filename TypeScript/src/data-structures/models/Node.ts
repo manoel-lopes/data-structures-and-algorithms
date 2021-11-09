@@ -1,3 +1,6 @@
 export class Node<T> {
-  constructor(public el: T, public next: Node<T> = null) {}
+  public next: Node<T>
+  constructor(public el: T) {
+    this.next = null
+  }
 }

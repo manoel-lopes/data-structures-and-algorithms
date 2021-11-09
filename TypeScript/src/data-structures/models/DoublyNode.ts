@@ -1,7 +1,8 @@
 export class DoublyNode<T> {
-  constructor(
-    public el: T,
-    public next: DoublyNode<T> = null,
-    public prev: DoublyNode<T> = null
-  ) {}
+  public next: DoublyNode<T>
+  public prev: DoublyNode<T>
+  constructor(public el: T) {
+    this.next = null
+    this.prev = null
+  }
 }
