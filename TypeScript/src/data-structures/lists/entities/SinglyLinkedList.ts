@@ -1,14 +1,10 @@
 import { List } from '../lib/List'
 
-import { Node } from '../../models/Node'
+import { Node } from '~/data-structures/models/Node'
 
-import { FilterCallback, MapCallback } from '../../../util/types'
+import { FilterCallback, MapCallback } from '~/util/types'
 
-import {
-  concatLists,
-  filterList,
-  mapList,
-} from '../../../util/functions'
+import { concatLists, filterList, mapList } from '~/util/functions'
 
 class SinglyLinkedList<T> extends List<T> {
   push(el: T) {

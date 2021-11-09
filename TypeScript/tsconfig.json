@@ -1,13 +1,17 @@
 {
-    "compilerOptions": {
-        "outDir": "./dist",
-        "target": "esnext",
-        "module": "commonjs",
-        "allowJs": false,
-    },
-    "include": [
-        "__tests__/data-structures/lists/LinkedList.test.ts",
-        "__tests__/data-structures/queue/Queue.test.ts",
-        "__tests__/algorithms/sorting/Sorting.test.ts",
-    ]
+  "compilerOptions": {
+    "outDir": "./dist",
+    "target": "esnext",
+    "module": "commonjs",
+    "allowJs": false,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  },
+  "include": [
+    "tests/data-structures/lists/LinkedList.test.ts",
+    "tests/algorithms/sorting/Sorting.test.ts",
+    "src/**/*"
+  ]
 }

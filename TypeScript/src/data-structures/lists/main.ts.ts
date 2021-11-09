@@ -2,7 +2,7 @@ import { questionInt } from 'readline-sync'
 
 import { List } from './lib/List'
 
-import { LinkedList } from './entities/LinkedList'
+import { LinkedList } from './entities/SinglyLinkedList'
 // import { LinkedList } from './entities/DoublyLinkedList'
 // import { LinkedList } from './entities/CircularLinkedList'
 

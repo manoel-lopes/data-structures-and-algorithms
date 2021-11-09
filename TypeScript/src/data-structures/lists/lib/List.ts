@@ -1,13 +1,13 @@
-import { Node } from '../../models/Node'
+import { Node } from '~/data-structures/models/Node'
 
 import {
-  CompareFn,
+  FindIndexCallback,
   ForeachCallback,
   FilterCallback,
   MapCallback,
   ReduceCallback,
-  FindIndexCallback,
-} from '../../../util/types'
+  CompareFn,
+} from '~/util/types'
 
 export abstract class List<T> {
   protected _length = 0
@@ -58,7 +58,7 @@ export abstract class List<T> {
       pointer = pointer.next
       i++
     }
-    
+
     return -1
   }
 
@@ -111,7 +111,7 @@ export abstract class List<T> {
       pointer = pointer.next
       i++
     }
-    
+
     return -1
   }
 
@@ -124,7 +124,7 @@ export abstract class List<T> {
   abstract concat(list: List<T>): List<T>
 
   abstract filter(callback: FilterCallback<T>): List<T>
-  
+
   abstract map(callback: MapCallback<T>): List<T>
 
   reduce(callback: ReduceCallback<T>, initialValue?: T) {
