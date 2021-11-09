@@ -2,7 +2,7 @@ import { List } from '../lib/List'
 
 import { DoublyNode } from '../../models/DoublyNode'
 
-import { CallbackFilterFn, CallbackMapFn } from './../../../util/types'
+import { FilterCallback, MapCallback } from './../../../util/types'
 import { concatLists, filterList, mapList } from './../../../util/functions'
 
 class DoublyLinkedList<T> extends List<T> {
@@ -35,7 +35,7 @@ class DoublyLinkedList<T> extends List<T> {
       this._head = node
       this._tail = node
     } else {
-      // attach to the tail node
+      //* attach to the tail node
       this._tail.next = node
       node.prev = this._tail
       this._tail = node
@@ -60,21 +60,21 @@ class DoublyLinkedList<T> extends List<T> {
           this._head = node
         }
 
-        // last position
+        //* last position
       } else if (index === this.length) {
-        current = this._tail // {2}
+        current = this._tail
         current.next = node
         node.prev = current
         this._tail = node
       } else {
-        // insertion between two elements
+        //* insertion between two elements
         const ancestor = this.getNode(index - 1)
         current = ancestor.next
         node.next = current
         ancestor.next = node
 
-        current.prev = node // NEW
-        node.prev = ancestor // NEW
+        current.prev = node
+        node.prev = ancestor
       }
 
       this._length++
@@ -89,25 +89,24 @@ class DoublyLinkedList<T> extends List<T> {
       if (!index) {
         this._head = this._head.next
 
-        // if there is only one item, then we update _tail as well
+        //* if there is only one item, then we update _tail as well
         if (this.length === 1) {
-          // {2}
           this._tail = null
         } else {
-          this._head.prev = null // {3}
+          this._head.prev = null
         }
 
-        // last item
+        //* last item
       } else if (index === this.length - 1) {
-        pointer = this._tail // {4}
+        pointer = this._tail
         this._tail = pointer.prev
         this._tail.next = null
       } else {
         pointer = this.getNode(index)
         const ancestor = pointer.prev
-        // link ancestor with pointer's next - skip it to remove
-        ancestor.next = pointer.next // {6}
-        pointer.next.prev = ancestor // NEW
+        //* link ancestor with pointer's next - skip it to remove
+        ancestor.next = pointer.next //* {6}
+        pointer.next.prev = ancestor //* NEW
       }
 
       this._length--
@@ -139,14 +138,14 @@ class DoublyLinkedList<T> extends List<T> {
     return newList
   }
 
-  filter(callbackFn: CallbackFilterFn<T>) {
+  filter(callbackFn: FilterCallback<T>) {
     const newList = new DoublyLinkedList<T>()
     filterList(this, newList, callbackFn)
 
     return newList
   }
 
-  map(callbackFn: CallbackMapFn<T>) {
+  map(callbackFn: MapCallback<T>) {
     const newList = new DoublyLinkedList<T>()
     mapList(this, newList, callbackFn)
 

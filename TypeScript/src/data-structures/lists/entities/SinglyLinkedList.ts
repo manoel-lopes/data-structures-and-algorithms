@@ -2,15 +2,15 @@ import { List } from '../lib/List'
 
 import { Node } from '../../models/Node'
 
-import { CallbackFilterFn, CallbackMapFn } from './../../../util/types'
+import { FilterCallback, MapCallback } from '../../../util/types'
 
 import {
   concatLists,
   filterList,
   mapList,
-} from './../../../util/functions'
+} from '../../../util/functions'
 
-export class LinkedList<T> extends List<T> {
+class SinglyLinkedList<T> extends List<T> {
   push(el: T) {
     const node = new Node(el)
 
@@ -82,11 +82,11 @@ export class LinkedList<T> extends List<T> {
       return ''
     }
 
-    let str = JSON.stringify(pointer.el)
+    let str = `${pointer.el}`
     pointer = pointer.next
 
     for (let i = 1; i < this._length && pointer; i++) {
-      str = `${str} -> ${JSON.stringify(pointer.el)}`
+      str = `${str} -> ${pointer.el}`
       pointer = pointer.next
     }
 
@@ -94,23 +94,25 @@ export class LinkedList<T> extends List<T> {
   }
 
   concat(list: List<T>) {
-    const newList = new LinkedList<T>()
+    const newList = new SinglyLinkedList<T>()
     concatLists(this, list, newList)
 
     return newList
   }
 
-  filter(callbackFn: CallbackFilterFn<T>) {
-    const newList = new LinkedList<T>()
+  filter(callbackFn: FilterCallback<T>) {
+    const newList = new SinglyLinkedList<T>()
     filterList(this, newList, callbackFn)
 
     return newList
   }
 
-  map(callbackFn: CallbackMapFn<T>) {
-    const newList = new LinkedList<T>()
+  map(callbackFn: MapCallback<T>) {
+    const newList = new SinglyLinkedList<T>()
     mapList(this, newList, callbackFn)
 
     return newList
   }
 }
+
+export { SinglyLinkedList as LinkedList }

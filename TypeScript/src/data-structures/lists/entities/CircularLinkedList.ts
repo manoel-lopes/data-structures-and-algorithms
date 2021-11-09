@@ -2,7 +2,7 @@ import { List } from '../lib/List'
 
 import { Node } from '../../models/Node'
 
-import { CallbackFilterFn, CallbackMapFn } from './../../../util/types'
+import { FilterCallback, MapCallback } from './../../../util/types'
 import { concatLists, filterList, mapList } from './../../../util/functions'
 
 class CircularLinkedList<T> extends List<T> {
@@ -95,14 +95,14 @@ class CircularLinkedList<T> extends List<T> {
     return newList
   }
 
-  filter(callbackFn: CallbackFilterFn<T>) {
+  filter(callbackFn: FilterCallback<T>) {
     const newList = new CircularLinkedList<T>()
     filterList(this, newList, callbackFn)
 
     return newList
   }
 
-  map(callbackFn: CallbackMapFn<T>) {
+  map(callbackFn: MapCallback<T>) {
     const newList = new CircularLinkedList<T>()
     mapList(this, newList, callbackFn)
 

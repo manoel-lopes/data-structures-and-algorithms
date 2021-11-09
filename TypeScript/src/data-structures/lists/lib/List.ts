@@ -2,10 +2,11 @@ import { Node } from '../../models/Node'
 
 import {
   CompareFn,
-  CallbackForeachFn,
-  CallbackFilterFn,
-  CallbackMapFn,
-  CallbackReduceFn,
+  ForeachCallback,
+  FilterCallback,
+  MapCallback,
+  ReduceCallback,
+  FindIndexCallback,
 } from '../../../util/types'
 
 export abstract class List<T> {
@@ -99,26 +100,41 @@ export abstract class List<T> {
     this._head = ancestor
   }
 
-  forEach(callbackFn: CallbackForeachFn<T>) {
+  findIndex(callback: FindIndexCallback<T>) {
+    let pointer = this._head
+    let i = 0
+
+    while (pointer) {
+      if (callback(pointer.el)) {
+        return i
+      }
+      pointer = pointer.next
+      i++
+    }
+    
+    return -1
+  }
+
+  forEach(callback: ForeachCallback<T>) {
     for (let i = 0; i < this.length; i++) {
-      callbackFn(this.getElementAt(i), i, this)
+      callback(this.getElementAt(i), i, this)
     }
   }
 
   abstract concat(list: List<T>): List<T>
 
-  abstract filter(callbackFn: CallbackFilterFn<T>): List<T>
+  abstract filter(callback: FilterCallback<T>): List<T>
   
-  abstract map(callbackFn: CallbackMapFn<T>): List<T>
+  abstract map(callback: MapCallback<T>): List<T>
 
-  reduce(callbackFn: CallbackReduceFn<T>, initialValue?: T) {
+  reduce(callback: ReduceCallback<T>, initialValue?: T) {
     let acc = initialValue
     for (let i = 0; i < this.length; i++) {
       if (!acc && i === 0) {
         acc = this.getElementAt(i)
         continue
       }
-      acc = callbackFn(acc, this.getElementAt(i), i, this)
+      acc = callback(acc, this.getElementAt(i), i, this)
     }
     return acc
   }

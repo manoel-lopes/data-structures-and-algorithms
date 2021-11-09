@@ -1,21 +1,30 @@
 import { List } from '../data-structures/lists/lib/List'
 
-import { CallbackFilterFn, CallbackMapFn } from './../util/types'
+import {
+  FilterCallback,
+  MapCallback,
+} from './../util/types'
 
 const defaultToString = (item: unknown) => {
   if (item === null) {
     return 'NULL'
   } else if (item === undefined) {
     return 'UNDEFINED'
-  } else if (typeof item === 'number' || item instanceof Number) {
+  } else if (
+    typeof item === 'number' ||
+    item instanceof Number
+  ) {
     return `0${item}`
   }
 
   return `${item}`
 }
 
-const swap = (array: unknown[], a: number, b: number) =>
-  ([array[a], array[b]] = [array[b], array[a]])
+const swap = (
+  array: unknown[],
+  a: number,
+  b: number
+) => ([array[a], array[b]] = [array[b], array[a]])
 
 const convertToAscii = (str: string) => {
   let asciiNumber = 0
@@ -27,9 +36,13 @@ const convertToAscii = (str: string) => {
   return asciiNumber
 }
 
-const generateRandomValue = (max: number) => Math.floor(Math.random() * max)
+const generateRandomValue = (max: number) =>
+  Math.floor(Math.random() * max)
 
-const generateArrayWithRandomValues = (n: number, max = n) => {
+const generateArrayWithRandomValues = (
+  n: number,
+  max = n
+) => {
   const array = []
   let el: number
 
@@ -57,7 +70,11 @@ const isArraySorted = (array: number[]) => {
   return isArraySorted
 }
 
-const concatLists = <T>(listA: List<T>, listB: List<T>, newList: List<T>) => {
+const concatLists = <T>(
+  listA: List<T>,
+  listB: List<T>,
+  newList: List<T>
+) => {
   listA.forEach((el: T) => newList.push(el))
   listB.forEach((el: T) => newList.push(el))
 
@@ -67,10 +84,10 @@ const concatLists = <T>(listA: List<T>, listB: List<T>, newList: List<T>) => {
 const filterList = <T>(
   list: List<T>,
   newList: List<T>,
-  callbackFn: CallbackFilterFn<T>
+  callback: FilterCallback<T>
 ) => {
   for (let i = 0; i < list.length; i++) {
-    if (callbackFn(list.getElementAt(i), i, list)) {
+    if (callback(list.getElementAt(i), i, list)) {
       newList.push(list.getElementAt(i))
     }
   }
@@ -80,12 +97,21 @@ const filterList = <T>(
 const mapList = <T>(
   list: List<T>,
   newList: List<T>,
-  callbackFn: CallbackMapFn<T>
+  callback: MapCallback<T>
 ) => {
   for (let i = 0; i < list.length; i++) {
-    newList.push(callbackFn(list.getElementAt(i), i, list))
+    newList.push(
+      callback(list.getElementAt(i), i, list)
+    )
   }
   return newList
+}
+
+const convertToString = <T>(value: T) => {
+  if (typeof value === 'object')
+    return JSON.stringify(value)
+
+  return String(value)
 }
 
 export {
@@ -98,4 +124,5 @@ export {
   concatLists,
   filterList,
   mapList,
+  convertToString,
 }

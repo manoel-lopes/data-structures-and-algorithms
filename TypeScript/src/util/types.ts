@@ -1,28 +1,22 @@
 import { List } from '../data-structures/lists/lib/List'
 
-export type CallbackForeachFn<T> = (
-  el: T,
-  i?: number,
-  linkedList?: List<T>
-) => void
+type FindIndexCallback<T> = (el: T) => boolean
 
-export type CallbackFilterFn<T> = (
-  el: T,
-  i?: number,
-  linkedList?: List<T>
-) => boolean
+type ForeachCallback<T> = (el: T, i?: number, linkedList?: List<T>) => void
 
-export type CallbackMapFn<T> = (
-  el: T,
-  i?: number,
-  linkedList?: List<T>
-) => T
+type FilterCallback<T> = (el: T, i?: number, linkedList?: List<T>) => boolean
 
-export type CallbackReduceFn<T> = (
-  acc: T,
-  el: T,
-  i?: number,
-  linkedList?: List<T>
-) => T
+type MapCallback<T> = (el: T, i?: number, linkedList?: List<T>) => T
 
-export type CompareFn = (a: number, b: number) => number
+type ReduceCallback<T> = (acc: T, el: T, i?: number, linkedList?: List<T>) => T
+
+type CompareFn = (a: number, b: number) => number
+
+export {
+  FindIndexCallback,
+  ForeachCallback,
+  FilterCallback,
+  MapCallback,
+  ReduceCallback,
+  CompareFn,
+}
