@@ -2,8 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../../../models/node.h"
 #include "../../lib/list.h"
+
+typedef struct node
+{
+	void *el;
+	struct node *next;
+	struct node *prev;
+} Node;
 
 struct list
 {
@@ -192,7 +198,6 @@ int getElementAt(List *list, int index, void *el)
 		return 1;
 	}
 
-
 	int i = 1;
 	Node *pointer = list->head;
 	while (pointer && i < index)
@@ -269,6 +274,4 @@ void printList(List *list, void (*printfn)(void *))
 		pointer = pointer->next;
 	}
 	printfn(pointer->el);
-
-	printf("\n");
 }

@@ -13,17 +13,17 @@ int main()
   {
     printf("\n\nMenu:");
     printf("\n1  - Create list");
-    printf("\n2  - Free list");
-    printf("\n3  - Insert element in the front");
-    printf("\n4  - Insert element in the end");
-    printf("\n5  - Insert element in order");
-    printf("\n6  - Remove element in the front");
-    printf("\n7  - Remove element in the end");
-    printf("\n8  - Remove element");
-    printf("\n9  - Get the quantity of elements in the list");
-    printf("\n10 - Search element by position");
-    printf("\n11 - Search position by element");
-    printf("\n12 - Print list");
+    printf("\n2  - Insert element in the front");
+    printf("\n3  - Insert element in the end");
+    printf("\n4  - Insert element in order");
+    printf("\n5  - Remove element in the front");
+    printf("\n6  - Remove element in the end");
+    printf("\n7  - Remove element");
+    printf("\n8  - Get the quantity of elements in the list");
+    printf("\n9 - Search element by position");
+    printf("\n10 - Search position by element");
+    printf("\n11 - Print list");
+    printf("\n12 - Free list");
     printf("\n13 - Finish");
     printf("\nOption: ");
     scanf("%d", &option);
@@ -43,18 +43,6 @@ int main()
     else if (option == 2)
     {
 
-      ok = freeList(list);
-
-      if (ok)
-        printf("\nList freed with success!");
-
-      else
-        printf("\nError on free the list!");
-    }
-
-    else if (option == 3)
-    {
-
       createElement(&el);
       ok = insertListFront(list, el);
 
@@ -67,7 +55,7 @@ int main()
         printf("\nError inserting the element!");
     }
 
-    else if (option == 4)
+    else if (option == 3)
     {
 
       createElement(&el);
@@ -82,7 +70,7 @@ int main()
         printf("\nError inserting the element!");
     }
 
-    else if (option == 5)
+    else if (option == 4)
     {
 
       createElement(&el);
@@ -97,7 +85,7 @@ int main()
         printf("\nError inserting the element!");
     }
 
-    else if (option == 6)
+    else if (option == 5)
     {
 
       ok = removeListFront(list);
@@ -116,7 +104,7 @@ int main()
         printf("\nError removing the element!");
     }
 
-    else if (option == 7)
+    else if (option == 6)
     {
 
       ok = removeListBack(list);
@@ -135,7 +123,7 @@ int main()
         printf("\nError removing the element!");
     }
 
-    else if (option == 8)
+    else if (option == 7)
     {
       printf("\nType the element to be remove: ");
       scanf("%d", &el);
@@ -155,7 +143,7 @@ int main()
         printf("\nError removing the element!");
     }
 
-    else if (option == 9)
+    else if (option == 8)
     {
       if (!isListEmpty(list))
         printf("\nQuantity of elements in the list: %d", getListSize(list));
@@ -164,7 +152,7 @@ int main()
         printf("\nThe list is empty!");
     }
 
-    else if (option == 10)
+    else if (option == 9)
     {
       printf("\nType the position: ");
       scanf("%d", &position);
@@ -179,7 +167,7 @@ int main()
       
     }
 
-    else if (option == 11)
+    else if (option == 10)
     {
       printf("\nType the element: ");
       scanf("%d", &el);
@@ -193,7 +181,7 @@ int main()
         printf("\nElement not found!");
     }
 
-    else if (option == 12)
+    else if (option == 11)
     {
       if (!isListEmpty(list))
       {
@@ -202,6 +190,18 @@ int main()
       }
       else
         printf("\nThe list is empty!");
+    }
+
+    else if (option == 12)
+    {
+
+      ok = freeList(list);
+
+      if (ok)
+        printf("\nList freed with success!");
+
+      else
+        printf("\nError on free the list!");
     }
 
     else if (option == 13)
