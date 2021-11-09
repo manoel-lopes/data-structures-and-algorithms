@@ -13,5 +13,5 @@
     "tests/data-structures/lists/LinkedList.test.ts",
     "tests/algorithms/sorting/Sorting.test.ts",
     "src/**/*"
-  ]
+, "tests"  ]
 }

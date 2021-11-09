@@ -6,7 +6,7 @@ import { FilterCallback, MapCallback } from '~/util/types'
 
 import { concatLists, filterList, mapList } from '~/util/functions'
 
-class SinglyLinkedList<T> extends List<T> {
+export class LinkedList<T> extends List<T> {
   push(el: T) {
     const node = new Node(el)
 
@@ -45,8 +45,8 @@ class SinglyLinkedList<T> extends List<T> {
       }
 
       this._length++
-      return this._length
     }
+    return this._length
   }
 
   removeAt(index: number) {
@@ -90,25 +90,24 @@ class SinglyLinkedList<T> extends List<T> {
   }
 
   concat(list: List<T>) {
-    const newList = new SinglyLinkedList<T>()
+    const newList = new LinkedList<T>()
     concatLists(this, list, newList)
 
     return newList
   }
 
   filter(callbackFn: FilterCallback<T>) {
-    const newList = new SinglyLinkedList<T>()
+    const newList = new LinkedList<T>()
     filterList(this, newList, callbackFn)
 
     return newList
   }
 
   map(callbackFn: MapCallback<T>) {
-    const newList = new SinglyLinkedList<T>()
+    const newList = new LinkedList<T>()
     mapList(this, newList, callbackFn)
 
     return newList
   }
 }
 
-export { SinglyLinkedList as LinkedList }

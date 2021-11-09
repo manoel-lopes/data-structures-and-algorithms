@@ -1,22 +1,26 @@
-import {
-  generateArrayWithRandomValues,
-  isArraySorted,
-} from '../../../src/util/functions'
+import { generateArrayWithRandomValues, isArraySorted } from '~/util/functions'
 
-import { selectionSort } from '../../../src/algorithms/sorting/selectionSort'
-import { bubbleSort } from '../../../src/algorithms/sorting/bubbleSort'
-import { combSort } from '../../../src/algorithms/sorting/combSort'
+import { selectionSort } from '~/algorithms/sorting/selectionSort'
+import { bubbleSort } from '~/algorithms/sorting/bubbleSort'
+import { combSort } from '~/algorithms/sorting/combSort'
 
-const array = generateArrayWithRandomValues(10000)
+describe('Sorting', () => {
+  let array = []
 
-test('The selection sort algorithm must sort the array', () => {
-  expect(isArraySorted(selectionSort(array))).toBe(true)
-})
+  beforeEach(() => {
+    array = generateArrayWithRandomValues(10000)
+  })
 
-test('The bubble sort algorithm must sort the array', () => {
-  expect(isArraySorted(bubbleSort(array))).toBe(true)
-})
-
-test('The comb sort algorithm must sort the array', () => {
-  expect(isArraySorted(combSort(array))).toBe(true)
+  it('selection sort algorithm must sort array', () => {
+    expect(isArraySorted(selectionSort(array))).toBe(true)
+  })
+  
+  it('bubble sort algorithm must sort array', () => {
+    expect(isArraySorted(bubbleSort(array))).toBe(true)
+  })
+  
+  it('comb sort algorithm must sort array', () => {
+    expect(isArraySorted(combSort(array))).toBe(true)
+  })
+  
 })
