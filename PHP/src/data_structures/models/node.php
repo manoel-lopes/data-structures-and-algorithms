@@ -2,9 +2,10 @@
 
 class Node
 {
-    public ?int $next = null;
-
-    public function __construct(int $el)
-    {
+    public $next;
+    public function __construct(
+        public mixed $el
+    ) {
+        $this->next = null;
     }
 }
