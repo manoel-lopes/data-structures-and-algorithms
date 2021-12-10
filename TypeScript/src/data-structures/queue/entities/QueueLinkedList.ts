@@ -1,4 +1,4 @@
-import { LinkedList } from '../../lists/entities/DoublyLinkedList'
+import { LinkedList } from '../../lists/entities/doubly-linked-list'
 
 class QueueLinkedList<T> {
   protected queue = new LinkedList<T>()

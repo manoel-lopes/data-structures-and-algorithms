@@ -1,4 +1,4 @@
-import { List } from '../data-structures/lists/lib/List'
+import { LinkedList } from '../data-structures/lists/lib/linked-list'
 
 import { FilterCallback, MapCallback } from './../util/types'
 
@@ -57,7 +57,7 @@ const isArraySorted = (array: number[]) => {
   return isArraySorted
 }
 
-const concatLists = <T>(listA: List<T>, listB: List<T>, newList: List<T>) => {
+const concatLists = <T>(listA: LinkedList<T>, listB: LinkedList<T>, newList: LinkedList<T>) => {
   listA.forEach((el: T) => newList.push(el))
   listB.forEach((el: T) => newList.push(el))
 
@@ -65,8 +65,8 @@ const concatLists = <T>(listA: List<T>, listB: List<T>, newList: List<T>) => {
 }
 
 const filterList = <T>(
-  list: List<T>,
-  newList: List<T>,
+  list: LinkedList<T>,
+  newList: LinkedList<T>,
   callback: FilterCallback<T>
 ) => {
   for (let i = 0; i < list.length; i++) {
@@ -78,8 +78,8 @@ const filterList = <T>(
 }
 
 const mapList = <T>(
-  list: List<T>,
-  newList: List<T>,
+  list: LinkedList<T>,
+  newList: LinkedList<T>,
   callback: MapCallback<T>
 ) => {
   for (let i = 0; i < list.length; i++) {

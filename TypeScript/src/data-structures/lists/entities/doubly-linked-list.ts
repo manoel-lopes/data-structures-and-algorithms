@@ -1,13 +1,13 @@
-import { List } from '../lib/List'
+import { LinkedList } from '../lib/linked-list'
 
 import { DoublyNode } from '../../models/DoublyNode'
 
-import { FilterCallback, MapCallback } from './../../../util/types'
-import { concatLists, filterList, mapList } from './../../../util/functions'
+import { FilterCallback, MapCallback } from '../../../util/types'
+import { concatLists, filterList, mapList } from '../../../util/functions'
 
-class DoublyLinkedList<T> extends List<T> {
-  protected _head?: DoublyNode<T>
-  protected _tail?: DoublyNode<T>
+export class DoublyLinkedList<T> extends LinkedList<T> {
+  protected _head?: DoublyNode<T> = null
+  protected _tail?: DoublyNode<T> = null
 
   protected getNode(index: number) {
     if (index >= 0 && index < this.length) {
@@ -78,8 +78,8 @@ class DoublyLinkedList<T> extends List<T> {
       }
 
       this._length++
-      return this.length
     }
+    return this.length
   }
 
   removeAt(index: number) {
@@ -131,7 +131,7 @@ class DoublyLinkedList<T> extends List<T> {
     return `${str} ->`
   }
 
-  concat(list: List<T>) {
+  concat(list: LinkedList<T>) {
     const newList = new DoublyLinkedList<T>()
     concatLists(this, list, newList)
 
@@ -153,4 +153,3 @@ class DoublyLinkedList<T> extends List<T> {
   }
 }
 
-export { DoublyLinkedList as LinkedList }

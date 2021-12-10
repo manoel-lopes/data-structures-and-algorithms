@@ -1,7 +1,7 @@
-import { LinkedList } from '~/data-structures/lists/entities/LinkedList'
+import { CircularLinkedList } from '../../../data-structures/lists/entities/circular-linked-list'
 
-describe('LinkedList', () => {
-  const list = new LinkedList<number>()
+describe('CircularLinkedList', () => {
+  const list = new CircularLinkedList<number>()
   let min: number
   let max: number
 
@@ -89,24 +89,6 @@ describe('LinkedList', () => {
     }
 
     expect(list.indexOf(max + 1)).toBe(-1)
-  })
-
-  it('removes invalid elements', () => {
-    pushElements()
-
-    for (let i = max + 2; i <= max + 4; i++) {
-      const el = list.removeAt(list.indexOf(i))
-      expect(el).toBeUndefined()
-    }
-  })
-
-  it('removes valid elements', () => {
-    pushElements()
-
-    for (let i = min; i <= max; i++) {
-      const el = list.removeAt(list.indexOf(i))
-      expect(el).toBe(i)
-    }
   })
 
   it('removes element invalid position empty list', () => {
@@ -214,21 +196,21 @@ describe('LinkedList', () => {
     expect(list.toString()).toBe('')
 
     list.push(1)
-    expect(list.toString()).toBe('1 ->')
+    expect(list.toString()).toBe('1 -> 1')
 
     list.push(2)
-    expect(list.toString()).toBe('1 -> 2 ->')
+    expect(list.toString()).toBe('1 -> 2 -> 1')
 
     list.clear()
     expect(list.toString()).toBe('')
   })
 
   it('returns toString primitive types: string', () => {
-    const list = new LinkedList<string>()
+    const list = new CircularLinkedList<string>()
     list.push('el1')
-    expect(list.toString()).toBe('el1 ->')
+    expect(list.toString()).toBe('el1 -> el1')
 
     list.push('el2')
-    expect(list.toString()).toBe('el1 -> el2 ->')
+    expect(list.toString()).toBe('el1 -> el2 -> el1')
   })
 })

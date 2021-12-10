@@ -1,4 +1,4 @@
-import { LinkedList } from '../../lists/entities/DoublyLinkedList'
+import { LinkedList } from '../../lists/entities/doubly-linked-list'
 
 class StackLinkedList<T> {
   private stack = new LinkedList<T>()

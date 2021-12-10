@@ -1,11 +1,11 @@
-import { List } from '../lib/List'
+import { LinkedList } from '../lib/linked-list'
 
 import { Node } from '../../models/Node'
 
-import { FilterCallback, MapCallback } from './../../../util/types'
-import { concatLists, filterList, mapList } from './../../../util/functions'
+import { FilterCallback, MapCallback } from '../../../util/types'
+import { concatLists, filterList, mapList } from '../../../util/functions'
 
-class CircularLinkedList<T> extends List<T> {
+export class CircularLinkedList<T> extends LinkedList<T> {
   push(el: T) {
     const node = new Node(el)
 
@@ -53,8 +53,8 @@ class CircularLinkedList<T> extends List<T> {
       }
 
       this._length++
-      return this.length
     }
+    return this.length
   }
 
   removeAt(index: number) {
@@ -88,7 +88,7 @@ class CircularLinkedList<T> extends List<T> {
     }
   }
 
-  concat(list: List<T>) {
+  concat(list: LinkedList<T>) {
     const newList = new CircularLinkedList<T>()
     concatLists(this, list, newList)
 
@@ -126,5 +126,3 @@ class CircularLinkedList<T> extends List<T> {
     return `${str} -> ${this._tail.next.el}`
   }
 }
-
-export { CircularLinkedList as LinkedList }

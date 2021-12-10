@@ -1,12 +1,11 @@
-import { List } from '../lib/List'
+import { LinkedList } from '../lib/linked-list'
 
-import { Node } from '~/data-structures/models/Node'
+import { Node } from '../../../data-structures/models/Node'
 
-import { FilterCallback, MapCallback } from '~/util/types'
+import { FilterCallback, MapCallback } from '../../../util/types'
+import { concatLists, filterList, mapList } from '../../../util/functions'
 
-import { concatLists, filterList, mapList } from '~/util/functions'
-
-export class LinkedList<T> extends List<T> {
+export class SinglyLinkedList<T> extends LinkedList<T> {
   push(el: T) {
     const node = new Node(el)
 
@@ -89,25 +88,24 @@ export class LinkedList<T> extends List<T> {
     return `${str} ->`
   }
 
-  concat(list: List<T>) {
-    const newList = new LinkedList<T>()
+  concat(list: LinkedList<T>) {
+    const newList = new SinglyLinkedList<T>()
     concatLists(this, list, newList)
 
     return newList
   }
 
   filter(callbackFn: FilterCallback<T>) {
-    const newList = new LinkedList<T>()
+    const newList = new SinglyLinkedList<T>()
     filterList(this, newList, callbackFn)
 
     return newList
   }
 
   map(callbackFn: MapCallback<T>) {
-    const newList = new LinkedList<T>()
+    const newList = new SinglyLinkedList<T>()
     mapList(this, newList, callbackFn)
 
     return newList
   }
 }
-

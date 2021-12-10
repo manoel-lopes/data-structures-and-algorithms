@@ -1,4 +1,4 @@
-import { Node } from '~/data-structures/models/Node'
+import { Node } from '../../models/Node'
 
 import {
   FindIndexCallback,
@@ -7,9 +7,9 @@ import {
   MapCallback,
   ReduceCallback,
   CompareFn,
-} from '~/util/types'
+} from '../../../util/types'
 
-export abstract class List<T> {
+export abstract class LinkedList<T> {
   protected _length = 0
   protected _head?: Node<T>
   protected _tail?: Node<T>
@@ -19,15 +19,11 @@ export abstract class List<T> {
   }
 
   get head() {
-    if (this._head) {
-      return this._head.el
-    }
-  }
+    return this._head?.el
 
+  }
   get tail() {
-    if (this._tail) {
-      return this._tail.el
-    }
+    return this._tail?.el
   }
 
   protected getNode(index: number) {
@@ -51,7 +47,7 @@ export abstract class List<T> {
     let pointer = this._head
     let i = 0
 
-    while (pointer) {
+    while (pointer && i <= this.length) {
       if (pointer.el === el) {
         return i
       }
@@ -121,11 +117,11 @@ export abstract class List<T> {
     }
   }
 
-  abstract concat(list: List<T>): List<T>
+  abstract concat(list: LinkedList<T>): LinkedList<T>
 
-  abstract filter(callback: FilterCallback<T>): List<T>
+  abstract filter(callback: FilterCallback<T>): LinkedList<T>
 
-  abstract map(callback: MapCallback<T>): List<T>
+  abstract map(callback: MapCallback<T>): LinkedList<T>
 
   reduce(callback: ReduceCallback<T>, initialValue?: T) {
     let acc = initialValue

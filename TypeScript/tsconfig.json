@@ -1,17 +1,8 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
     "target": "esnext",
     "module": "commonjs",
     "allowJs": false,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["src/*"]
-    }
-  },
-  "include": [
-    "tests/data-structures/lists/LinkedList.test.ts",
-    "tests/algorithms/sorting/Sorting.test.ts",
-    "src/**/*"
-, "tests"  ]
+    "baseUrl": "."
+  }
 }

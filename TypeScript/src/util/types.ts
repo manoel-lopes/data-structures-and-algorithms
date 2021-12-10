@@ -1,14 +1,14 @@
-import { List } from '../data-structures/lists/lib/List'
+import { LinkedList } from '../data-structures/lists/lib/linked-list'
 
 type FindIndexCallback<T> = (el: T) => boolean
 
-type ForeachCallback<T> = (el: T, i?: number, linkedList?: List<T>) => void
+type ForeachCallback<T> = (el: T, i?: number, list?: LinkedList<T>) => void
 
-type FilterCallback<T> = (el: T, i?: number, linkedList?: List<T>) => boolean
+type FilterCallback<T> = (el: T, i?: number, list?: LinkedList<T>) => boolean
 
-type MapCallback<T> = (el: T, i?: number, linkedList?: List<T>) => T
+type MapCallback<T> = (el: T, i?: number, list?: LinkedList<T>) => T
 
-type ReduceCallback<T> = (acc: T, el: T, i?: number, linkedList?: List<T>) => T
+type ReduceCallback<T> = (acc: T, el: T, i?: number, list?: LinkedList<T>) => T
 
 type CompareFn = (a: number, b: number) => number
 
