@@ -22,10 +22,10 @@ func isValuePresentInArray(array []int, el int) bool {
 	return isPresent
 }
 
-func GenerateArrayWithRandomValues(n, max int) []int {
+func GenerateArrayWithRandomValues(n int) []int {
 	var array []int
 	for len(array) < n {
-		el := generateRandomValue(max)
+		el := generateRandomValue(n)
 		if !isValuePresentInArray(array, el) {
 			array = append(array, el)
 		}
@@ -76,5 +76,3 @@ func GetNode(listHeadNode *node.Node, listSize int, index int) *node.Node {
 	}
 	return nil
 }
-
-

@@ -83,7 +83,6 @@ func main() {
 
 		} else if option == 7 {
 			listSize = list.GetSize()
-
 			if listSize == 0 {
 				fmt.Printf("\nThe list is empty\n")
 			} else {

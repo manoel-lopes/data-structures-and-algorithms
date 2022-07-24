@@ -7,38 +7,33 @@ import (
 )
 
 type linkedList struct {
-	list   list.List
-	head   *any
-	tail   *any
+	list  list.List
+	head  *node.Node
+	tail  *node.Node
 	count int
 }
 
 func (list *linkedList) merge() {
-	if list.list.Head != nil && list.list.Tail != nil {
-		list.head = &list.list.Head.El
-		list.tail = &list.list.Tail.El
-	} else {
-		list.head = nil
-		list.tail = nil
-	}
-	list.count = list.list.Length
+	list.list.Head = list.head
+	list.list.Tail = list.tail
+	list.list.Length = list.count
 }
 
 func New() *linkedList {
 	return &linkedList{
-		head:   nil,
-		tail:   nil,
+		head:  nil,
+		tail:  nil,
 		count: 0,
 	}
 }
 
-// func (list *linkedList) GetHead() any {
-// 	return list.head.El
-// }
+func (list *linkedList) GetHead() any {
+	return list.head.El
+}
 
-// func (list *linkedList) GetTail() any {
-// 	return list.tail.El
-// }
+func (list *linkedList) GetTail() any {
+	return list.tail.El
+}
 
 func (list *linkedList) GetSize() int {
 	return list.count
@@ -46,48 +41,40 @@ func (list *linkedList) GetSize() int {
 
 func (list *linkedList) Append(el int) int {
 	node := node.New(el)
-
-	if list.list.Head == nil {
-		list.list.Head = node
+	if list.head == nil {
+		list.head = node
 	} else {
-		list.list.Tail.Next = node
+		list.tail.Next = node
 	}
-
-	list.list.Tail = node
-	list.list.Length++
+	list.tail = node
+	list.count++
 	list.merge()
-
-	return list.list.Length
+	return list.count
 }
 
 func (list *linkedList) Insert(el int, index int) int {
-	if index >= 0 && index <= list.list.Length {
+	if index >= 0 && index <= list.count {
 		node := node.New(el)
-
 		if index == 0 {
-			if list.list.Head == nil {
-				list.list.Head = node
-				list.list.Tail = node
-
+			if list.head == nil {
+				list.head = node
+				list.tail = node
 			} else {
-				node.Next = list.list.Head
-				list.list.Head = node
+				node.Next = list.head
+				list.head = node
 			}
-
-		} else if index == list.list.Length {
-			list.list.Tail.Next = node
-			list.list.Tail = node
-
+		} else if index == list.count {
+			list.tail.Next = node
+			list.tail = node
 		} else {
 			ancestor := list.list.GetNode(index - 1)
 			pointer := ancestor.Next
 			node.Next = pointer
 			ancestor.Next = node
-
 		}
-		list.list.Length++
+		list.count++
 		list.merge()
-		return list.list.Length
+		return list.count
 	}
 	return 0
 }
@@ -115,6 +102,7 @@ func (list *linkedList) GetElementAt(index int) (any, bool) {
 }
 
 func (list *linkedList) SetElementAt(el int, index int) bool {
+	list.merge()
 	ok := list.list.SetElementAt(el, index)
 	if ok {
 		list.merge()
@@ -122,13 +110,12 @@ func (list *linkedList) SetElementAt(el int, index int) bool {
 	return ok
 }
 
-
 func (list *linkedList) IndexOf(index *int, el any) bool {
 	return list.list.IndexOf(index, el)
 }
 
 func (list *linkedList) IsEmpty() bool {
-	return list.count == 0
+	return list.list.IsEmpty()
 }
 
 func (list *linkedList) Clear() {
@@ -138,17 +125,14 @@ func (list *linkedList) Clear() {
 
 func (list *linkedList) ToString() string {
 	pointer := list.list.Head
-
 	if pointer == nil {
 		return " "
 	}
-
 	str := strconv.Itoa(pointer.El.(int))
 	for pointer.Next != nil {
 		pointer = pointer.Next
 		str = str + " -> " + strconv.Itoa(pointer.El.(int))
 	}
-
-	str = str + " -> " 
+	str = str + " -> "
 	return str
 }
