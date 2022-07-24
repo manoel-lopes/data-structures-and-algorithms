@@ -1,6 +1,7 @@
 package util
 
 import (
+	"Go/data-structures/models/node"
 	"math/rand"
 	"time"
 )
@@ -60,3 +61,20 @@ func IsArraySorted(array []int) bool {
 	}
 	return true
 }
+
+func GetLinkedListIntElement(el any, result bool) (int, bool) {
+	return el.(int), result
+}
+
+func GetNode(listHeadNode *node.Node, listSize int, index int) *node.Node {
+	if index >= 0 && index < listSize {
+		pointer := listHeadNode
+		for i := 0; i < index && pointer != nil; i++ {
+			pointer = pointer.Next
+		}
+		return pointer
+	}
+	return nil
+}
+
+

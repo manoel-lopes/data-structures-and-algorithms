@@ -1,10 +1,10 @@
 package node
 
 type Node struct {
-	El   int
+	El   any
 	Next *Node
 }
 
-func New(el int) *Node {
+func New[T any](el T) *Node {
 	return &Node{El: el}
 }

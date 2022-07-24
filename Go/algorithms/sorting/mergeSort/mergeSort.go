@@ -14,7 +14,6 @@ func merge(arr []int, start, middle, end int){
 			j++
 		}
 	}
-
 	for i < middle {
 		slice[k] = arr[i]
 		k++
@@ -25,7 +24,6 @@ func merge(arr []int, start, middle, end int){
 		k++
 		j++
 	}
-
 	for i := start; i < end; i++ {
         arr[i] = slice[i - start]
     }
