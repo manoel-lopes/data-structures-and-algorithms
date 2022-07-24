@@ -102,12 +102,11 @@ func (list *linkedList) GetElementAt(index int) (any, bool) {
 }
 
 func (list *linkedList) SetElementAt(el int, index int) bool {
-	list.merge()
-	ok := list.list.SetElementAt(el, index)
-	if ok {
+	if list.list.SetElementAt(el, index) {
 		list.merge()
+		return true
 	}
-	return ok
+	return false
 }
 
 func (list *linkedList) IndexOf(index *int, el any) bool {
