@@ -10,64 +10,53 @@ func generateRandomValue(max int) int {
 	return r.Intn(max)
 }
 
-func isValuePresentInArray(arr []int, el int) bool {
+func isValuePresentInArray(array []int, el int) bool {
 	isPresent := false
-
-	for _, value := range arr {
+	for _, value := range array {
 		if value == el {
 			isPresent = true
 			break
 		}
 	}
-
 	return isPresent
 }
 
 func GenerateArrayWithRandomValues(n, max int) []int {
-	var arr []int
-
-	for len(arr) < n {
+	var array []int
+	for len(array) < n {
 		el := generateRandomValue(max)
-
-		if !isValuePresentInArray(arr, el) {
-			arr = append(arr, el)
+		if !isValuePresentInArray(array, el) {
+			array = append(array, el)
 		}
 	}
-
-	return arr
+	return array
 }
 
-func isArraySortedInAscendingOrder(arr []int) bool {
+func isArraySortedInAscendingOrder(array []int) bool {
 	isArraySorted := true
-
-	for i := 0; i < len(arr)-1; i++ {
-		if arr[i] > arr[i+1] {
+	for i := 0; i < len(array)-1; i++ {
+		if array[i] > array[i+1] {
 			isArraySorted = false
 			break
 		}
 	}
-
 	return isArraySorted
 }
 
-func isArraySortedInDescendingOrder(arr []int) bool {
+func isArraySortedInDescendingOrder(array []int) bool {
 	isArraySorted := true
-
-	for i := 0; i < len(arr)-1; i++ {
-		if arr[i] < arr[i+1] {
+	for i := 0; i < len(array)-1; i++ {
+		if array[i] < array[i+1] {
 			isArraySorted = false
 			break
 		}
 	}
-
 	return isArraySorted
 }
 
-func IsArraySorted(arr []int) bool {
-
-	if !isArraySortedInAscendingOrder(arr) && !isArraySortedInDescendingOrder(arr) {
+func IsArraySorted(array []int) bool {
+	if !isArraySortedInAscendingOrder(array) && !isArraySortedInDescendingOrder(array) {
 		return false
 	}
-
 	return true
 }

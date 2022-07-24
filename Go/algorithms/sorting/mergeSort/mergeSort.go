@@ -1,10 +1,8 @@
 package sorting
 
 func merge(arr []int, start, middle, end int){
-
 	i, j, k := start, middle, 0
 	slice := make([]int, end-start)
-
 	for i < middle && j < end {
 		if arr[i] <= arr[j] {
 			slice[k] = arr[i]
@@ -22,7 +20,6 @@ func merge(arr []int, start, middle, end int){
 		k++
 		i++
 	}
-
 	for j < end {
 		slice[k] = arr[j]
 		k++
@@ -35,10 +32,8 @@ func merge(arr []int, start, middle, end int){
 }
 
 func MergeSort(arr []int, start, end int) {
-
     if start < end - 1 {
         middle := (start + end) / 2;
-
         MergeSort(arr, start, middle)
         MergeSort(arr, middle, end)
         merge(arr, start, middle, end)
