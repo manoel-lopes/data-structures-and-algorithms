@@ -1,15 +1,28 @@
 package linkedList
 
 import (
+	"Go/data-structures/lists/lib/list"
 	"Go/data-structures/models/node"
 	util "Go/util"
 	"strconv"
 )
 
 type linkedList struct {
+	list list.List
 	head  *node.Node
 	tail  *node.Node
 	count int
+}
+
+func (list *linkedList) merge() {
+	if list.list.Head != nil && list.list.Tail != nil {
+		list.head = list.list.Head
+		list.tail = list.list.Tail
+	} else {
+		list.head = nil
+		list.tail = nil
+	}
+	list.count = list.list.Length
 }
 
 func New() *linkedList {
@@ -37,6 +50,7 @@ func (list *linkedList) Append(el any) int {
 	}
 	list.tail = node
 	list.count++
+	list.merge()
 	return list.count
 }
 
@@ -67,30 +81,6 @@ func (list *linkedList) Insert(el any, index int) int {
 	}
 	return 0
 }
-
-// removeAt(index: number) {
-// 	if (index >= 0 && index < list.length && list._head) {
-
-// 		let pointer = list._head
-
-// 		if (index === 0) {
-// 			list._head = list._head.Next
-
-// 			if (!list._head) {
-// 				list._tail = null
-// 			}
-
-// 		} else {
-// 			const ancestor = util.GetNode(list.head, list.count, index - 1)
-// 			pointer = ancestor.Next
-// 			ancestor.Next = pointer.Next
-// 			list._tail = ancestor
-// 		}
-
-// 		list.count--
-// 		return pointer.El
-// 	}
-// }
 
 func (list *linkedList) Pop() (any, bool) {
 	size := list.GetSize()

@@ -86,7 +86,6 @@ func main() {
 
 			if listSize == 0 {
 				fmt.Printf("\nThe list is empty\n")
-
 			} else {
 				fmt.Printf("\nQuantidade de elementos na lista: %v\n\n", listSize)
 			}
@@ -112,7 +111,6 @@ func main() {
 
 			if listSize == 1 {
 				fmt.Printf("\nElemento no indice %v: %v!\n\n", index, el)
-
 			} else {
 				fmt.Print("\nElemento nao encontrado!\n\n")
 			}
