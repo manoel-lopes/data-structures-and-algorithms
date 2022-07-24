@@ -67,18 +67,18 @@ func main() {
 		} else if option == 4 {
 		} else if option == 5 {
 
-			if !list.IsEmpty() {
-				el, ok = getLinkedListTypedElement(list.Pop())
-				if ok {
-					if list.IsEmpty() {
-						fmt.Printf("\nThe list is empty\n")
-					} else {
-						fmt.Printf("\n%v\n", list.ToString())
-					}
-				}
-			} else {
-				fmt.Printf("\nThe list is empty\n")
-			}
+			// if !list.IsEmpty() {
+			// 	el, ok = getLinkedListTypedElement(list.Pop())
+			// 	if ok {
+			// 		if list.IsEmpty() {
+			// 			fmt.Printf("\nThe list is empty\n")
+			// 		} else {
+			// 			fmt.Printf("\n%v\n", list.ToString())
+			// 		}
+			// 	}
+			// } else {
+			// 	fmt.Printf("\nThe list is empty\n")
+			// }
 		} else if option == 6 {
 
 		} else if option == 7 {

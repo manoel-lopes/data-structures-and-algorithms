@@ -53,10 +53,6 @@ func (list *List) IndexOf(index *int, el any) bool {
 	return false
 }
 
-func (list *List) IsEmpty() bool {
-	return list.Length == 0
-}
-
 func (list *List) Clear() {
 	list.Head = nil
 	list.Tail = nil
