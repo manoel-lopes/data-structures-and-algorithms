@@ -1,17 +1,31 @@
 package main
 
 import (
-	linkedList "Go/data-structures/lists/entities/linked-list"
-	"Go/util"
+	linkedList "Go/data-structures/lists/entities/singly-linked-list"
+	// linkedList "Go/data-structures/lists/entities/doubly-linked-list"
+	// linkedList "Go/data-structures/lists/entities/circular-linked-list"
 	"fmt"
 )
 
-func main() {
+type LinkedList interface {
+	GetHead() any
+	GetTail() any
+	GetSize() int
+	Append(el any) int
+	Insert(el any, index int) int
+	Pop() any
+	GetElementAt(el any, index int) bool
+	SetElementAt(el any, index int) bool
+	IndexOf(index *int, el any) bool
+	IsEmpty() bool
+	Clear()
+	ToString() string
+}
 
-	list := linkedList.New()
+func main() {
+	var list LinkedList = linkedList.New()
 	var option, el, index, listSize int
 	var ok bool
-	var getLinkedListTypedElement = util.GetLinkedListIntElement
 
 	for {
 		fmt.Println("\nMenu de opcoess:")
@@ -33,17 +47,13 @@ func main() {
 		if option == 1 {
 			fmt.Print("\nDigite o elemento a ser inserido: ")
 			fmt.Scanln(&el)
-
 			list.Insert(el, 0)
-
 			fmt.Printf("\n%v\n", list.ToString())
 
 		} else if option == 2 {
 			fmt.Print("\nDigite o elemento a ser inserido: ")
 			fmt.Scanln(&el)
-
 			list.Append(el)
-
 			fmt.Printf("\n%v\n", list.ToString())
 
 		} else if option == 3 {
@@ -53,9 +63,7 @@ func main() {
 			fmt.Print("Digite o elemento a ser inserido: ")
 			fmt.Scanln(&el)
 
-			listSize = list.Insert(el, index)
-
-			if listSize > 0 {
+			if list.Insert(el, index) > 0 {
 				fmt.Print("\nElemento inserido com sucesso!\n")
 				fmt.Printf("\n%v\n", list.ToString())
 
@@ -67,8 +75,7 @@ func main() {
 		} else if option == 4 {
 		} else if option == 5 {
 			if !list.IsEmpty() {
-				el, ok = getLinkedListTypedElement(list.Pop())
-				if ok {
+				if list.Pop() != nil {
 					if list.IsEmpty() {
 						fmt.Printf("\nThe list is empty\n")
 					} else {
@@ -92,11 +99,9 @@ func main() {
 			fmt.Print("\nDigite o indice: ")
 			fmt.Scanln(&index)
 
-			el, ok = getLinkedListTypedElement(list.GetElementAt(index))
-
+			ok = list.GetElementAt(el, index)
 			if ok {
 				fmt.Printf("\nElemento no indice %v: %v!\n\n", index, el)
-
 			} else {
 				fmt.Print("\nElemento nao encontrado!\n\n")
 			}
@@ -104,10 +109,8 @@ func main() {
 		} else if option == 9 {
 			fmt.Print("\nDigite o elemento: ")
 			fmt.Scanln(&el)
-
-			list.IndexOf(&index, el)
-
-			if listSize == 1 {
+			ok = list.IndexOf(&index, el)
+			if ok {
 				fmt.Printf("\nElemento no indice %v: %v!\n\n", index, el)
 			} else {
 				fmt.Print("\nElemento nao encontrado!\n\n")
@@ -121,10 +124,8 @@ func main() {
 			fmt.Scanln(&el)
 
 			ok = list.SetElementAt(el, index)
-
 			if ok {
 				fmt.Printf("\n%v\n", list.ToString())
-
 			} else {
 				fmt.Println("Falha na alteracao!")
 			}
@@ -134,13 +135,9 @@ func main() {
 
 		} else if option == 12 {
 			list.Clear()
-
-			listSize = list.GetSize()
-
-			if listSize == 0 {
+			if list.IsEmpty() {
 				fmt.Printf("\nThe list is empty\n")
 			}
-
 		} else {
 			fmt.Print("\nOpcao Invalida!\n\n")
 		}

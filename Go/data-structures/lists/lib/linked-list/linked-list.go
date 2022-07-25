@@ -1,17 +1,23 @@
-package list
+package linkedList
 
 import (
 	"Go/data-structures/models/node"
 	"Go/util"
 )
 
-type List struct {
+type LinkedList struct {
 	Head   *node.Node
 	Tail   *node.Node
 	Length int
 }
 
-func (list *List) GetNode(index int) *node.Node {
+func (list *LinkedList) Merge(listHead *node.Node, listTail *node.Node, listLength int) {
+	list.Head = listHead
+	list.Tail = listTail
+	list.Length = listLength
+}
+
+func (list *LinkedList) GetNode(index int) *node.Node {
 	if index >= 0 && index < list.Length {
 		pointer := list.Head
 		for i := 0; i < index && pointer != nil; i++ {
@@ -22,15 +28,16 @@ func (list *List) GetNode(index int) *node.Node {
 	return nil
 }
 
-func (list *List) GetElementAt(index int) (any, bool) {
+func (list *LinkedList) GetElementAt(el any, index int) bool {
 	pointer := util.GetNode(list.Head, list.Length, index)
 	if pointer != nil {
-		return pointer.El, true
+		el = pointer.El
+		return true
 	}
-	return nil, false
+	return false
 }
 
-func (list *List) SetElementAt(el any, index int) bool {
+func (list *LinkedList) SetElementAt(el any, index int) bool {
 	pointer := util.GetNode(list.Head, list.Length, index)
 	if pointer != nil {
 		pointer.El = el
@@ -39,7 +46,7 @@ func (list *List) SetElementAt(el any, index int) bool {
 	return false
 }
 
-func (list *List) IndexOf(index *int, el any) bool {
+func (list *LinkedList) IndexOf(index *int, el any) bool {
 	pointer := list.Head
 	i := 0
 	for pointer != nil {
@@ -53,11 +60,7 @@ func (list *List) IndexOf(index *int, el any) bool {
 	return false
 }
 
-func (list *List) IsEmpty() bool {
-	return list.Length == 0
-}
-
-func (list *List) Clear() {
+func (list *LinkedList) Clear() {
 	list.Head = nil
 	list.Tail = nil
 	list.Length = 0

@@ -62,10 +62,6 @@ func IsArraySorted(array []int) bool {
 	return true
 }
 
-func GetLinkedListIntElement(el any, result bool) (int, bool) {
-	return el.(int), result
-}
-
 func GetNode(listHeadNode *node.Node, listSize int, index int) *node.Node {
 	if index >= 0 && index < listSize {
 		pointer := listHeadNode
