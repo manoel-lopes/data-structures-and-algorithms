@@ -3,6 +3,7 @@ package linkedList
 import (
 	"Go/data-structures/lists/lib/list"
 	"Go/data-structures/models/node"
+	"Go/util"
 	"strconv"
 )
 
@@ -79,23 +80,24 @@ func (list *linkedList) Insert(el int, index int) int {
 	return 0
 }
 
-// func (list *linkedList) Pop() (any, bool) {
-// 	size := list.GetSize()
-// 	if size > 0 {
-// 		secondToLast := util.GetNode(list.head, list.count, size-2)
-// 		removed := list.tail
-// 		if list.tail == list.head {
-// 			list.head = nil
-// 			list.tail = nil
-// 		} else {
-// 			secondToLast.Next = list.tail.Next
-// 			list.tail = secondToLast
-// 		}
-// 		list.count--
-// 		return removed.El, true
-// 	}
-// 	return nil, false
-// }
+func (list *linkedList) Pop() (any, bool) {
+	size := list.GetSize()
+	if size > 0 {
+		secondToLast := util.GetNode(list.head, list.count, size-2)
+		removed := list.tail
+		if list.tail == list.head {
+			list.head = nil
+			list.tail = nil
+		} else {
+			secondToLast.Next = list.tail.Next
+			list.tail = secondToLast
+		}
+		list.count--
+		list.merge()
+		return removed.El, true
+	}
+	return nil, false
+}
 
 func (list *linkedList) GetElementAt(index int) (any, bool) {
 	return list.list.GetElementAt(index)
