@@ -8,16 +8,13 @@ import { concatLists, filterList, mapList } from '../../../util/functions'
 export class CircularLinkedList<T> extends LinkedList<T> {
   push(el: T) {
     const node = new Node(el)
-
     if (!this._head) {
       this._head = node
     } else {
       this._tail.next = node
     }
-
     this._tail = node
     this._tail.next = this._head
-
     this._length++
     return this.length
   }
@@ -26,7 +23,6 @@ export class CircularLinkedList<T> extends LinkedList<T> {
     if (index >= 0 && index <= this.length) {
       const node = new Node(el)
       let current = this._head
-
       if (!index) {
         if (!this._head) {
           this._head = node
@@ -51,7 +47,6 @@ export class CircularLinkedList<T> extends LinkedList<T> {
         node.next = current
         ancestor.next = node
       }
-
       this._length++
     }
     return this.length
@@ -60,7 +55,6 @@ export class CircularLinkedList<T> extends LinkedList<T> {
   removeAt(index: number) {
     if (this._head && index >= 0 && index < this.length) {
       let current = this._head
-
       if (!index) {
         if (this.length === 1) {
           this._head = null
@@ -82,7 +76,6 @@ export class CircularLinkedList<T> extends LinkedList<T> {
         current = ancestor.next
         ancestor.next = current.next
       }
-
       this._length--
       return current.el
     }
@@ -91,34 +84,29 @@ export class CircularLinkedList<T> extends LinkedList<T> {
   concat(list: LinkedList<T>) {
     const newList = new CircularLinkedList<T>()
     concatLists(this, list, newList)
-
     return newList
   }
 
   filter(callbackFn: FilterCallback<T>) {
     const newList = new CircularLinkedList<T>()
     filterList(this, newList, callbackFn)
-
     return newList
   }
 
   map(callbackFn: MapCallback<T>) {
     const newList = new CircularLinkedList<T>()
     mapList(this, newList, callbackFn)
-
     return newList
   }
 
   toString() {
     let pointer = this._head
-
     if (!pointer) {
       return ''
     }
 
     let str = `${pointer.el}`
     pointer = pointer.next
-
     for (let i = 1; i < this.length && pointer; i++) {
       str = `${str} -> ${pointer.el}`
       pointer = pointer.next

@@ -1,22 +1,17 @@
 import { LinkedList } from '../lib/linked-list'
-
 import { Node } from '../../../data-structures/models/Node'
-
 import { FilterCallback, MapCallback } from '../../../util/types'
 import { concatLists, filterList, mapList } from '../../../util/functions'
 
 export class SinglyLinkedList<T> extends LinkedList<T> {
   push(el: T) {
     const node = new Node(el)
-
     if (!this._head) {
       this._head = node
     } else {
       this._tail.next = node
     }
-
     this._tail = node
-
     this._length++
     return this._length
   }
@@ -24,7 +19,6 @@ export class SinglyLinkedList<T> extends LinkedList<T> {
   insert(el: T, index = 0) {
     if (index >= 0 && index <= this._length) {
       const node = new Node(el)
-
       if (!index) {
         if (!this._head) {
           this._head = node
@@ -42,7 +36,6 @@ export class SinglyLinkedList<T> extends LinkedList<T> {
         node.next = current
         ancestor.next = node
       }
-
       this._length++
     }
     return this._length
@@ -51,10 +44,8 @@ export class SinglyLinkedList<T> extends LinkedList<T> {
   removeAt(index: number) {
     if (this._head && index >= 0 && index < this._length) {
       let pointer = this._head
-
       if (!index) {
         this._head = this._head.next
-
         if (!this._head) {
           this._tail = null
         }
@@ -64,7 +55,6 @@ export class SinglyLinkedList<T> extends LinkedList<T> {
         ancestor.next = pointer.next
         this._tail = ancestor
       }
-
       this._length--
       return pointer.el
     }
@@ -72,40 +62,33 @@ export class SinglyLinkedList<T> extends LinkedList<T> {
 
   toString() {
     let pointer = this._head
-
     if (!pointer) {
       return ''
     }
-
     let str = `${pointer.el}`
     pointer = pointer.next
-
     for (let i = 1; i < this._length && pointer; i++) {
       str = `${str} -> ${pointer.el}`
       pointer = pointer.next
     }
-
     return `${str} ->`
   }
 
   concat(list: LinkedList<T>) {
     const newList = new SinglyLinkedList<T>()
     concatLists(this, list, newList)
-
     return newList
   }
 
   filter(callbackFn: FilterCallback<T>) {
     const newList = new SinglyLinkedList<T>()
     filterList(this, newList, callbackFn)
-
     return newList
   }
 
   map(callbackFn: MapCallback<T>) {
     const newList = new SinglyLinkedList<T>()
     mapList(this, newList, callbackFn)
-
     return newList
   }
 }

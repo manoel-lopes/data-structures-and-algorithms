@@ -1,5 +1,4 @@
 import { Node } from '../../models/Node'
-
 import {
   FindIndexCallback,
   ForeachCallback,
@@ -29,7 +28,6 @@ export abstract class LinkedList<T> {
   protected getNode(index: number) {
     if (index >= 0 && index < this.length) {
       let pointer = this._head
-
       for (let i = 0; i < index && pointer; i++) {
         pointer = pointer.next
       }
@@ -46,7 +44,6 @@ export abstract class LinkedList<T> {
   indexOf(el: T) {
     let pointer = this._head
     let i = 0
-
     while (pointer && i <= this.length) {
       if (pointer.el === el) {
         return i
@@ -54,13 +51,11 @@ export abstract class LinkedList<T> {
       pointer = pointer.next
       i++
     }
-
     return -1
   }
 
   getElementAt(index: number) {
     const pointer = this.getNode(index)
-
     if (pointer) {
       return pointer.el
     }
@@ -68,7 +63,6 @@ export abstract class LinkedList<T> {
 
   setElementAt(el: T, index: number) {
     const pointer = this.getNode(index)
-
     if (pointer) {
       pointer.el = el
     }
@@ -86,7 +80,6 @@ export abstract class LinkedList<T> {
     let current = this._head
     let ancestor: Node<T>
     let next: Node<T>
-
     while (current) {
       next = current.next
       current.next = ancestor
@@ -99,7 +92,6 @@ export abstract class LinkedList<T> {
   findIndex(callback: FindIndexCallback<T>) {
     let pointer = this._head
     let i = 0
-
     while (pointer) {
       if (callback(pointer.el)) {
         return i
@@ -107,7 +99,6 @@ export abstract class LinkedList<T> {
       pointer = pointer.next
       i++
     }
-
     return -1
   }
 
@@ -144,9 +135,7 @@ export abstract class LinkedList<T> {
 
   protected partition(left: number, right: number, compareFn: CompareFn) {
     const ascendingOrderFnStr = `${(a: number, b: number) => a - b}`
-
     const descendingOrderFnStr = `${(a: number, b: number) => b - a}`
-
     const pivot = this.getElementAt(Math.floor((right + left) / 2))
     let i = left
     let j = right
@@ -198,19 +187,15 @@ export abstract class LinkedList<T> {
 
   protected quick(left: number, right: number, compareFn: CompareFn) {
     let index: number
-
     if (this.length > 1) {
       index = this.partition(left, right, compareFn)
-
       if (left < index - 1) {
         this.quick(left, index - 1, compareFn)
       }
-
       if (index < right) {
         this.quick(index, right, compareFn)
       }
     }
   }
-
   sort = (compareFn?: CompareFn) => this.quick(0, this.length - 1, compareFn)
 }
